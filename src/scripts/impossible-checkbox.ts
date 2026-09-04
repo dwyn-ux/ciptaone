@@ -28,10 +28,10 @@ if (root) {
   // Bear vertical translation: positive = down (hidden below viewport bottom of scene? no — scene is full viewport, but bear emerges from above its anchor).
   // Since bear anchor is at top-right (76px from top), bear rises UPWARD (negative y).
   const reset = () => {
-    bear.style.transform = 'translate(0, -100%)';
-    armWrap.style.transform = 'translate(0, 0)';
+    bear.style.transform = 'translate(-2.4em, -100%) rotate(5deg)';
+    armWrap.style.transform = 'translate(-2.2em, 0)';
     arm.style.transform = 'translate(-35%, -50%) scaleX(1)';
-    paw.style.transform = 'translate(-12px, 0) scaleX(0)';
+    paw.style.transform = 'translate(-1.4em, 0) scaleX(0)';
     swear.style.display = 'none';
     if (angry) angry.style.display = 'none';
   };
@@ -61,7 +61,10 @@ if (root) {
     if (count > armLimit) {
       animate(
         bear,
-        [{ transform: 'translate(0, -100%)' }, { transform: `translate(0, ${bearTranslation})` }],
+        [
+          { transform: 'translate(-2.4em, -100%) rotate(5deg)' },
+          { transform: `translate(-2.4em, ${bearTranslation}) rotate(5deg)` }
+        ],
         { duration: 250, easing: EASE, fill: 'forwards', delay: riseDelay }
       );
       if (showAngry) {
@@ -76,8 +79,8 @@ if (root) {
     animate(
       armWrap,
       [
-        { transform: 'translate(0, 0)' },
-        { transform: 'translate(-8px, 0)' }
+        { transform: 'translate(-2.2em, 0)' },
+        { transform: 'translate(-3.6em, 0)' }
       ],
       { duration: 200, easing: EASE, fill: 'forwards', delay: count > armLimit ? riseDelay : 0 }
     );
@@ -92,8 +95,8 @@ if (root) {
     animate(
       paw,
       [
-        { transform: 'translate(-12px, 0) scaleX(0)' },
-        { transform: 'translate(-12px, 0) scaleX(0.8)' }
+        { transform: 'translate(-1.4em, 0) scaleX(0)' },
+        { transform: 'translate(-1.4em, 0) scaleX(0.8)' }
       ],
       { duration: 100, easing: EASE, fill: 'forwards', delay: (count > armLimit ? riseDelay : 0) + 400 }
     );
@@ -102,7 +105,7 @@ if (root) {
     const offDelay = (count > armLimit ? riseDelay : 0) + 650;
     animate(
       paw,
-      [{ transform: 'translate(-12px, 0) scaleX(0.8)' }, { transform: 'translate(-12px, 0) scaleX(0)' }],
+      [{ transform: 'translate(-1.4em, 0) scaleX(0.8)' }, { transform: 'translate(-1.4em, 0) scaleX(0)' }],
       { duration: 100, easing: EASE, fill: 'forwards', delay: offDelay }
     );
     animate(
@@ -112,12 +115,15 @@ if (root) {
     );
     animate(
       armWrap,
-      [{ transform: 'translate(-8px, 0)' }, { transform: 'translate(0, 0)' }],
+      [{ transform: 'translate(-3.6em, 0)' }, { transform: 'translate(-2.2em, 0)' }],
       { duration: 200, easing: EASE, fill: 'forwards', delay: offDelay + 100 }
     );
     animate(
       bear,
-      [{ transform: `translate(0, ${bearTranslation})` }, { transform: 'translate(0, -100%)' }],
+      [
+        { transform: `translate(-2.4em, ${bearTranslation}) rotate(5deg)` },
+        { transform: 'translate(-2.4em, -100%) rotate(5deg)' }
+      ],
       { duration: 250, easing: EASE, fill: 'forwards', delay: offDelay + 100 }
     );
 
