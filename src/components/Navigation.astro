@@ -13,7 +13,12 @@ import { site } from '../data/site';
         <a href={item.href} data-cursor="VIEW">{item.label}</a>
       ))}
     </nav>
-    <span class="nav-tag mono">ID / {site.year}</span>
+    <label class="icbx-switch" data-icbx aria-label="Toggle the bear">
+      <span class="icbx-label mono">EXP</span>
+      <input type="checkbox" data-icbx-input />
+      <span class="icbx-switch-bg" data-icbx-bg aria-hidden="true"></span>
+      <span class="icbx-switch-knob" data-icbx-knob aria-hidden="true"></span>
+    </label>
   </div>
 </header>
 
@@ -61,11 +66,70 @@ import { site } from '../data/site';
     transition: color .25s var(--ease);
   }
   .nav a:hover { color: var(--accent); }
-  .nav-tag { color: var(--muted); }
+
+  /* Switch (replaces ID/2026 tag) */
+  .icbx-switch {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+    margin-right: 18px;
+  }
+  .icbx-label {
+    color: var(--muted);
+    font-size: 10px;
+    transition: color .25s var(--ease);
+  }
+  .icbx-switch:hover .icbx-label { color: var(--paper); }
+  .icbx-switch input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    margin: 0;
+    cursor: pointer;
+    z-index: 2;
+  }
+  .icbx-switch-bg {
+    position: relative;
+    width: 30px;
+    height: 16px;
+    border-radius: 999px;
+    background: #4a4a4a;
+    transition: background .25s cubic-bezier(.22, 1, .36, 1);
+    flex-shrink: 0;
+  }
+  .icbx-switch-knob {
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 12px);
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--paper, #F1F1EC);
+    transition: left .25s cubic-bezier(.22, 1, .36, 1);
+    will-change: left;
+    z-index: 1;
+  }
+  .icbx-switch input:checked ~ .icbx-switch-bg {
+    background: var(--accent, #B8FF3D);
+  }
+  .icbx-switch input:checked ~ .icbx-switch-knob {
+    left: calc(50% + 12px);
+  }
 
   @media (max-width: 800px) {
     .nav-root { height: 64px; }
     .nav { display: none; }
-    .nav-tag { font-size: 9px; }
+    .icbx-label { display: none; }
+    .icbx-switch { margin-right: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .icbx-switch-knob, .icbx-switch-bg {
+      transition: none !important;
+    }
   }
 </style>

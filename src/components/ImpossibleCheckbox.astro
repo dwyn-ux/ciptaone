@@ -1,129 +1,56 @@
 ---
-// Impossible Checkbox — vanilla port of jh3y's bear pen.
-// Small switch in the corner, bear hidden off-screen until flipped.
+// Bear scene for the Impossible Checkbox (vanilla port of jh3y's pen).
+// Triggered from the header switch. Hidden until activated.
 ---
 
-<section class="icbx-section" data-chapter="04b" aria-labelledby="icbx-label">
-  <div class="icbx-row">
-    <span class="mono icbx-tag" id="icbx-label">04b / EXPERIMENT</span>
-    <span class="mono icbx-hint">FLICK →</span>
-    <label class="icbx-switch" data-icbx aria-label="Toggle the bear">
-      <input type="checkbox" data-icbx-input />
-      <span class="icbx-switch-bg" data-icbx-bg aria-hidden="true"></span>
-      <span class="icbx-switch-knob" data-icbx-knob aria-hidden="true"></span>
-    </label>
-  </div>
-
-  <!-- Bear scene (hidden until activated) -->
-  <div class="icbx-scene" data-icbx-scene aria-hidden="true">
-    <div class="icbx-bear-wrap" data-icbx-bear-wrap>
-      <span class="icbx-swear" data-icbx-swear>#@$%*!</span>
-      <svg
-        class="icbx-bear"
-        data-icbx-bear
-        viewBox="0 0 284.94574 359.73706"
-        preserveAspectRatio="xMinYMin"
-      >
-        <g transform="translate(-7.5271369,-761.38595)">
-          <g transform="matrix(1.2335313,0,0,1.2335313,-35.029693,-212.83637)">
-            <path d="M 263.90933,1081.4151 A 113.96792,96.862576 0 0 0 149.99132,985.71456 113.96792,96.862576 0 0 0 36.090664,1081.4151 l 227.818666,0 z" fill="#784421"/>
-            <path d="m 250.42825,903.36218 c 2e-5,66.27108 -44.75411,114.99442 -102.42825,114.99442 -57.674143,0 -98.428271,-48.72334 -98.428251,-114.99442 4e-6,-66.27106 40.754125,-92.99437 98.428251,-92.99437 57.67413,0 102.42825,26.72331 102.42825,92.99437 z" fill="#784421"/>
-            <path d="m 217,972.86218 c 2e-5,21.53911 -30.44462,42.00002 -68,42.00002 -37.55538,0 -66.000019,-20.46091 -66,-42.00002 0,-21.53911 28.44464,-36 66,-36 37.55536,0 68,14.46089 68,36 z" fill="#e9c6af"/>
-            <path d="m 181.5,944.36218 c 0,8.28427 -20.59974,26.5 -32.75,26.5 -12.15026,0 -34.75,-18.21573 -34.75,-26.5 0,-8.28427 22.59974,-13.5 34.75,-13.5 12.15026,0 32.75,5.21573 32.75,13.5 z" fill="#000000"/>
-            <g>
-              <ellipse cx="69" cy="823.07269" rx="34.5" ry="33.289474" fill="#784421"/>
-              <path d="M 69,47.310547 A 24.25,23.399124 0 0 0 44.75,70.710938 24.25,23.399124 0 0 0 64.720703,93.720703 c 0.276316,-0.40734 0.503874,-0.867778 0.787109,-1.267578 1.70087,-2.400855 3.527087,-4.666237 5.470704,-6.798828 1.943616,-2.132591 4.004963,-4.133318 6.179687,-6.003906 2.174725,-1.870589 4.461274,-3.611714 6.855469,-5.226563 2.394195,-1.614848 4.896019,-3.10338 7.498047,-4.46875 0.539935,-0.283322 1.133058,-0.500695 1.68164,-0.773437 A 24.25,23.399124 0 0 0 69,47.310547 Z" transform="translate(0,752.36216)" fill="#e9c6af"/>
-            </g>
-            <g transform="matrix(-1,0,0,1,300,0)">
-              <ellipse ry="33.289474" rx="34.5" cy="823.07269" cx="69" fill="#784421"/>
-              <path transform="translate(0,752.36216)" d="M 69,47.310547 A 24.25,23.399124 0 0 0 44.75,70.710938 24.25,23.399124 0 0 0 64.720703,93.720703 c 0.276316,-0.40734 0.503874,-0.867778 0.787109,-1.267578 1.70087,-2.400855 3.527087,-4.666237 5.470704,-6.798828 1.943616,-2.132591 4.004963,-4.133318 6.179687,-6.003906 2.174725,-1.870589 4.461274,-3.611714 6.855469,-5.226563 2.394195,-1.614848 4.896019,-3.10338 7.498047,-4.46875 0.539935,-0.283322 1.133058,-0.500695 1.68164,-0.773437 A 24.25,23.399124 0 0 0 69,47.310547 Z" fill="#e9c6af"/>
-            </g>
-            <ellipse ry="9.6790915" rx="9.2701159" cy="900.38916" cx="105.83063" fill="#000000"/>
-            <ellipse cx="186.89894" cy="900.38916" rx="9.2701159" ry="9.6790915" fill="#000000"/>
-            <g data-icbx-angry style="display:none;">
-              <path d="m 92.05833,865.4614 39.42665,22.76299" stroke="#000000" stroke-width="4.86408424" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              <path d="m 202.82482,865.4614 -39.42664,22.76299" stroke="#000000" stroke-width="4.86408424" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            </g>
+<div class="icbx-scene" data-icbx-scene aria-hidden="true">
+  <div class="icbx-bear-wrap" data-icbx-bear-wrap>
+    <span class="icbx-swear" data-icbx-swear>#@$%*!</span>
+    <svg
+      class="icbx-bear"
+      data-icbx-bear
+      viewBox="0 0 284.94574 359.73706"
+      preserveAspectRatio="xMinYMin"
+    >
+      <g transform="translate(-7.5271369,-761.38595)">
+        <g transform="matrix(1.2335313,0,0,1.2335313,-35.029693,-212.83637)">
+          <path d="M 263.90933,1081.4151 A 113.96792,96.862576 0 0 0 149.99132,985.71456 113.96792,96.862576 0 0 0 36.090664,1081.4151 l 227.818666,0 z" fill="#784421"/>
+          <path d="m 250.42825,903.36218 c 2e-5,66.27108 -44.75411,114.99442 -102.42825,114.99442 -57.674143,0 -98.428271,-48.72334 -98.428251,-114.99442 4e-6,-66.27106 40.754125,-92.99437 98.428251,-92.99437 57.67413,0 102.42825,26.72331 102.42825,92.99437 z" fill="#784421"/>
+          <path d="m 217,972.86218 c 2e-5,21.53911 -30.44462,42.00002 -68,42.00002 -37.55538,0 -66.000019,-20.46091 -66,-42.00002 0,-21.53911 28.44464,-36 66,-36 37.55536,0 68,14.46089 68,36 z" fill="#e9c6af"/>
+          <path d="m 181.5,944.36218 c 0,8.28427 -20.59974,26.5 -32.75,26.5 -12.15026,0 -34.75,-18.21573 -34.75,-26.5 0,-8.28427 22.59974,-13.5 34.75,-13.5 12.15026,0 32.75,5.21573 32.75,13.5 z" fill="#000000"/>
+          <g>
+            <ellipse cx="69" cy="823.07269" rx="34.5" ry="33.289474" fill="#784421"/>
+            <path d="M 69,47.310547 A 24.25,23.399124 0 0 0 44.75,70.710938 24.25,23.399124 0 0 0 64.720703,93.720703 c 0.276316,-0.40734 0.503874,-0.867778 0.787109,-1.267578 1.70087,-2.400855 3.527087,-4.666237 5.470704,-6.798828 1.943616,-2.132591 4.004963,-4.133318 6.179687,-6.003906 2.174725,-1.870589 4.461274,-3.611714 6.855469,-5.226563 2.394195,-1.614848 4.896019,-3.10338 7.498047,-4.46875 0.539935,-0.283322 1.133058,-0.500695 1.68164,-0.773437 A 24.25,23.399124 0 0 0 69,47.310547 Z" transform="translate(0,752.36216)" fill="#e9c6af"/>
+          </g>
+          <g transform="matrix(-1,0,0,1,300,0)">
+            <ellipse ry="33.289474" rx="34.5" cy="823.07269" cx="69" fill="#784421"/>
+            <path transform="translate(0,752.36216)" d="M 69,47.310547 A 24.25,23.399124 0 0 0 44.75,70.710938 24.25,23.399124 0 0 0 64.720703,93.720703 c 0.276316,-0.40734 0.503874,-0.867778 0.787109,-1.267578 1.70087,-2.400855 3.527087,-4.666237 5.470704,-6.798828 1.943616,-2.132591 4.004963,-4.133318 6.179687,-6.003906 2.174725,-1.870589 4.461274,-3.611714 6.855469,-5.226563 2.394195,-1.614848 4.896019,-3.10338 7.498047,-4.46875 0.539935,-0.283322 1.133058,-0.500695 1.68164,-0.773437 A 24.25,23.399124 0 0 0 69,47.310547 Z" fill="#e9c6af"/>
+          </g>
+          <ellipse ry="9.6790915" rx="9.2701159" cy="900.38916" cx="105.83063" fill="#000000"/>
+          <ellipse cx="186.89894" cy="900.38916" rx="9.2701159" ry="9.6790915" fill="#000000"/>
+          <g data-icbx-angry style="display:none;">
+            <path d="m 92.05833,865.4614 39.42665,22.76299" stroke="#000000" stroke-width="4.86408424" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="m 202.82482,865.4614 -39.42664,22.76299" stroke="#000000" stroke-width="4.86408424" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
           </g>
         </g>
-      </svg>
-    </div>
-
-    <div class="icbx-arm-wrap" data-icbx-arm-wrap>
-      <svg class="icbx-arm" data-icbx-arm viewBox="0 0 250.00001 99.999997" preserveAspectRatio="xMinYMin">
-        <g transform="translate(868.57141,-900.93359)">
-          <path d="m -619.43416,945.05124 c 4.18776,73.01076 -78.25474,53.24342 -150.21568,52.94118 -82.38711,-0.34602 -98.92158,-19.44459 -98.92157,-47.05883 0,-27.61424 4.78794,-42.54902 73.82353,-42.54902 69.03559,0 171.43607,-30.93764 175.31372,36.66667 z" fill="#784421"/>
-          <ellipse cx="-683.02264" cy="950.98572" rx="29.910826" ry="29.414362" fill="#e9c6af"/>
-        </g>
-      </svg>
-    </div>
-
-    <div class="icbx-paw" data-icbx-paw></div>
+      </g>
+    </svg>
   </div>
-</section>
+
+  <div class="icbx-arm-wrap" data-icbx-arm-wrap>
+    <svg class="icbx-arm" data-icbx-arm viewBox="0 0 250.00001 99.999997" preserveAspectRatio="xMinYMin">
+      <g transform="translate(868.57141,-900.93359)">
+        <path d="m -619.43416,945.05124 c 4.18776,73.01076 -78.25474,53.24342 -150.21568,52.94118 -82.38711,-0.34602 -98.92158,-19.44459 -98.92157,-47.05883 0,-27.61424 4.78794,-42.54902 73.82353,-42.54902 69.03559,0 171.43607,-30.93764 175.31372,36.66667 z" fill="#784421"/>
+        <ellipse cx="-683.02264" cy="950.98572" rx="29.910826" ry="29.414362" fill="#e9c6af"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="icbx-paw" data-icbx-paw></div>
+</div>
 
 <style>
-  .icbx-section {
-    padding: 80px 0;
-    border-bottom: 1px solid var(--line);
-    position: relative;
-  }
-  .icbx-row {
-    width: min(1480px, 100%);
-    margin: auto;
-    padding: 0 34px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 14px;
-  }
-  .icbx-tag { color: var(--muted); }
-  .icbx-hint { color: var(--muted); margin-right: 4px; }
-
-  /* Tiny switch in the corner */
-  .icbx-switch {
-    position: relative;
-    width: 44px;
-    height: 22px;
-    border-radius: 999px;
-    display: inline-block;
-    cursor: pointer;
-    flex-shrink: 0;
-  }
-  .icbx-switch input {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    margin: 0;
-    cursor: pointer;
-    z-index: 2;
-  }
-  .icbx-switch-bg {
-    position: absolute;
-    inset: 0;
-    background: #4a4a4a;
-    border-radius: 999px;
-    transition: background .25s cubic-bezier(.22, 1, .36, 1);
-  }
-  .icbx-switch-knob {
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: var(--paper, #F1F1EC);
-    transition: transform .25s cubic-bezier(.22, 1, .36, 1);
-    will-change: transform;
-  }
-  .icbx-switch input:checked ~ .icbx-switch-bg {
-    background: var(--accent, #B8FF3D);
-  }
-  .icbx-switch input:checked ~ .icbx-switch-knob {
-    transform: translateX(22px);
-  }
-
-  /* Bear scene: hidden off-screen until trigger */
+  /* Bear scene: fixed overlay, hidden until trigger */
   .icbx-scene {
     position: fixed;
     inset: 0;
@@ -138,7 +65,7 @@
     position: absolute;
     left: 50%;
     top: 50%;
-    width: 240px;
+    width: 110px;
     transform: translate(-15%, -50%) rotate(5deg) translate(0, -75%);
     will-change: transform;
   }
@@ -158,27 +85,28 @@
     background: var(--paper, #F1F1EC);
     color: var(--ink, #0A0A0A);
     font-weight: 800;
-    padding: 8px 12px;
-    border-radius: 8px;
+    padding: 6px 10px;
+    border-radius: 6px;
     font-family: "DM Mono", monospace;
-    font-size: 12px;
+    font-size: 10px;
     letter-spacing: .05em;
+    white-space: nowrap;
   }
   .icbx-swear::before {
     content: "";
     position: absolute;
     top: 90%;
     right: 70%;
-    height: 28px;
-    width: 28px;
+    height: 18px;
+    width: 18px;
     background: var(--paper, #F1F1EC);
     clip-path: polygon(0 100%, 100% 0, 50% 0);
     -webkit-clip-path: polygon(0 100%, 100% 0, 50% 0);
   }
   .icbx-arm-wrap {
     position: absolute;
-    height: 60px;
-    width: 180px;
+    height: 30px;
+    width: 90px;
     top: 50%;
     left: 50%;
     transform: translate(0, -50%);
@@ -198,22 +126,17 @@
     background: #784421;
     border-radius: 100%;
     position: absolute;
-    height: 30px;
-    width: 30px;
+    height: 16px;
+    width: 16px;
     top: 50%;
     left: 50%;
     transform-origin: right;
-    transform: translate(80px, -15px) scaleX(0);
+    transform: translate(40px, -8px) scaleX(0);
     will-change: transform;
   }
 
-  @media (max-width: 800px) {
-    .icbx-row { padding: 0 18px; }
-    .icbx-bear-wrap { width: 180px; }
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .icbx-bear, .icbx-arm, .icbx-paw, .icbx-switch-knob, .icbx-switch-bg {
+    .icbx-bear, .icbx-arm, .icbx-paw {
       transition: none !important;
     }
   }

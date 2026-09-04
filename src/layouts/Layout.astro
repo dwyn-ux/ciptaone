@@ -5,6 +5,7 @@ import '../styles/animations.css';
 import Navigation from '../components/Navigation.astro';
 import CustomCursor from '../components/CustomCursor.astro';
 import ScrollProgress from '../components/ScrollProgress.astro';
+import ImpossibleCheckbox from '../components/ImpossibleCheckbox.astro';
 import Footer from '../components/Footer.astro';
 import { site } from '../data/site';
 
@@ -66,6 +67,7 @@ const ogImage = `${site.url}/assets/og-image.svg`;
       <slot />
     </main>
     <Footer />
+    <ImpossibleCheckbox />
   </body>
 </html>
 
