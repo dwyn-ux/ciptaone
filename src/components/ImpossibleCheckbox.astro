@@ -61,12 +61,13 @@
   }
   .icbx-scene.is-active { opacity: 1; }
 
+  /* Bear emerges from below the switch (top-right of header) */
   .icbx-bear-wrap {
     position: absolute;
-    left: 50%;
-    top: 50%;
+    right: 80px;
+    top: 76px;
     width: 110px;
-    transform: translate(-15%, -50%) rotate(5deg) translate(0, -75%);
+    transform: translate(0, 0) rotate(5deg);
     will-change: transform;
   }
   .icbx-bear {
@@ -107,9 +108,9 @@
     position: absolute;
     height: 30px;
     width: 90px;
-    top: 50%;
-    left: 50%;
-    transform: translate(0, -50%);
+    top: 76px;
+    right: 80px;
+    transform: translate(0, 0);
   }
   .icbx-arm {
     background: transparent;
@@ -128,11 +129,17 @@
     position: absolute;
     height: 16px;
     width: 16px;
-    top: 50%;
-    left: 50%;
+    top: 76px;
+    right: 80px;
     transform-origin: right;
-    transform: translate(40px, -8px) scaleX(0);
+    transform: translate(-50px, 0) scaleX(0);
     will-change: transform;
+  }
+
+  @media (max-width: 800px) {
+    .icbx-bear-wrap { right: 36px; top: 64px; width: 90px; }
+    .icbx-arm-wrap { right: 36px; top: 64px; width: 70px; }
+    .icbx-paw { right: 36px; top: 64px; }
   }
 
   @media (prefers-reduced-motion: reduce) {

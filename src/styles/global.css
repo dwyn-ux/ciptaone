@@ -70,3 +70,16 @@ button { font: inherit; background: none; border: none; color: inherit; padding:
 
 /* Selection */
 ::selection { background: var(--accent); color: var(--ink); }
+
+/* Theme: light mode (toggled via header switch) */
+body.theme-light {
+  --ink: #F1F1EC;
+  --paper: #0A0A0A;
+  --muted: #6a6a64;
+  --line: #d8d8d2;
+  --accent: #B8FF3D;
+  background: var(--ink);
+  color: var(--paper);
+}
+body.theme-light .nav-root { background: rgba(241, 241, 236, .82); }
+body.theme-light ::selection { background: var(--ink); color: var(--accent); }

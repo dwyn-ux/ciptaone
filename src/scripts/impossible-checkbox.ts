@@ -1,5 +1,5 @@
 // Impossible Checkbox — vanilla Web Animations port.
-// Small switch triggers bear grab sequence on overlay scene.
+// Header switch toggles theme + triggers bear grab sequence on overlay scene.
 
 const root = document.querySelector<HTMLElement>('[data-icbx]');
 if (root) {
@@ -16,7 +16,6 @@ if (root) {
   const angry = scene.querySelector<HTMLElement>('[data-icbx-angry]')!;
 
   const EASE = 'cubic-bezier(.22, 1, .36, 1)';
-  const EASE_OUT = 'cubic-bezier(.16, 1, .3, 1)';
 
   let armLimit = 0;
   let headLimit = armLimit + 2;
@@ -25,11 +24,14 @@ if (root) {
 
   const rand = (min: number, max: number) => Math.random() * (max - min) + min;
 
+  // Bear scene is anchored to top-right of header. Bear emerges downward, paw reaches up to switch.
+  // Bear vertical translation: positive = down (hidden below viewport bottom of scene? no — scene is full viewport, but bear emerges from above its anchor).
+  // Since bear anchor is at top-right (76px from top), bear rises UPWARD (negative y).
   const reset = () => {
-    bear.style.transform = 'translate(0, 100%)';
-    armWrap.style.transform = 'translate(0, -50%)';
+    bear.style.transform = 'translate(0, -100%)';
+    armWrap.style.transform = 'translate(0, 0)';
     arm.style.transform = 'translate(-35%, -50%) scaleX(1)';
-    paw.style.transform = 'translate(40px, -8px) scaleX(0)';
+    paw.style.transform = 'translate(-50px, 0) scaleX(0)';
     swear.style.display = 'none';
     if (angry) angry.style.display = 'none';
   };
@@ -37,24 +39,29 @@ if (root) {
   const animate = (el: HTMLElement, keyframes: Keyframe[], opts: KeyframeAnimationOptions) =>
     el.animate(keyframes, opts);
 
+  const setTheme = (on: boolean) => {
+    document.body.classList.toggle('theme-light', on);
+  };
+
   const playGrab = () => {
     if (reduce) return;
 
     scene.classList.add('is-active');
     reset();
+    setTheme(true);
 
     const bearTranslation =
-      count >= headLimit ? '0%' : count > armLimit ? '40%' : '100%';
+      count >= headLimit ? '0%' : count > armLimit ? '-40%' : '-100%';
 
     const baseDelay = rand(0, 0.2) * 1000;
     const showAngry = count >= angerLimit && Math.random() > 0.5;
 
-    // Bear rises (after ON)
+    // Bear rises upward toward switch
     const riseDelay = 280 + baseDelay;
     if (count > armLimit) {
       animate(
         bear,
-        [{ transform: 'translate(0, 100%)' }, { transform: `translate(0, ${bearTranslation})` }],
+        [{ transform: 'translate(0, -100%)' }, { transform: `translate(0, ${bearTranslation})` }],
         { duration: 250, easing: EASE, fill: 'forwards', delay: riseDelay }
       );
       if (showAngry) {
@@ -65,12 +72,12 @@ if (root) {
       }
     }
 
-    // Arm reaches over
+    // Arm reaches from bear toward switch (right-to-left across header)
     animate(
       armWrap,
       [
-        { transform: 'translate(0, -50%)' },
-        { transform: 'translate(25px, -50%)' }
+        { transform: 'translate(0, 0)' },
+        { transform: 'translate(-50px, 0)' }
       ],
       { duration: 200, easing: EASE, fill: 'forwards', delay: count > armLimit ? riseDelay : 0 }
     );
@@ -85,17 +92,17 @@ if (root) {
     animate(
       paw,
       [
-        { transform: 'translate(40px, -8px) scaleX(0)' },
-        { transform: 'translate(40px, -8px) scaleX(0.8)' }
+        { transform: 'translate(-50px, 0) scaleX(0)' },
+        { transform: 'translate(-50px, 0) scaleX(0.8)' }
       ],
       { duration: 100, easing: EASE, fill: 'forwards', delay: (count > armLimit ? riseDelay : 0) + 400 }
     );
 
-    // OFF sequence (switch flicks back)
+    // OFF sequence
     const offDelay = (count > armLimit ? riseDelay : 0) + 650;
     animate(
       paw,
-      [{ transform: 'translate(40px, -8px) scaleX(0.8)' }, { transform: 'translate(40px, -8px) scaleX(0)' }],
+      [{ transform: 'translate(-50px, 0) scaleX(0.8)' }, { transform: 'translate(-50px, 0) scaleX(0)' }],
       { duration: 100, easing: EASE, fill: 'forwards', delay: offDelay }
     );
     animate(
@@ -105,21 +112,21 @@ if (root) {
     );
     animate(
       armWrap,
-      [{ transform: 'translate(25px, -50%)' }, { transform: 'translate(0, -50%)' }],
+      [{ transform: 'translate(-50px, 0)' }, { transform: 'translate(0, 0)' }],
       { duration: 200, easing: EASE, fill: 'forwards', delay: offDelay + 100 }
     );
     animate(
       bear,
-      [{ transform: `translate(0, ${bearTranslation})` }, { transform: 'translate(0, 100%)' }],
+      [{ transform: `translate(0, ${bearTranslation})` }, { transform: 'translate(0, -100%)' }],
       { duration: 250, easing: EASE, fill: 'forwards', delay: offDelay + 100 }
     );
 
-    // Switch OFF at offDelay
+    // Switch OFF + theme reset
     setTimeout(() => {
       input.checked = false;
+      setTheme(false);
     }, offDelay);
 
-    // Reset state
     setTimeout(() => {
       scene.classList.remove('is-active');
       reset();
