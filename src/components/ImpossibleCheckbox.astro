@@ -1,137 +1,146 @@
 ---
 // Impossible Checkbox — vanilla port of jh3y's bear pen.
-// Web Animations API instead of GSAP, no React. Single inline SVG, no assets.
+// Small switch in the corner, bear hidden off-screen until flipped.
 ---
 
-<section class="section icbx-section" data-chapter="04b">
-  <div class="shell">
-    <header class="icbx-header" data-reveal>
-      <div class="icbx-meta">
-        <span class="mono">04b — Try this</span>
-        <span class="icbx-rule" aria-hidden="true"></span>
-        <span class="mono">A small experiment</span>
-      </div>
-      <p class="icbx-copy">
-        A switch you can flip. Don't worry — the bear
-        <span class="icbx-accent">doesn't bite back</span>.
-      </p>
-    </header>
+<section class="icbx-section" data-chapter="04b" aria-labelledby="icbx-label">
+  <div class="icbx-row">
+    <span class="mono icbx-tag" id="icbx-label">04b / EXPERIMENT</span>
+    <span class="mono icbx-hint">FLICK →</span>
+    <label class="icbx-switch" data-icbx aria-label="Toggle the bear">
+      <input type="checkbox" data-icbx-input />
+      <span class="icbx-switch-bg" data-icbx-bg aria-hidden="true"></span>
+      <span class="icbx-switch-knob" data-icbx-knob aria-hidden="true"></span>
+    </label>
+  </div>
 
-    <div class="icbx-stage" data-reveal>
-      <div class="icbx" data-icbx>
-
-  <div class="icbx-bear-wrap" data-icbx-bear-wrap>
-    <span class="icbx-swear" data-icbx-swear aria-hidden="true">#@$%*!</span>
-    <svg
-      class="icbx-bear"
-      data-icbx-bear
-      viewBox="0 0 284.94574 359.73706"
-      preserveAspectRatio="xMinYMin"
-      aria-hidden="true"
-    >
-      <g transform="translate(-7.5271369,-761.38595)">
-        <g transform="matrix(1.2335313,0,0,1.2335313,-35.029693,-212.83637)">
-          <path d="M 263.90933,1081.4151 A 113.96792,96.862576 0 0 0 149.99132,985.71456 113.96792,96.862576 0 0 0 36.090664,1081.4151 l 227.818666,0 z" fill="#784421"/>
-          <path d="m 250.42825,903.36218 c 2e-5,66.27108 -44.75411,114.99442 -102.42825,114.99442 -57.674143,0 -98.428271,-48.72334 -98.428251,-114.99442 4e-6,-66.27106 40.754125,-92.99437 98.428251,-92.99437 57.67413,0 102.42825,26.72331 102.42825,92.99437 z" fill="#784421"/>
-          <path d="m 217,972.86218 c 2e-5,21.53911 -30.44462,42.00002 -68,42.00002 -37.55538,0 -66.000019,-20.46091 -66,-42.00002 0,-21.53911 28.44464,-36 66,-36 37.55536,0 68,14.46089 68,36 z" fill="#e9c6af"/>
-          <path d="m 181.5,944.36218 c 0,8.28427 -20.59974,26.5 -32.75,26.5 -12.15026,0 -34.75,-18.21573 -34.75,-26.5 0,-8.28427 22.59974,-13.5 34.75,-13.5 12.15026,0 32.75,5.21573 32.75,13.5 z" fill="#000000"/>
-          <g>
-            <ellipse cx="69" cy="823.07269" rx="34.5" ry="33.289474" fill="#784421"/>
-            <path d="M 69,47.310547 A 24.25,23.399124 0 0 0 44.75,70.710938 24.25,23.399124 0 0 0 64.720703,93.720703 c 0.276316,-0.40734 0.503874,-0.867778 0.787109,-1.267578 1.70087,-2.400855 3.527087,-4.666237 5.470704,-6.798828 1.943616,-2.132591 4.004963,-4.133318 6.179687,-6.003906 2.174725,-1.870589 4.461274,-3.611714 6.855469,-5.226563 2.394195,-1.614848 4.896019,-3.10338 7.498047,-4.46875 0.539935,-0.283322 1.133058,-0.500695 1.68164,-0.773437 A 24.25,23.399124 0 0 0 69,47.310547 Z" transform="translate(0,752.36216)" fill="#e9c6af"/>
-          </g>
-          <g transform="matrix(-1,0,0,1,300,0)">
-            <ellipse ry="33.289474" rx="34.5" cy="823.07269" cx="69" fill="#784421"/>
-            <path transform="translate(0,752.36216)" d="M 69,47.310547 A 24.25,23.399124 0 0 0 44.75,70.710938 24.25,23.399124 0 0 0 64.720703,93.720703 c 0.276316,-0.40734 0.503874,-0.867778 0.787109,-1.267578 1.70087,-2.400855 3.527087,-4.666237 5.470704,-6.798828 1.943616,-2.132591 4.004963,-4.133318 6.179687,-6.003906 2.174725,-1.870589 4.461274,-3.611714 6.855469,-5.226563 2.394195,-1.614848 4.896019,-3.10338 7.498047,-4.46875 0.539935,-0.283322 1.133058,-0.500695 1.68164,-0.773437 A 24.25,23.399124 0 0 0 69,47.310547 Z" fill="#e9c6af"/>
-          </g>
-          <ellipse ry="9.6790915" rx="9.2701159" cy="900.38916" cx="105.83063" fill="#000000"/>
-          <ellipse cx="186.89894" cy="900.38916" rx="9.2701159" ry="9.6790915" fill="#000000"/>
-          <g data-icbx-angry style="display:none;">
-            <path d="m 92.05833,865.4614 39.42665,22.76299" stroke="#000000" stroke-width="4.86408424" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            <path d="m 202.82482,865.4614 -39.42664,22.76299" stroke="#000000" stroke-width="4.86408424" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Bear scene (hidden until activated) -->
+  <div class="icbx-scene" data-icbx-scene aria-hidden="true">
+    <div class="icbx-bear-wrap" data-icbx-bear-wrap>
+      <span class="icbx-swear" data-icbx-swear>#@$%*!</span>
+      <svg
+        class="icbx-bear"
+        data-icbx-bear
+        viewBox="0 0 284.94574 359.73706"
+        preserveAspectRatio="xMinYMin"
+      >
+        <g transform="translate(-7.5271369,-761.38595)">
+          <g transform="matrix(1.2335313,0,0,1.2335313,-35.029693,-212.83637)">
+            <path d="M 263.90933,1081.4151 A 113.96792,96.862576 0 0 0 149.99132,985.71456 113.96792,96.862576 0 0 0 36.090664,1081.4151 l 227.818666,0 z" fill="#784421"/>
+            <path d="m 250.42825,903.36218 c 2e-5,66.27108 -44.75411,114.99442 -102.42825,114.99442 -57.674143,0 -98.428271,-48.72334 -98.428251,-114.99442 4e-6,-66.27106 40.754125,-92.99437 98.428251,-92.99437 57.67413,0 102.42825,26.72331 102.42825,92.99437 z" fill="#784421"/>
+            <path d="m 217,972.86218 c 2e-5,21.53911 -30.44462,42.00002 -68,42.00002 -37.55538,0 -66.000019,-20.46091 -66,-42.00002 0,-21.53911 28.44464,-36 66,-36 37.55536,0 68,14.46089 68,36 z" fill="#e9c6af"/>
+            <path d="m 181.5,944.36218 c 0,8.28427 -20.59974,26.5 -32.75,26.5 -12.15026,0 -34.75,-18.21573 -34.75,-26.5 0,-8.28427 22.59974,-13.5 34.75,-13.5 12.15026,0 32.75,5.21573 32.75,13.5 z" fill="#000000"/>
+            <g>
+              <ellipse cx="69" cy="823.07269" rx="34.5" ry="33.289474" fill="#784421"/>
+              <path d="M 69,47.310547 A 24.25,23.399124 0 0 0 44.75,70.710938 24.25,23.399124 0 0 0 64.720703,93.720703 c 0.276316,-0.40734 0.503874,-0.867778 0.787109,-1.267578 1.70087,-2.400855 3.527087,-4.666237 5.470704,-6.798828 1.943616,-2.132591 4.004963,-4.133318 6.179687,-6.003906 2.174725,-1.870589 4.461274,-3.611714 6.855469,-5.226563 2.394195,-1.614848 4.896019,-3.10338 7.498047,-4.46875 0.539935,-0.283322 1.133058,-0.500695 1.68164,-0.773437 A 24.25,23.399124 0 0 0 69,47.310547 Z" transform="translate(0,752.36216)" fill="#e9c6af"/>
+            </g>
+            <g transform="matrix(-1,0,0,1,300,0)">
+              <ellipse ry="33.289474" rx="34.5" cy="823.07269" cx="69" fill="#784421"/>
+              <path transform="translate(0,752.36216)" d="M 69,47.310547 A 24.25,23.399124 0 0 0 44.75,70.710938 24.25,23.399124 0 0 0 64.720703,93.720703 c 0.276316,-0.40734 0.503874,-0.867778 0.787109,-1.267578 1.70087,-2.400855 3.527087,-4.666237 5.470704,-6.798828 1.943616,-2.132591 4.004963,-4.133318 6.179687,-6.003906 2.174725,-1.870589 4.461274,-3.611714 6.855469,-5.226563 2.394195,-1.614848 4.896019,-3.10338 7.498047,-4.46875 0.539935,-0.283322 1.133058,-0.500695 1.68164,-0.773437 A 24.25,23.399124 0 0 0 69,47.310547 Z" fill="#e9c6af"/>
+            </g>
+            <ellipse ry="9.6790915" rx="9.2701159" cy="900.38916" cx="105.83063" fill="#000000"/>
+            <ellipse cx="186.89894" cy="900.38916" rx="9.2701159" ry="9.6790915" fill="#000000"/>
+            <g data-icbx-angry style="display:none;">
+              <path d="m 92.05833,865.4614 39.42665,22.76299" stroke="#000000" stroke-width="4.86408424" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path d="m 202.82482,865.4614 -39.42664,22.76299" stroke="#000000" stroke-width="4.86408424" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </g>
           </g>
         </g>
-      </g>
-    </svg>
-  </div>
-
-  <div class="icbx-arm-wrap" data-icbx-arm-wrap aria-hidden="true">
-    <svg
-      class="icbx-arm"
-      data-icbx-arm
-      viewBox="0 0 250.00001 99.999997"
-      preserveAspectRatio="xMinYMin"
-    >
-      <g transform="translate(868.57141,-900.93359)">
-        <path d="m -619.43416,945.05124 c 4.18776,73.01076 -78.25474,53.24342 -150.21568,52.94118 -82.38711,-0.34602 -98.92158,-19.44459 -98.92157,-47.05883 0,-27.61424 4.78794,-42.54902 73.82353,-42.54902 69.03559,0 171.43607,-30.93764 175.31372,36.66667 z" fill="#784421"/>
-        <ellipse cx="-683.02264" cy="950.98572" rx="29.910826" ry="29.414362" fill="#e9c6af"/>
-      </g>
-    </svg>
-  </div>
-
-  <div class="icbx-paw" data-icbx-paw aria-hidden="true"></div>
-
-  <label class="icbx-checkbox">
-    <input type="checkbox" data-icbx-input />
-    <span class="icbx-checkbox-bg" data-icbx-bg></span>
-    <span class="icbx-checkbox-indicator" data-icbx-indicator></span>
-  </label>
+      </svg>
     </div>
+
+    <div class="icbx-arm-wrap" data-icbx-arm-wrap>
+      <svg class="icbx-arm" data-icbx-arm viewBox="0 0 250.00001 99.999997" preserveAspectRatio="xMinYMin">
+        <g transform="translate(868.57141,-900.93359)">
+          <path d="m -619.43416,945.05124 c 4.18776,73.01076 -78.25474,53.24342 -150.21568,52.94118 -82.38711,-0.34602 -98.92158,-19.44459 -98.92157,-47.05883 0,-27.61424 4.78794,-42.54902 73.82353,-42.54902 69.03559,0 171.43607,-30.93764 175.31372,36.66667 z" fill="#784421"/>
+          <ellipse cx="-683.02264" cy="950.98572" rx="29.910826" ry="29.414362" fill="#e9c6af"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="icbx-paw" data-icbx-paw></div>
   </div>
 </section>
 
 <style>
-  .icbx-section { padding: 110px 0 90px; border-bottom: 1px solid var(--line); }
-  .icbx-header { margin-bottom: 56px; display: grid; grid-template-columns: 200px 1fr; gap: 32px; align-items: start; }
-  .icbx-meta { display: flex; align-items: center; gap: 12px; color: var(--muted); }
-  .icbx-rule { flex: 1; height: 1px; background: var(--line); }
-  .icbx-copy {
-    font-family: "DM Mono", monospace;
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.7;
-    margin: 0;
-    max-width: 520px;
-  }
-  .icbx-accent { color: var(--accent); }
-  .icbx-stage {
-    display: flex;
-    justify-content: center;
-    padding: 24px 0 0;
-  }
-
-  @media (max-width: 800px) {
-    .icbx-section { padding: 70px 0; }
-    .icbx-header { grid-template-columns: 1fr; gap: 18px; margin-bottom: 32px; }
-  }
-
-  .icbx {
-    --icbx-size: min(78vmin, 460px);
-    --icbx-accent-on: var(--accent, #B8FF3D);
-    --icbx-accent-off: #777;
-
+  .icbx-section {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--line);
     position: relative;
-    width: var(--icbx-size);
-    aspect-ratio: 1;
-    margin: 32px auto 48px;
-    overflow: visible;
   }
+  .icbx-row {
+    width: min(1480px, 100%);
+    margin: auto;
+    padding: 0 34px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 14px;
+  }
+  .icbx-tag { color: var(--muted); }
+  .icbx-hint { color: var(--muted); margin-right: 4px; }
 
-  .icbx-mask {
+  /* Tiny switch in the corner */
+  .icbx-switch {
+    position: relative;
+    width: 44px;
+    height: 22px;
+    border-radius: 999px;
+    display: inline-block;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .icbx-switch input {
     position: absolute;
     inset: 0;
-    background: transparent;
-    pointer-events: none;
+    opacity: 0;
+    margin: 0;
+    cursor: pointer;
+    z-index: 2;
+  }
+  .icbx-switch-bg {
+    position: absolute;
+    inset: 0;
+    background: #4a4a4a;
+    border-radius: 999px;
+    transition: background .25s cubic-bezier(.22, 1, .36, 1);
+  }
+  .icbx-switch-knob {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--paper, #F1F1EC);
+    transition: transform .25s cubic-bezier(.22, 1, .36, 1);
+    will-change: transform;
+  }
+  .icbx-switch input:checked ~ .icbx-switch-bg {
+    background: var(--accent, #B8FF3D);
+  }
+  .icbx-switch input:checked ~ .icbx-switch-knob {
+    transform: translateX(22px);
   }
 
-  /* Bear wrapper */
+  /* Bear scene: hidden off-screen until trigger */
+  .icbx-scene {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 80;
+    opacity: 0;
+    transition: opacity .2s;
+  }
+  .icbx-scene.is-active { opacity: 1; }
+
   .icbx-bear-wrap {
     position: absolute;
     left: 50%;
     top: 50%;
-    width: 60%;
+    width: 240px;
     transform: translate(-15%, -50%) rotate(5deg) translate(0, -75%);
-    pointer-events: none;
-    z-index: 1;
+    will-change: transform;
   }
   .icbx-bear {
     width: 100%;
@@ -166,17 +175,13 @@
     clip-path: polygon(0 100%, 100% 0, 50% 0);
     -webkit-clip-path: polygon(0 100%, 100% 0, 50% 0);
   }
-
-  /* Arm + paw */
   .icbx-arm-wrap {
     position: absolute;
-    height: 14%;
-    width: 36%;
-    z-index: 4;
+    height: 60px;
+    width: 180px;
     top: 50%;
     left: 50%;
-    transform: translate(0, -50%) rotate(0deg);
-    pointer-events: none;
+    transform: translate(0, -50%);
   }
   .icbx-arm {
     background: transparent;
@@ -193,80 +198,22 @@
     background: #784421;
     border-radius: 100%;
     position: absolute;
-    height: 14%;
-    width: 14%;
-    z-index: 10;
+    height: 30px;
+    width: 30px;
     top: 50%;
     left: 50%;
     transform-origin: right;
-    transform: translate(40%, -50%) scaleX(0);
+    transform: translate(80px, -15px) scaleX(0);
     will-change: transform;
   }
 
-  /* Checkbox (visible) */
-  .icbx-checkbox {
-    position: absolute;
-    z-index: 5;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50px;
-    height: 18%;
-    width: 36%;
-    display: block;
-    cursor: pointer;
-  }
-  .icbx-checkbox input {
-    cursor: pointer;
-    border-radius: 50px;
-    position: absolute;
-    outline: 0;
-    inset: 0;
-    opacity: 0;
-    z-index: 10;
-    height: 100%;
-    width: 100%;
-    margin: 0;
-  }
-  .icbx-checkbox-bg {
-    background: var(--icbx-accent-off);
-    border-radius: 50px;
-    height: 100%;
-    width: 100%;
-    z-index: 1;
-    transition: background .25s cubic-bezier(.22, 1, .36, 1);
-    display: block;
-  }
-  .icbx-checkbox-indicator {
-    background: transparent;
-    height: 100%;
-    width: 50%;
-    border-radius: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translateX(0);
-    transition: transform .25s cubic-bezier(.22, 1, .36, 1);
-    will-change: transform;
-  }
-  .icbx-checkbox-indicator::after {
-    content: "";
-    border-radius: 100%;
-    height: 85%;
-    width: 85%;
-    background: var(--paper, #F1F1EC);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: block;
+  @media (max-width: 800px) {
+    .icbx-row { padding: 0 18px; }
+    .icbx-bear-wrap { width: 180px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .icbx-bear,
-    .icbx-arm,
-    .icbx-paw,
-    .icbx-checkbox-indicator {
+    .icbx-bear, .icbx-arm, .icbx-paw, .icbx-switch-knob, .icbx-switch-bg {
       transition: none !important;
     }
   }
