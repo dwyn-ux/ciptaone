@@ -10,60 +10,66 @@ Editorial portfolio for **Cipta One**. Astro + TypeScript + Tailwind, no JS fram
 - Vanilla TS for animation logic (IntersectionObserver, requestAnimationFrame)
 - Inline SVG assets (no stock images, no WebGL)
 
-## Run
+## Local dev
 
 ```bash
 npm install
 npm run dev      # http://localhost:4321
-npm run build    # ./dist
+npm run build    # ./dist (static output)
 npm run preview
 ```
 
-## Project structure
+## Deploy (shared hosting — DomaiNesia cPanel)
 
+**Strategi: `dist/` ikut di-push ke repo. Server tidak perlu Node.js.**
+
+### Setup sekali (server)
+
+```bash
+cd /home/proftweb
+rm -rf ciptaone.site
+git clone https://github.com/dwyn-ux/ciptaone.git ciptaone.site
+cd ciptaone.site
+chmod +x deploy-server.sh
+bash deploy-server.sh
 ```
-src/
-  components/   Navigation, Hero, OrbitalSystem, ProjectList/Item, TechIndex, Process, Notes, About, Contact, Footer, ...
-  layouts/      Layout.astro
-  pages/        index.astro
-  data/         projects.ts, stack.ts, site.ts
-  styles/       global.css, typography.css, animations.css
-  scripts/      reveal, cursor, scroll-progress, project-tilt, magnetic, orbital, chapter
-public/
-  assets/       orbital-system.svg, project-*.svg, favicon.svg, og-image.svg
+
+`deploy-server.sh` copy `dist/index.html`, `assets/`, `_astro/`, `.htaccess`, `.user.ini` ke doc root. Set permission 644/755.
+
+### Update berikutnya (server)
+
+```bash
+cd /home/proftweb/ciptaone.site
+git pull
+bash deploy-server.sh
 ```
+
+### Update dari lokal
+
+```bash
+cd ciptaone-site
+npm run build
+git add -A && git commit -m "update content"
+git push
+```
+
+Server cukup `git pull` + `bash deploy-server.sh`.
+
+### Kalau doc root bukan `/home/proftweb/ciptaone.site/`
+
+```bash
+DOC_ROOT=/home/proftweb/public_html/ciptaone.site bash deploy-server.sh
+```
+
+Atau edit `DOC_ROOT` default di dalam `deploy-server.sh`.
+
+### Document Root di cPanel
+
+`Domains` → `ciptaone.site` → **Manage** → **Document Root** = `/home/proftweb/ciptaone.site/` (atau path custom yang lo pakai).
 
 ## Accessibility / motion
 
 - `prefers-reduced-motion` short-circuits every animation, cursor, tilt, and orbital motion.
-- Custom cursor is disabled on coarse-pointer / touch / reduced-motion devices.
+- Custom cursor disabled on coarse-pointer / touch / reduced-motion devices.
 - Skip-to-content link, semantic landmarks, visible `:focus-visible` outlines.
 - Project interactions never gate content; hover-only styling is decorative.
-
-## Deploy (shared hosting)
-
-Struktur di hosting (DomaiNesia cPanel):
-- `/home/proftweb/ciptaone.site/` ← repo dan document root (satu folder)
-
-```bash
-cd /home/proftweb/ciptaone.site
-bash deploy.sh
-```
-
-Script `deploy.sh` melakukan:
-1. `git pull`
-2. `npm install`
-3. `npm run build`
-4. flatten `dist/*` ke root folder (= doc root)
-5. copy `public/.htaccess` dan `public/.user.ini` ke root
-6. set permission
-
-Deploy manual kalau perlu:
-```bash
-npm run build
-mv dist/* .
-rm -rf dist
-cp public/.htaccess public/.user.ini .
-chmod 644 index.html .htaccess .user.ini
-chmod 755 assets _astro
-```
