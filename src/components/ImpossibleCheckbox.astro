@@ -61,12 +61,12 @@
   }
   .icbx-scene.is-active { opacity: 1; }
 
-  /* Bear emerges from below the switch (top-right of header) */
+  /* Bear anchored under header switch (top-right corner). Tiny — 7x smaller than jh3y original. */
   .icbx-bear-wrap {
     position: absolute;
-    right: 80px;
+    right: 28px;
     top: 76px;
-    width: 110px;
+    width: 16px;
     transform: translate(0, 0) rotate(5deg);
     will-change: transform;
   }
@@ -106,10 +106,10 @@
   }
   .icbx-arm-wrap {
     position: absolute;
-    height: 30px;
-    width: 90px;
+    height: 6px;
+    width: 16px;
     top: 76px;
-    right: 80px;
+    right: 28px;
     transform: translate(0, 0);
   }
   .icbx-arm {
@@ -127,19 +127,19 @@
     background: #784421;
     border-radius: 100%;
     position: absolute;
-    height: 16px;
-    width: 16px;
+    height: 5px;
+    width: 5px;
     top: 76px;
-    right: 80px;
+    right: 28px;
     transform-origin: right;
-    transform: translate(-50px, 0) scaleX(0);
+    transform: translate(-12px, 0) scaleX(0);
     will-change: transform;
   }
 
   @media (max-width: 800px) {
-    .icbx-bear-wrap { right: 36px; top: 64px; width: 90px; }
-    .icbx-arm-wrap { right: 36px; top: 64px; width: 70px; }
-    .icbx-paw { right: 36px; top: 64px; }
+    .icbx-bear-wrap { right: 6px; top: 64px; width: 14px; }
+    .icbx-arm-wrap { right: 6px; top: 64px; width: 14px; }
+    .icbx-paw { right: 6px; top: 64px; }
   }
 
   @media (prefers-reduced-motion: reduce) {

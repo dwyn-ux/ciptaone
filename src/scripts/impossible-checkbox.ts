@@ -31,7 +31,7 @@ if (root) {
     bear.style.transform = 'translate(0, -100%)';
     armWrap.style.transform = 'translate(0, 0)';
     arm.style.transform = 'translate(-35%, -50%) scaleX(1)';
-    paw.style.transform = 'translate(-50px, 0) scaleX(0)';
+    paw.style.transform = 'translate(-12px, 0) scaleX(0)';
     swear.style.display = 'none';
     if (angry) angry.style.display = 'none';
   };
@@ -77,7 +77,7 @@ if (root) {
       armWrap,
       [
         { transform: 'translate(0, 0)' },
-        { transform: 'translate(-50px, 0)' }
+        { transform: 'translate(-8px, 0)' }
       ],
       { duration: 200, easing: EASE, fill: 'forwards', delay: count > armLimit ? riseDelay : 0 }
     );
@@ -92,8 +92,8 @@ if (root) {
     animate(
       paw,
       [
-        { transform: 'translate(-50px, 0) scaleX(0)' },
-        { transform: 'translate(-50px, 0) scaleX(0.8)' }
+        { transform: 'translate(-12px, 0) scaleX(0)' },
+        { transform: 'translate(-12px, 0) scaleX(0.8)' }
       ],
       { duration: 100, easing: EASE, fill: 'forwards', delay: (count > armLimit ? riseDelay : 0) + 400 }
     );
@@ -102,7 +102,7 @@ if (root) {
     const offDelay = (count > armLimit ? riseDelay : 0) + 650;
     animate(
       paw,
-      [{ transform: 'translate(-50px, 0) scaleX(0.8)' }, { transform: 'translate(-50px, 0) scaleX(0)' }],
+      [{ transform: 'translate(-12px, 0) scaleX(0.8)' }, { transform: 'translate(-12px, 0) scaleX(0)' }],
       { duration: 100, easing: EASE, fill: 'forwards', delay: offDelay }
     );
     animate(
@@ -112,7 +112,7 @@ if (root) {
     );
     animate(
       armWrap,
-      [{ transform: 'translate(-50px, 0)' }, { transform: 'translate(0, 0)' }],
+      [{ transform: 'translate(-8px, 0)' }, { transform: 'translate(0, 0)' }],
       { duration: 200, easing: EASE, fill: 'forwards', delay: offDelay + 100 }
     );
     animate(

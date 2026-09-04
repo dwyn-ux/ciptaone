@@ -16,8 +16,10 @@ import { site } from '../data/site';
     <label class="icbx-switch" data-icbx aria-label="Toggle the bear">
       <span class="icbx-label mono">EXP</span>
       <input type="checkbox" data-icbx-input />
-      <span class="icbx-switch-bg" data-icbx-bg aria-hidden="true"></span>
-      <span class="icbx-switch-knob" data-icbx-knob aria-hidden="true"></span>
+      <span class="icbx-switch-track" aria-hidden="true">
+        <span class="icbx-switch-bg" data-icbx-bg></span>
+        <span class="icbx-switch-knob" data-icbx-knob></span>
+      </span>
     </label>
   </div>
 </header>
@@ -89,34 +91,38 @@ import { site } from '../data/site';
     opacity: 0;
     margin: 0;
     cursor: pointer;
-    z-index: 2;
+    z-index: 3;
   }
-  .icbx-switch-bg {
+  /* Track wraps bg + knob so knob's % is relative to track width, not the whole switch (with label) */
+  .icbx-switch-track {
     position: relative;
     width: 30px;
     height: 16px;
+    flex-shrink: 0;
+    display: inline-block;
+  }
+  .icbx-switch-bg {
+    position: absolute;
+    inset: 0;
     border-radius: 999px;
     background: #4a4a4a;
     transition: background .25s cubic-bezier(.22, 1, .36, 1);
-    flex-shrink: 0;
   }
   .icbx-switch-knob {
     position: absolute;
-    top: 50%;
+    top: 3px;
     left: 3px;
-    transform: translateY(-50%);
     width: 10px;
     height: 10px;
     border-radius: 50%;
     background: var(--paper, #F1F1EC);
     transition: left .25s cubic-bezier(.22, 1, .36, 1);
     will-change: left;
-    z-index: 1;
   }
-  .icbx-switch input:checked ~ .icbx-switch-bg {
+  .icbx-switch input:checked ~ .icbx-switch-track .icbx-switch-bg {
     background: var(--accent, #B8FF3D);
   }
-  .icbx-switch input:checked ~ .icbx-switch-knob {
+  .icbx-switch input:checked ~ .icbx-switch-track .icbx-switch-knob {
     left: calc(100% - 13px);
   }
 
