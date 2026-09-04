@@ -1,0 +1,52 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import ProjectItem from './ProjectItem.astro';
+import { projects } from '../data/projects';
+---
+
+<section id="work" class="section" data-chapter="02">
+  <div class="shell">
+    <SectionHeader
+      number="02"
+      title="Selected work"
+      description="Products built around real problems, not technology for technology's sake."
+    />
+
+    <div class="work-intro" data-reveal>
+      <div class="scanline" aria-hidden="true"></div>
+      <p class="t-muted">Four examples of systems shaped around actual workflows.</p>
+      <span class="mono drag-note">SCROLL / EXPLORE</span>
+    </div>
+
+    <div class="projects" data-reveal>
+      {projects.map((project) => <ProjectItem project={project} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section { padding: 130px 0; border-bottom: 1px solid var(--line); }
+  .work-intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 22px;
+    gap: 16px;
+  }
+  .work-intro .t-muted { max-width: 380px; }
+  .drag-note { color: #68665f; }
+
+  .projects {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+
+  @media (max-width: 800px) {
+    .section { padding: 82px 0; }
+    .work-intro { flex-direction: column; align-items: flex-start; }
+    .projects { grid-template-columns: 1fr; }
+  }
+</style>

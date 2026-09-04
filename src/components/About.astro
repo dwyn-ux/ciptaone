@@ -1,0 +1,52 @@
+---
+import { site } from '../data/site';
+---
+
+<section class="section about-section" data-chapter="06">
+  <div class="shell about">
+    <div class="mono meta-col">
+      <span class="chapter-num">06</span>
+      <span class="chapter-rule" aria-hidden="true"></span>
+      <span>About</span>
+    </div>
+    <div class="copy" data-reveal>
+      <p class="t-about">
+        I don't just<br />
+        <span class="accent-word">write code.</span><br />
+        I build systems<br />
+        that people<br />
+        <span class="accent-word">actually use.</span>
+      </p>
+      <p class="t-body about-support">
+        Based in Indonesia. Focused on mobile and web applications.
+        Available for selected freelance, product and collaboration work.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section { padding: 130px 0; border-bottom: 1px solid var(--line); }
+  .about {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .meta-col {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--muted);
+  }
+  .chapter-num { color: var(--paper); }
+  .chapter-rule { flex: 1; height: 1px; background: var(--line); }
+  .copy { max-width: 1100px; }
+  .accent-word { color: var(--paper); }
+  .about-support { max-width: 540px; margin-top: 32px; color: var(--muted); font-size: 12px; font-family: "DM Mono", monospace; letter-spacing: 0; line-height: 1.7; }
+
+  @media (max-width: 800px) {
+    .section { padding: 82px 0; }
+    .about { grid-template-columns: 1fr; gap: 22px; }
+  }
+</style>

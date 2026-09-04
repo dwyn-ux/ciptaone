@@ -1,0 +1,71 @@
+---
+import { site } from '../data/site';
+---
+
+<header class="nav-root">
+  <div class="shell nav-inner">
+    <a class="logo" href="#top" aria-label="Cipta One home">
+      <img class="logo-mark" src="/assets/cipta.png" alt="" width="23" height="23" />
+      <span class="logo-word">CIPTA ONE</span>
+    </a>
+    <nav class="nav mono" aria-label="Primary">
+      {site.nav.map((item) => (
+        <a href={item.href} data-cursor="VIEW">{item.label}</a>
+      ))}
+    </nav>
+    <span class="nav-tag mono">ID / {site.year}</span>
+  </div>
+</header>
+
+<style>
+  .nav-root {
+    height: 76px;
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    background: rgba(10, 10, 10, .82);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .nav-inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 800;
+    letter-spacing: -.06em;
+    font-size: 15px;
+    margin-left: 18px;
+  }
+  .logo-mark {
+    width: 42px;
+    height: 42px;
+    display: block;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
+  .nav {
+    display: flex;
+    gap: 28px;
+  }
+  .nav a {
+    font-size: 11px;
+    color: #c7c4bc;
+    transition: color .25s var(--ease);
+  }
+  .nav a:hover { color: var(--accent); }
+  .nav-tag { color: var(--muted); }
+
+  @media (max-width: 800px) {
+    .nav-root { height: 64px; }
+    .nav { display: none; }
+    .nav-tag { font-size: 9px; }
+  }
+</style>

@@ -1,0 +1,47 @@
+---
+import { site } from '../data/site';
+---
+
+<footer class="footer-root">
+  <div class="shell footer-inner">
+    <div class="footer-row">
+      <span class="footer-brand">© {site.year} CIPTA ONE</span>
+      <span class="footer-tag mono">DIGITAL PRODUCTS / ENGINEERING / DESIGN</span>
+    </div>
+    <div class="footer-row footer-status">
+      <span class="status">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="mono">SYSTEM ONLINE</span>
+      </span>
+      <span class="mono footer-domain">{site.domain}</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-root {
+    border-top: 1px solid var(--line);
+    padding: 28px 0 36px;
+    color: #77736b;
+  }
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .footer-brand { font-weight: 700; letter-spacing: -.03em; font-size: 13px; }
+  .footer-tag { color: var(--muted); }
+  .status { display: inline-flex; align-items: center; gap: 10px; color: var(--paper); }
+  .footer-domain { color: var(--muted); }
+
+  @media (max-width: 800px) {
+    .footer-row { flex-direction: column; align-items: flex-start; }
+  }
+</style>

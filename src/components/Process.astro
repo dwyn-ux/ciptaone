@@ -1,0 +1,86 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import { process } from '../data/stack';
+---
+
+<section id="method" class="section" data-chapter="04">
+  <div class="shell">
+    <SectionHeader
+      number="04"
+      title="Method"
+      description="Good software starts before the first line of code."
+    />
+
+    <ol class="process" data-reveal>
+      {process.map((step) => (
+        <li class="step" data-cursor="EXPLORE">
+          <span class="mono step-num">{step.index}</span>
+          <h3 class="step-name">{step.name}</h3>
+          <p class="step-desc">{step.description}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .section { padding: 130px 0; border-bottom: 1px solid var(--line); }
+  .process {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .step {
+    padding: 24px;
+    border-right: 1px solid var(--line);
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: background .4s var(--ease), color .4s var(--ease);
+  }
+  .step:last-child { border-right: 0; }
+  .step:hover { background: var(--paper); color: var(--ink); }
+  .step::before {
+    content: "";
+    position: absolute;
+    left: 24px;
+    top: 58px;
+    width: 1px;
+    height: 0;
+    background: currentColor;
+    transition: height .7s var(--ease);
+  }
+  .step:hover::before { height: 34px; }
+  .step-num { color: var(--muted); }
+  .step-name {
+    font-size: 22px;
+    letter-spacing: -.045em;
+    font-weight: 700;
+    margin: 88px 0 12px;
+    text-transform: uppercase;
+    transition: transform .5s var(--ease);
+  }
+  .step:hover .step-name { transform: translateX(12px); }
+  .step-desc {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--muted);
+    margin: 0;
+    transition: color .4s var(--ease);
+  }
+  .step:hover .step-desc { color: #55524c; }
+
+  @media (max-width: 1024px) { .process { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 800px) {
+    .section { padding: 82px 0; }
+    .process { grid-template-columns: 1fr 1fr; }
+    .step { min-height: 200px; border-right: 0; border-bottom: 1px solid var(--line); }
+    .step-name { margin-top: 56px; font-size: 18px; }
+  }
+  @media (max-width: 480px) { .process { grid-template-columns: 1fr; } }
+</style>

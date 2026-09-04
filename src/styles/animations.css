@@ -1,0 +1,182 @@
+/* === Reveal === */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(45px);
+  transition: opacity .9s var(--ease), transform .9s var(--ease);
+  will-change: transform, opacity;
+}
+[data-reveal].is-in { opacity: 1; transform: none; }
+
+/* === Hero line reveal === */
+.hero-line {
+  display: block;
+  overflow: hidden;
+}
+.hero-line > i {
+  font-style: normal;
+  display: block;
+  transform: translateY(110%);
+  animation: lineUp 1s var(--ease) forwards;
+}
+.hero-line:nth-child(2) > i { animation-delay: .09s; }
+.hero-line:nth-child(3) > i { animation-delay: .18s; }
+.hero-line.accent > i { color: var(--accent); }
+@keyframes lineUp { to { transform: none; opacity: 1; } }
+
+.hero-eyebrow {
+  color: var(--accent);
+  opacity: 0;
+  animation: fadeUp .8s .1s var(--ease) forwards;
+}
+.hero-side {
+  opacity: 0;
+  transform: translateY(25px);
+  animation: fadeUp 1s .55s var(--ease) forwards;
+}
+@keyframes fadeUp { to { opacity: 1; transform: none; } }
+
+/* === Orbital rotation === */
+.orbital-rotor { animation: orbitSpin 60s linear infinite; transform-origin: center; transform-box: fill-box; }
+.orbital-rotor.reverse { animation: orbitSpin 90s linear infinite reverse; }
+@keyframes orbitSpin { to { transform: rotate(360deg); } }
+
+/* === Cursor === */
+.cursor {
+  position: fixed;
+  z-index: 90;
+  pointer-events: none;
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width .25s var(--ease), height .25s var(--ease), background .25s var(--ease), border-color .25s;
+  mix-blend-mode: difference;
+}
+.cursor::after {
+  content: attr(data-label);
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--ink);
+  font: 9px "DM Mono", monospace;
+  letter-spacing: .1em;
+  opacity: 0;
+  transition: opacity .2s;
+}
+.cursor.is-active {
+  width: 70px;
+  height: 70px;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.cursor.is-active::after { opacity: 1; }
+
+/* === Scroll progress === */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  z-index: 100;
+  transform-origin: left;
+}
+
+/* === Tiltable project === */
+.project {
+  --rx: 0deg;
+  --ry: 0deg;
+  --mx: 50%;
+  --my: 50%;
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform .25s ease, background .45s, color .45s;
+  will-change: transform;
+}
+.project::before {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  left: var(--mx);
+  top: var(--my);
+  translate: -50% -50%;
+  background: radial-gradient(circle, rgba(184, 255, 61, .18), transparent 65%);
+  opacity: 0;
+  transition: opacity .4s;
+  pointer-events: none;
+}
+.project:hover::before { opacity: 1; }
+
+/* === Magnetic button === */
+[data-magnetic] { will-change: transform; transition: transform .35s var(--ease); }
+
+/* === Scanning line === */
+.scanline {
+  position: relative;
+  height: 1px;
+  background: var(--line);
+  flex: 1;
+  margin: 0 30px 12px 0;
+  overflow: hidden;
+}
+.scanline::after {
+  content: "";
+  position: absolute;
+  left: -20%; top: 0;
+  width: 20%; height: 100%;
+  background: var(--accent);
+  animation: scan 3.2s linear infinite;
+}
+@keyframes scan { to { left: 110%; } }
+
+/* === Pulsing dot === */
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 5px rgba(184, 255, 61, .09);
+  animation: pulse 1.8s infinite;
+  display: inline-block;
+}
+@keyframes pulse { 50% { box-shadow: 0 0 0 10px transparent; } }
+
+/* === Section divider (chapter indicator) === */
+.chapter-tag {
+  position: fixed;
+  right: 34px;
+  top: 12vh;
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  color: #555;
+  z-index: 30;
+  pointer-events: none;
+  letter-spacing: .08em;
+}
+@media (max-width: 800px) { .chapter-tag { right: 18px; top: 10vh; } }
+
+/* === Project preview follow === */
+.preview-follow {
+  transition: transform .55s var(--ease);
+  will-change: transform;
+}
+
+/* === Reduce motion === */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] { opacity: 1; transform: none; }
+  .hero-line > i, .hero-eyebrow, .hero-side { transform: none; opacity: 1; }
+  .project { transform: none !important; }
+  .project::before { display: none; }
+  .cursor { display: none; }
+  .scanline::after { animation: none; }
+  .orbital-rotor { animation: none; }
+}

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#0A0A0A"/>
+  <g stroke="#363636" stroke-width="1">
+    <line x1="60" y1="315" x2="1140" y2="315"/>
+    <line x1="600" y1="40" x2="600" y2="590"/>
+  </g>
+  <g fill="#56564f" font-family="DM Mono, monospace" font-size="14" letter-spacing="2">
+    <text x="80" y="100">/ ORBITAL SYSTEM · 001</text>
+    <text x="1120" y="100" text-anchor="end">© CIPTA ONE</text>
+  </g>
+  <g stroke="#B8FF3D" stroke-opacity=".25">
+    <ellipse cx="900" cy="315" rx="220" ry="80" transform="rotate(-22 900 315)"/>
+    <ellipse cx="900" cy="315" rx="190" ry="60" transform="rotate(45 900 315)"/>
+    <ellipse cx="900" cy="315" rx="160" ry="100" transform="rotate(80 900 315)"/>
+  </g>
+  <circle cx="900" cy="315" r="55" fill="#B8FF3D"/>
+  <circle cx="900" cy="315" r="38" fill="#0A0A0A"/>
+  <path d="M890 332 L900 305 L910 332 H906 L900 320 L894 332 Z" fill="#B8FF3D"/>
+  <g fill="#F1F1EC" font-family="Manrope, sans-serif" font-weight="800">
+    <text x="80" y="380" font-size="120" letter-spacing="-5">Cipta One</text>
+    <text x="80" y="470" font-size="36" font-weight="500" fill="#92928B" letter-spacing="-1">Digital product engineer.</text>
+    <text x="80" y="510" font-size="36" font-weight="500" fill="#92928B" letter-spacing="-1">Independent. Selected projects.</text>
+  </g>
+  <g fill="#B8FF3D" font-family="DM Mono, monospace" font-size="14" letter-spacing="2">
+    <text x="80" y="580">ciptaone.site</text>
+  </g>
+</svg>

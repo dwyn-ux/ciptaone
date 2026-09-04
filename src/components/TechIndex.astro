@@ -1,0 +1,104 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import { stack } from '../data/stack';
+---
+
+<section id="stack" class="section" data-chapter="03">
+  <div class="shell">
+    <SectionHeader
+      number="03"
+      title="Stack"
+      description="A small, deliberate toolbox. Learn the tools deeply. Use the right one for the problem."
+    />
+
+    <ol class="stack-index" data-reveal>
+      {stack.map((item) => (
+        <li class="stack-item" data-cursor="VIEW">
+          <span class="mono stack-num">{item.index}</span>
+          <span class="mono stack-group">{item.group}</span>
+          <strong class="stack-name">{item.name}</strong>
+          <span class="stack-note mono">{item.note}</span>
+          <span class="stack-arrow" aria-hidden="true">↗</span>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .section { padding: 130px 0; border-bottom: 1px solid var(--line); }
+  .stack-index {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .stack-item {
+    min-height: 210px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 22px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto auto;
+    column-gap: 16px;
+    row-gap: 12px;
+    align-items: start;
+    position: relative;
+    overflow: hidden;
+    transition: background .4s var(--ease), color .4s var(--ease), transform .45s var(--ease);
+  }
+  .stack-item:hover { background: var(--accent); color: var(--ink); transform: translateY(-4px); }
+  .stack-num { color: var(--muted); }
+  .stack-group { color: var(--muted); }
+  .stack-item:hover .stack-num,
+  .stack-item:hover .stack-group,
+  .stack-item:hover .stack-note { color: var(--ink); }
+  .stack-name {
+    grid-column: 1 / -1;
+    font-size: 39px;
+    letter-spacing: -.065em;
+    font-weight: 700;
+    margin: 0;
+    position: relative;
+  }
+  .stack-name::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    margin-top: 8px;
+    transition: width .5s var(--ease);
+  }
+  .stack-item:hover .stack-name::after { width: 36px; }
+  .stack-note {
+    grid-column: 1 / -1;
+    color: var(--muted);
+    font-size: 11px;
+    transition: color .4s var(--ease);
+  }
+  .stack-arrow {
+    position: absolute;
+    right: 20px;
+    bottom: 18px;
+    font-size: 18px;
+    opacity: 0;
+    transform: translate(-6px, 6px);
+    transition: opacity .4s var(--ease), transform .4s var(--ease);
+  }
+  .stack-item:hover .stack-arrow { opacity: 1; transform: none; }
+
+  @media (max-width: 800px) {
+    .section { padding: 82px 0; }
+    .stack-index { grid-template-columns: 1fr 1fr; }
+    .stack-item { min-height: 170px; }
+    .stack-name { font-size: 28px; }
+  }
+  @media (max-width: 480px) {
+    .stack-index { grid-template-columns: 1fr; }
+  }
+</style>
