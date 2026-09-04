@@ -1,5 +1,6 @@
 // Impossible Checkbox — vanilla Web Animations port.
-// Header switch toggles theme + triggers bear grab sequence on overlay scene.
+// Bear scene positioned via CSS under the switch (em-based).
+// Animations: bear rises upward, arm extends leftward, paw reaches for switch.
 
 const root = document.querySelector<HTMLElement>('[data-icbx]');
 if (root) {
@@ -22,26 +23,23 @@ if (root) {
   let angerLimit = headLimit + 2;
   let count = 1;
 
-  const rand = (min: number, max: number) => Math.random() * (max - min) + min;
+  const rand = (min, max) => Math.random() * (max - min) + min;
 
-  // Bear scene is anchored to top-right of header. Bear emerges downward, paw reaches up to switch.
-  // Bear vertical translation: positive = down (hidden below viewport bottom of scene? no — scene is full viewport, but bear emerges from above its anchor).
-  // Since bear anchor is at top-right (76px from top), bear rises UPWARD (negative y).
+  const setTheme = (on) => {
+    document.body.classList.toggle('theme-light', on);
+  };
+
   const reset = () => {
-    bear.style.transform = 'translate(-2.4em, -100%) rotate(5deg)';
-    armWrap.style.transform = 'translate(-2.2em, 0)';
+    bearWrap.style.transform = 'translate(0, 0) rotate(5deg)';
+    bear.style.transform = 'translate(0, 100%)';
+    armWrap.style.transform = 'translate(0, 0)';
     arm.style.transform = 'translate(-35%, -50%) scaleX(1)';
-    paw.style.transform = 'translate(-1.4em, 0) scaleX(0)';
+    paw.style.transform = 'translate(0, 0) scaleX(0)';
     swear.style.display = 'none';
     if (angry) angry.style.display = 'none';
   };
 
-  const animate = (el: HTMLElement, keyframes: Keyframe[], opts: KeyframeAnimationOptions) =>
-    el.animate(keyframes, opts);
-
-  const setTheme = (on: boolean) => {
-    document.body.classList.toggle('theme-light', on);
-  };
+  const animate = (el, keyframes, opts) => el.animate(keyframes, opts);
 
   const playGrab = () => {
     if (reduce) return;
@@ -56,14 +54,14 @@ if (root) {
     const baseDelay = rand(0, 0.2) * 1000;
     const showAngry = count >= angerLimit && Math.random() > 0.5;
 
-    // Bear rises upward toward switch
+    // Bear wrap moves up so bear appears under switch
     const riseDelay = 280 + baseDelay;
     if (count > armLimit) {
       animate(
-        bear,
+        bearWrap,
         [
-          { transform: 'translate(-2.4em, -100%) rotate(5deg)' },
-          { transform: `translate(-2.4em, ${bearTranslation}) rotate(5deg)` }
+          { transform: 'translate(0, 0) rotate(5deg)' },
+          { transform: `translate(0, ${bearTranslation}) rotate(5deg)` }
         ],
         { duration: 250, easing: EASE, fill: 'forwards', delay: riseDelay }
       );
@@ -75,14 +73,14 @@ if (root) {
       }
     }
 
-    // Arm reaches from bear toward switch (right-to-left across header)
+    // Arm extends leftward (negative x). Travel matches scaled jh3y values.
     animate(
       armWrap,
       [
-        { transform: 'translate(-2.2em, 0)' },
-        { transform: 'translate(-3.6em, 0)' }
+        { transform: 'translate(0, 0)' },
+        { transform: 'translate(-7.1em, 0)' }
       ],
-      { duration: 200, easing: EASE, fill: 'forwards', delay: count > armLimit ? riseDelay : 0 }
+      { duration: 200, easing: EASE, fill: 'forwards', delay: count > armLimit ? baseDelay : 0 }
     );
     animate(
       arm,
@@ -90,22 +88,22 @@ if (root) {
         { transform: 'translate(-35%, -50%) scaleX(1)' },
         { transform: 'translate(-35%, -50%) scaleX(0.7)' }
       ],
-      { duration: 200, easing: EASE, fill: 'forwards', delay: (count > armLimit ? riseDelay : 0) + 200 }
+      { duration: 200, easing: EASE, fill: 'forwards', delay: (count > armLimit ? baseDelay : 0) + 200 }
     );
     animate(
       paw,
       [
-        { transform: 'translate(-1.4em, 0) scaleX(0)' },
-        { transform: 'translate(-1.4em, 0) scaleX(0.8)' }
+        { transform: 'translate(0, 0) scaleX(0)' },
+        { transform: 'translate(-3.6em, -0.7em) scaleX(0.8)' }
       ],
-      { duration: 100, easing: EASE, fill: 'forwards', delay: (count > armLimit ? riseDelay : 0) + 400 }
+      { duration: 100, easing: EASE, fill: 'forwards', delay: (count > armLimit ? baseDelay : 0) + 400 }
     );
 
     // OFF sequence
     const offDelay = (count > armLimit ? riseDelay : 0) + 650;
     animate(
       paw,
-      [{ transform: 'translate(-1.4em, 0) scaleX(0.8)' }, { transform: 'translate(-1.4em, 0) scaleX(0)' }],
+      [{ transform: 'translate(-3.6em, -0.7em) scaleX(0.8)' }, { transform: 'translate(0, 0) scaleX(0)' }],
       { duration: 100, easing: EASE, fill: 'forwards', delay: offDelay }
     );
     animate(
@@ -115,14 +113,14 @@ if (root) {
     );
     animate(
       armWrap,
-      [{ transform: 'translate(-3.6em, 0)' }, { transform: 'translate(-2.2em, 0)' }],
+      [{ transform: 'translate(-7.1em, 0)' }, { transform: 'translate(0, 0)' }],
       { duration: 200, easing: EASE, fill: 'forwards', delay: offDelay + 100 }
     );
     animate(
-      bear,
+      bearWrap,
       [
-        { transform: `translate(-2.4em, ${bearTranslation}) rotate(5deg)` },
-        { transform: 'translate(-2.4em, -100%) rotate(5deg)' }
+        { transform: `translate(0, ${bearTranslation}) rotate(5deg)` },
+        { transform: 'translate(0, 0) rotate(5deg)' }
       ],
       { duration: 250, easing: EASE, fill: 'forwards', delay: offDelay + 100 }
     );

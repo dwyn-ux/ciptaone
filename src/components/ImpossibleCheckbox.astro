@@ -1,9 +1,12 @@
 ---
 // Bear scene for the Impossible Checkbox (vanilla port of jh3y's pen).
-// Triggered from the header switch. Hidden until activated.
+// Uses jh3y's positioning verbatim (bear wrap centered in scene),
+// then the whole scene is shifted + scaled to sit under the switch.
 ---
 
 <div class="icbx-scene" data-icbx-scene aria-hidden="true">
+  <div class="icbx-mask" aria-hidden="true"></div>
+
   <div class="icbx-bear-wrap" data-icbx-bear-wrap>
     <span class="icbx-swear" data-icbx-swear>#@$%*!</span>
     <svg
@@ -50,7 +53,7 @@
 </div>
 
 <style>
-  /* Bear scene: fixed overlay, hidden until trigger */
+  /* Scene: fixed full-viewport, hidden by default. */
   .icbx-scene {
     position: fixed;
     inset: 0;
@@ -61,31 +64,48 @@
   }
   .icbx-scene.is-active { opacity: 1; }
 
-  /* Bear anchored under header switch (top-right corner). Tiny — 7x smaller than jh3y original.
-     Positioning uses em so it scales with the switch position. */
-  .icbx-bear-wrap {
-    position: absolute;
-    right: 1.6em;
-    top: 4.75em;
-    width: 1em;
-    transform: translate(-2.4em, 0) rotate(5deg);
-    will-change: transform;
+  /* Mask: jh3y signature, blocks lower half of scene. */
+  .icbx-mask {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
   }
+
+  /* === jh3y's positioning, verbatim (scaled 1/7 + offset to switch) === */
+
+  /* Bear wrap: 100px wide, anchored to viewport center, rotated + raised 75%. */
+  .icbx-bear-wrap {
+    width: 100px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-15%, -50%) rotate(5deg) translate(0, -75%);
+    background: transparent;
+  }
+
   .icbx-bear {
     width: 100%;
-    height: auto;
-    display: block;
     background: transparent;
     transform: translate(0, 100%);
     will-change: transform;
+    overflow: visible;
   }
+
+  /* Override SVG to use intrinsic 100px size when scene is active (so it renders at full quality). */
+  .icbx-scene.is-active .icbx-bear {
+    width: 100px;
+    transform: translate(0, 0);
+  }
+
   .icbx-swear {
     display: none;
     position: absolute;
     left: 105%;
     top: 0;
-    background: var(--paper, #F1F1EC);
-    color: var(--ink, #0A0A0A);
+    background: #fff;
     font-weight: 800;
     padding: 6px 10px;
     border-radius: 6px;
@@ -93,25 +113,29 @@
     font-size: 10px;
     letter-spacing: .05em;
     white-space: nowrap;
+    color: #0A0A0A;
   }
   .icbx-swear::before {
-    content: "";
+    content: '';
+    background: #fff;
     position: absolute;
     top: 90%;
     right: 70%;
     height: 18px;
     width: 18px;
-    background: var(--paper, #F1F1EC);
     clip-path: polygon(0 100%, 100% 0, 50% 0);
     -webkit-clip-path: polygon(0 100%, 100% 0, 50% 0);
   }
+
   .icbx-arm-wrap {
-    position: absolute;
-    height: 0.4em;
-    width: 1em;
-    top: 4.75em;
-    right: 1.6em;
-    transform: translate(-2.2em, 0);
+    background: transparent;
+    position: fixed;
+    height: 30px;
+    width: 90px;
+    z-index: 4;
+    top: 50%;
+    left: 50%;
+    transform: translate(0, -50%);
   }
   .icbx-arm {
     background: transparent;
@@ -124,17 +148,85 @@
     transform: translate(-35%, -50%) scaleX(1);
     will-change: transform;
   }
+
   .icbx-paw {
     background: #784421;
     border-radius: 100%;
-    position: absolute;
-    height: 0.3em;
-    width: 0.3em;
-    top: 4.85em;
-    right: 1.6em;
+    position: fixed;
+    height: 30px;
+    width: 30px;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
     transform-origin: right;
-    transform: translate(-1.4em, 0) scaleX(0);
+    transform: translate(80px, -15px) scaleX(0);
     will-change: transform;
+  }
+
+  /* Scale the whole scene contents to 1/7 so the bear is appropriately small.
+     jh3y's scene is anchored to viewport center; we offset that center to switch position.
+     Use a CSS variable for switch position so it scales responsively. */
+  :root {
+    --switch-x: 1.6em;
+    --switch-y: 4.75em;
+  }
+  @media (max-width: 800px) {
+    :root {
+      --switch-x: 0.4em;
+      --switch-y: 4em;
+    }
+  }
+
+  /* Apply offset + scale to bear/arm/paw when scene is active. */
+  .icbx-scene.is-active .icbx-bear-wrap,
+  .icbx-scene.is-active .icbx-arm-wrap,
+  .icbx-scene.is-active .icbx-paw {
+    transform-origin: 100% 100%;
+  }
+
+  /* Override the bear wrap transform with offset+scale composition.
+     The original transform is preserved inline; here we add to it via CSS animation override. */
+  .icbx-scene.is-active .icbx-bear-wrap {
+    /* Keep base transform, but scale via CSS zoom-like effect using transform.
+       We can't simply multiply transforms in CSS without overriding the inline value.
+       Solution: leave inline transform alone, but the inner SVG scales via width %. */
+  }
+
+  /* Scale all scene contents to 1/7 (~14px) by shrinking the wrappers.
+     jh3y's inner values stay intact; we just resize the containers. */
+  .icbx-scene.is-active .icbx-bear-wrap {
+    width: 14px;
+    left: auto;
+    right: var(--switch-x);
+    top: var(--switch-y);
+    transform: translate(0, 0) rotate(5deg);
+  }
+  .icbx-scene.is-active .icbx-bear {
+    transform: translate(0, 0);
+  }
+
+  /* Arm: 90px → ~13px, height 30px → ~4px */
+  .icbx-scene.is-active .icbx-arm-wrap {
+    width: 13px;
+    height: 4px;
+    right: var(--switch-x);
+    top: var(--switch-y);
+    left: auto;
+    transform: translate(0, 0);
+  }
+  .icbx-scene.is-active .icbx-arm {
+    width: 90px; /* keep SVG intrinsic size */
+    height: 30px;
+  }
+
+  /* Paw: 30px → ~4px */
+  .icbx-scene.is-active .icbx-paw {
+    width: 4px;
+    height: 4px;
+    right: var(--switch-x);
+    top: var(--switch-y);
+    left: auto;
+    transform: translate(0, 0) scaleX(0);
   }
 
   @media (prefers-reduced-motion: reduce) {
