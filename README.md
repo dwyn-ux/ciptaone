@@ -39,3 +39,13 @@ public/
 - Custom cursor is disabled on coarse-pointer / touch / reduced-motion devices.
 - Skip-to-content link, semantic landmarks, visible `:focus-visible` outlines.
 - Project interactions never gate content; hover-only styling is decorative.
+
+## Deploy (shared hosting)
+
+```bash
+npm run build
+# upload every file inside ./dist/ to your document root
+# e.g. public_html/ciptaone.site/
+```
+
+The `.htaccess` and `.user.ini` files live in `public/` so they get copied into `dist/`. Copy them manually via FTP if your hosting skips dotfiles during sync.
