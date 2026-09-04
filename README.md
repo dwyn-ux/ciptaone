@@ -42,10 +42,28 @@ public/
 
 ## Deploy (shared hosting)
 
+Struktur di hosting (DomaiNesia cPanel):
+- `/home/proftweb/ciptaone.site/` ← repo dan document root (satu folder)
+
 ```bash
-npm run build
-# upload every file inside ./dist/ to your document root
-# e.g. public_html/ciptaone.site/
+cd /home/proftweb/ciptaone.site
+bash deploy.sh
 ```
 
-The `.htaccess` and `.user.ini` files live in `public/` so they get copied into `dist/`. Copy them manually via FTP if your hosting skips dotfiles during sync.
+Script `deploy.sh` melakukan:
+1. `git pull`
+2. `npm install`
+3. `npm run build`
+4. flatten `dist/*` ke root folder (= doc root)
+5. copy `public/.htaccess` dan `public/.user.ini` ke root
+6. set permission
+
+Deploy manual kalau perlu:
+```bash
+npm run build
+mv dist/* .
+rm -rf dist
+cp public/.htaccess public/.user.ini .
+chmod 644 index.html .htaccess .user.ini
+chmod 755 assets _astro
+```
