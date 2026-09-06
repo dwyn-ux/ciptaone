@@ -7,8 +7,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "smoke": "node smoke-test.mjs"
+    "astro": "astro"
   },
   "dependencies": {
     "astro": "^4.16.18"
