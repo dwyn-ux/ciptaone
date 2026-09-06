@@ -1,5 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#0A0A0A"/>
-  <rect x="6" y="6" width="20" height="20" fill="#B8FF3D"/>
-  <path d="M11 22 L16 9 L21 22 H18 L16 16 L14 22 Z" fill="#0A0A0A"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="10" fill="#0A0A0A"/>
+  <!-- G shape (dark blue) -->
+  <path d="M48 18 C42 12 32 12 24 18 C16 24 16 36 22 42 C28 48 38 50 46 46 L46 32 L34 32 L34 38 L40 38 C36 42 28 42 24 38 C20 34 22 26 28 22 C34 18 42 20 44 24 Z" fill="#1F4FB8"/>
+  <!-- 1 shape (lighter blue) -->
+  <path d="M38 18 L46 14 L46 50 L40 50 L40 22 L38 24 Z" fill="#5C9BFF"/>
 </svg>
