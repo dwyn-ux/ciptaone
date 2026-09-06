@@ -16,66 +16,66 @@ export const projects: Project[] = [
     index: '01',
     category: 'Mobile',
     year: '2026',
-    title: ['BE', 'SCHEDULE'],
+    title: ['BE', 'PRESENT'],
     description:
-      'Automatic school scheduling system designed around teachers, subjects, constraints and the messy reality of school timetables.',
-    stack: 'Flutter / Algorithm',
+      'Absensi siswa berbasis barcode dan RFID — scan cepat, verifikasi otomatis, data real-time untuk guru dan wali kelas.',
+    stack: 'Flutter / API',
     href: '#',
-    asset: '/assets/project-schedule.svg',
-    alt: 'BE Schedule interface visual — a constraint-based timetable grid.',
+    asset: '/assets/be-present.jpg',
+    alt: 'BE Present — aplikasi absensi dengan barcode dan RFID.',
     paper: '#e9e6de'
   },
   {
     index: '02',
     category: 'Mobile',
     year: '2026',
-    title: ['BE', 'PRESENT'],
+    title: ['BEL', 'SCHOOL'],
     description:
-      'Attendance workflow connecting barcode scanning, photo verification and parent notifications into one focused experience.',
-    stack: 'Flutter / API',
+      'Sistem bel sekolah dengan 4 pilihan audio lengkap — bisa difungsikan sebagai mic untuk pengumuman langsung dari aplikasi.',
+    stack: 'Flutter / Audio',
     href: '#',
-    asset: '/assets/project-attendance.svg',
-    alt: 'BE Present interface visual — a circular scan confirmation mark.',
+    asset: '/assets/bel-school.jpg',
+    alt: 'Bel School — bel sekolah digital dengan 4 audio dan mode mic pengumuman.',
     paper: '#d7d3ca'
   },
   {
     index: '03',
     category: 'Web',
     year: '2026',
-    title: ['SCHOOL', 'WEB'],
-    description:
-      'A school web platform for publishing announcements, profiles and academic content to students, parents and the public.',
-    stack: 'PHP / MySQL',
-    href: '#',
-    asset: '/assets/project-humas.svg',
-    alt: 'School Web interface visual — a school information layout.',
-    paper: '#c8c5bd'
-  },
-  {
-    index: '04',
-    category: 'Web',
-    year: '2026',
     title: ['STAR', 'CUAN'],
     description:
-      'A focused web tool to track income, expenses and small business performance with clear daily and monthly summaries.',
+      'Merangkum pendapatan harian dan bulanan khusus para ojol — grafik jelas, ringkas, tanpa ribet.',
     stack: 'React / Vite / Tailwind',
     href: '#',
-    asset: '/assets/project-ciptaone.svg',
-    alt: 'Star Cuan interface visual — a finance dashboard layout.',
+    asset: '/assets/starcuan.jpg',
+    alt: 'Star Cuan — dashboard pendapatan untuk ojol.',
     paper: '#e2dfd6'
   },
   {
-    index: '05',
+    index: '04',
     category: 'Platform',
     year: '2026',
     title: ['KASLY'],
     description:
-      'A lightweight cashier and stock platform built for small shops — fast checkout, simple inventory and clear daily reports.',
+      'Catat pengeluaran dan pemasukan harian, bulanan, atau periodik — laporan keuangan sederhana untuk siapa saja.',
     stack: 'PHP / MySQL',
     href: '#',
-    asset: '/assets/project-humas.svg',
-    alt: 'Kasly interface visual — a cashier and stock layout.',
+    asset: '/assets/kasly.jpg',
+    alt: 'Kasly — pencatatan keuangan pemasukan dan pengeluaran.',
     paper: '#dfd9c8'
+  },
+  {
+    index: '05',
+    category: 'Web',
+    year: '2026',
+    title: ['SYSTEM', 'SCHOOL'],
+    description:
+      'Portal sekolah all-in-one — pendaftaran online, supervisi guru, perpustakaan digital, kartu pelajar, dan rapor elektronik.',
+    stack: 'PHP / MySQL',
+    href: '#',
+    asset: '/assets/school-web.png',
+    alt: 'System School — portal sekolah dengan fitur lengkap.',
+    paper: '#c8c5bd'
   },
   {
     index: '06',
@@ -83,11 +83,11 @@ export const projects: Project[] = [
     year: '2026',
     title: ['TAHFIDZ', 'SYSTEM'],
     description:
-      'A tahfidz tracking system for students and supervisors — set targets, log progress and review recitation history in one place.',
+      'Pencatatan hafalan tahfidz siswa — progress tracking otomatis dengan notifikasi WhatsApp ke orang tua.',
     stack: 'Flutter / API',
     href: '#',
-    asset: '/assets/project-attendance.svg',
-    alt: 'Tahfidz System interface visual — a recitation progress layout.',
+    asset: '/assets/system-tahfidz.png',
+    alt: 'Tahfidz System — pencatatan tahfidz dengan notifikasi WhatsApp.',
     paper: '#dcd6c5'
   }
 ];
