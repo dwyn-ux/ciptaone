@@ -163,16 +163,14 @@
     };
     const onMove = (e: PointerEvent) => {
       if (!pressed) return;
-      DUMMY_CORD.setAttribute('x2', String(e.clientX));
-      DUMMY_CORD.setAttribute('y2', String(e.clientY));
-      if (!toggled) {
-        const dx = e.clientX - startX;
-        const dy = e.clientY - startY;
-        if (dy > 50) {
-          on = !on;
-          applyTheme();
-          toggled = true;
-        }
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+      DUMMY_CORD.setAttribute('x2', String(ENDX + dx));
+      DUMMY_CORD.setAttribute('y2', String(ENDY + dy));
+      if (!toggled && dy > 50) {
+        on = !on;
+        applyTheme();
+        toggled = true;
       }
     };
     const onUp = (e: PointerEvent) => {
