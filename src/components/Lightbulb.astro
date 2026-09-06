@@ -108,6 +108,9 @@
     stroke-width: 6;
     stroke: hsl(var(--cord-h) var(--cord-s) var(--cord-l));
   }
+  .toggle-scene__dummy-cord line {
+    transition: x2 .5s cubic-bezier(.34, 1.56, .64, 1), y2 .5s cubic-bezier(.34, 1.56, .64, 1);
+  }
   .bulb__filament {
     stroke: hsl(var(--filament-h) var(--filament-s) var(--filament-l));
     transition: stroke .4s ease;
