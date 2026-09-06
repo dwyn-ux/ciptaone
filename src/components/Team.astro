@@ -1,0 +1,89 @@
+---
+import { site } from '../data/site';
+import SectionHeader from './SectionHeader.astro';
+---
+
+<section id="team" class="section team-section" data-chapter="02">
+  <div class="shell">
+    <SectionHeader
+      number="02"
+      title="TEAM"
+      description="A small product team — design and engineering side by side."
+    />
+
+    <div class="team-grid" data-reveal>
+      {site.team.map((member) => (
+        <article class="team-card">
+          <header class="team-head">
+            <span class="mono team-role">{member.role}</span>
+          </header>
+          <h3 class="t-name">{member.name}</h3>
+          <p class="t-body team-bio">{member.bio}</p>
+          <ul class="team-stack mono">
+            {member.stack.map((tech) => (
+              <li>{tech}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .team-section { padding: 130px 0; border-bottom: 1px solid var(--line); }
+  .team-grid {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+  }
+  .team-card {
+    padding: 36px 32px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    transition: background .35s var(--ease);
+  }
+  .team-card:hover { background: var(--accent); }
+  .team-card:hover .team-role,
+  .team-card:hover .team-bio,
+  .team-card:hover .team-stack li,
+  .team-card:hover .t-name { color: var(--ink); }
+
+  .team-head { display: flex; justify-content: space-between; align-items: center; }
+  .team-role { color: var(--muted); font-size: 10px; }
+
+  .t-name {
+    margin: 0;
+    font: 800 clamp(48px, 6vw, 88px)/.9 "Manrope", system-ui, sans-serif;
+    letter-spacing: -.04em;
+    color: var(--paper);
+  }
+  .team-bio { color: var(--muted); margin: 0; max-width: 460px; }
+  .team-stack {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    color: var(--muted);
+  }
+
+  body.theme-light .t-name { color: #1A1A18; }
+  body.theme-light .team-bio { color: #3d3d38; }
+  body.theme-light .team-stack { color: #3d3d38; }
+  body.theme-light .team-role { color: #6a6a64; }
+  body.theme-light .team-section { border-bottom-color: var(--line); }
+  body.theme-light .team-grid { border-color: var(--line); }
+  body.theme-light .team-card { border-color: var(--line); }
+
+  @media (max-width: 800px) {
+    .team-grid { grid-template-columns: 1fr; }
+  }
+</style>

@@ -6,73 +6,79 @@
   viewBox="0 0 900 600"
   fill="none"
   role="img"
-  aria-label="Cipta One orbital system — a digital node graph with rotating rings"
+  aria-label="Cipta One radar sweep"
   class="orbital-svg"
 >
-  <defs>
-    <radialGradient id="nodeGlow" cx=".5" cy=".5" r=".5">
-      <stop offset="0" stop-color="#B8FF3D" stop-opacity=".95"/>
-      <stop offset=".55" stop-color="#B8FF3D" stop-opacity=".25"/>
-      <stop offset="1" stop-color="#B8FF3D" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-
-  <g stroke="#363636" stroke-width="1">
+  <g class="cross" stroke-width="1">
     <line x1="60" y1="300" x2="840" y2="300"/>
     <line x1="450" y1="40" x2="450" y2="560"/>
   </g>
-  <g fill="#56564f" font-family="DM Mono, monospace" font-size="10" letter-spacing="1">
+  <g class="cross-text" font-family="DM Mono, monospace" font-size="10" letter-spacing="1">
     <text x="64" y="294">N 00.000</text>
     <text x="836" y="294" text-anchor="end">E 00.000</text>
     <text x="460" y="52">SYS / 001</text>
     <text x="460" y="568">CORE STABLE</text>
   </g>
 
-  <g class="orbital-rotor">
-    <ellipse cx="450" cy="300" rx="330" ry="110" stroke="#B8FF3D" stroke-opacity=".18" stroke-width="1" transform="rotate(-22 450 300)"/>
-    <ellipse cx="450" cy="300" rx="280" ry="80" stroke="#B8FF3D" stroke-opacity=".32" stroke-width="1" transform="rotate(45 450 300)"/>
-    <ellipse cx="450" cy="300" rx="240" ry="135" stroke="#B8FF3D" stroke-opacity=".12" stroke-width="1" transform="rotate(80 450 300)"/>
-    <circle cx="780" cy="262" r="3" fill="#F1F1EC"/>
-    <circle cx="120" cy="338" r="3" fill="#F1F1EC"/>
-    <circle cx="450" cy="160" r="2" fill="#B8FF3D"/>
+  <g class="rings">
+    <circle cx="450" cy="300" r="80" class="ring"/>
+    <circle cx="450" cy="300" r="150" class="ring ring-faint"/>
+    <circle cx="450" cy="300" r="220" class="ring ring-faint"/>
   </g>
 
-  <g class="orbital-rotor reverse">
-    <ellipse cx="450" cy="300" rx="200" ry="60" stroke="#F1F1EC" stroke-opacity=".22" stroke-width="1" transform="rotate(-60 450 300)" stroke-dasharray="2 6"/>
-    <ellipse cx="450" cy="300" rx="360" ry="170" stroke="#F1F1EC" stroke-opacity=".08" stroke-width="1" transform="rotate(15 450 300)" stroke-dasharray="1 4"/>
+  <g class="sweep">
+    <path d="M450 300 L450 80 A220 220 0 0 1 670 300 Z" class="sweep-fan"/>
   </g>
 
-  <circle cx="450" cy="300" r="80" fill="url(#nodeGlow)"/>
-  <circle cx="450" cy="300" r="34" fill="#B8FF3D"/>
-  <circle cx="450" cy="300" r="22" fill="#0A0A0A"/>
-  <path d="M442 318 L450 296 L458 318 H454 L450 308 L446 318 Z" fill="#B8FF3D"/>
+  <g class="blips">
+    <circle cx="560" cy="240" r="3" class="blip blip-a"/>
+    <circle cx="380" cy="360" r="3" class="blip blip-b"/>
+    <circle cx="520" cy="380" r="3" class="blip blip-c"/>
+  </g>
 
-  <g fill="#92928B" font-family="DM Mono, monospace" font-size="9" letter-spacing="1.5">
-    <text x="64" y="40">/ ORBITAL SYSTEM · 001</text>
+  <circle cx="450" cy="300" r="6" class="core"/>
+  <circle cx="450" cy="300" r="3" class="core-inner"/>
+
+  <g class="meta-text" font-family="DM Mono, monospace" font-size="9" letter-spacing="1.5">
+    <text x="64" y="40">/ RADAR · SWEEP 001</text>
     <text x="64" y="572">RX 0.000 · RY 0.000 · RPM 0.6</text>
     <text x="836" y="572" text-anchor="end">© CIPTA ONE</text>
-  </g>
-
-  <g fill="#B8FF3D">
-    <circle cx="240" cy="120" r="2"/>
-    <circle cx="660" cy="480" r="2"/>
-    <circle cx="720" cy="160" r="2"/>
   </g>
 </svg>
 
 <style>
-  .orbital-svg { display: block; }
-  .orbital-svg :global(.orbital-rotor) {
-    transform-origin: 450px 300px;
-    animation: orbitSpin 60s linear infinite;
+  .orbital-svg { display: block; color: var(--accent); }
+  .orbital-svg .cross { stroke: var(--line); }
+  .orbital-svg .cross-text { fill: var(--muted); }
+  .orbital-svg .ring { stroke: var(--accent); fill: none; stroke-width: 1; }
+  .orbital-svg .ring-faint { stroke-opacity: .35; }
+  .orbital-svg .core { fill: var(--accent); stroke: none; }
+  .orbital-svg .core-inner { fill: var(--paper); stroke: none; }
+  .orbital-svg .meta-text { fill: var(--muted); }
+
+  .orbital-svg .sweep { transform-origin: 450px 300px; animation: radarSpin 5s linear infinite; }
+  .orbital-svg .sweep-fan {
+    fill: var(--accent);
+    fill-opacity: .18;
+    stroke: var(--accent);
+    stroke-opacity: .55;
+    stroke-width: 1;
   }
-  .orbital-svg :global(.orbital-rotor.reverse) {
-    animation: orbitSpin 90s linear infinite reverse;
+  @keyframes radarSpin { to { transform: rotate(360deg); } }
+
+  .orbital-svg .blip { fill: var(--accent); stroke: none; opacity: 0; }
+  .orbital-svg .blip-a { animation: blip 5s linear infinite; }
+  .orbital-svg .blip-b { animation: blip 5s linear infinite; animation-delay: 1.6s; }
+  .orbital-svg .blip-c { animation: blip 5s linear infinite; animation-delay: 3.2s; }
+  @keyframes blip {
+    0%, 8% { opacity: 0; }
+    10% { opacity: 1; }
+    25% { opacity: 0; }
+    100% { opacity: 0; }
   }
-  @keyframes orbitSpin {
-    to { transform: rotate(360deg); }
-  }
+
   @media (prefers-reduced-motion: reduce) {
-    .orbital-svg :global(.orbital-rotor) { animation: none; }
+    .orbital-svg .sweep { animation: none; }
+    .orbital-svg .blip { animation: none; opacity: 1; }
   }
 </style>

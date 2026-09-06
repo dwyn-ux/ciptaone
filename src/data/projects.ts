@@ -42,26 +42,52 @@ export const projects: Project[] = [
     index: '03',
     category: 'Web',
     year: '2026',
-    title: ['CIPTA', 'ONE'],
+    title: ['SCHOOL', 'WEB'],
     description:
-      'A digital studio identity for building mobile applications, websites and security-focused solutions.',
-    stack: 'React / Vite / Tailwind',
+      'A school web platform for publishing announcements, profiles and academic content to students, parents and the public.',
+    stack: 'PHP / MySQL',
     href: '#',
-    asset: '/assets/project-ciptaone.svg',
-    alt: 'Cipta One studio identity mark — a perspective diagram with central node.',
+    asset: '/assets/project-humas.svg',
+    alt: 'School Web interface visual — a school information layout.',
     paper: '#c8c5bd'
   },
   {
     index: '04',
+    category: 'Web',
+    year: '2026',
+    title: ['STAR', 'CUAN'],
+    description:
+      'A focused web tool to track income, expenses and small business performance with clear daily and monthly summaries.',
+    stack: 'React / Vite / Tailwind',
+    href: '#',
+    asset: '/assets/project-ciptaone.svg',
+    alt: 'Star Cuan interface visual — a finance dashboard layout.',
+    paper: '#e2dfd6'
+  },
+  {
+    index: '05',
     category: 'Platform',
     year: '2026',
-    title: ['HUMAS', 'SUITE'],
+    title: ['KASLY'],
     description:
-      'A practical communications workspace for distributing content, generating certificates and turning activities into reports.',
-    stack: 'PHP / React / MySQL',
+      'A lightweight cashier and stock platform built for small shops — fast checkout, simple inventory and clear daily reports.',
+    stack: 'PHP / MySQL',
     href: '#',
     asset: '/assets/project-humas.svg',
-    alt: 'Humas Suite interface visual — a media distribution layout.',
-    paper: '#e2dfd6'
+    alt: 'Kasly interface visual — a cashier and stock layout.',
+    paper: '#dfd9c8'
+  },
+  {
+    index: '06',
+    category: 'Platform',
+    year: '2026',
+    title: ['TAHFIDZ', 'SYSTEM'],
+    description:
+      'A tahfidz tracking system for students and supervisors — set targets, log progress and review recitation history in one place.',
+    stack: 'Flutter / API',
+    href: '#',
+    asset: '/assets/project-attendance.svg',
+    alt: 'Tahfidz System interface visual — a recitation progress layout.',
+    paper: '#dcd6c5'
   }
 ];

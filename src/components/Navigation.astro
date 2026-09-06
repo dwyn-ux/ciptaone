@@ -1,5 +1,6 @@
 ---
 import { site } from '../data/site';
+import Lightbulb from './Lightbulb.astro';
 ---
 
 <header class="nav-root">
@@ -13,14 +14,7 @@ import { site } from '../data/site';
         <a href={item.href} data-cursor="VIEW">{item.label}</a>
       ))}
     </nav>
-    <label class="icbx-switch" data-icbx aria-label="Toggle the bear">
-      <span class="icbx-label mono">EXP</span>
-      <input type="checkbox" data-icbx-input />
-      <span class="icbx-switch-track" aria-hidden="true">
-        <span class="icbx-switch-bg" data-icbx-bg></span>
-        <span class="icbx-switch-knob" data-icbx-knob></span>
-      </span>
-    </label>
+    <Lightbulb />
   </div>
 </header>
 
@@ -57,6 +51,14 @@ import { site } from '../data/site';
     display: block;
     object-fit: contain;
     filter: brightness(0) invert(1);
+    transition: filter .4s ease;
+  }
+  :root {
+    --logo-filter: brightness(0) invert(1);
+  }
+  body.theme-light .logo-mark,
+  :root[style*="--on: 1"] .logo-mark {
+    filter: brightness(0);
   }
   .nav {
     display: flex;
@@ -64,78 +66,13 @@ import { site } from '../data/site';
   }
   .nav a {
     font-size: 11px;
-    color: #c7c4bc;
+    color: var(--muted);
     transition: color .25s var(--ease);
   }
   .nav a:hover { color: var(--accent); }
 
-  /* Switch (replaces ID/2026 tag) */
-  .icbx-switch {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    user-select: none;
-    margin-right: 18px;
-  }
-  .icbx-label {
-    color: var(--muted);
-    font-size: 10px;
-    transition: color .25s var(--ease);
-  }
-  .icbx-switch:hover .icbx-label { color: var(--paper); }
-  .icbx-switch input {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    margin: 0;
-    cursor: pointer;
-    z-index: 3;
-  }
-  /* Track wraps bg + knob so knob's % is relative to track width, not the whole switch (with label) */
-  .icbx-switch-track {
-    position: relative;
-    width: 30px;
-    height: 16px;
-    flex-shrink: 0;
-    display: inline-block;
-  }
-  .icbx-switch-bg {
-    position: absolute;
-    inset: 0;
-    border-radius: 999px;
-    background: #4a4a4a;
-    transition: background .25s cubic-bezier(.22, 1, .36, 1);
-  }
-  .icbx-switch-knob {
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--paper, #F1F1EC);
-    transition: left .25s cubic-bezier(.22, 1, .36, 1);
-    will-change: left;
-  }
-  .icbx-switch input:checked ~ .icbx-switch-track .icbx-switch-bg {
-    background: var(--accent, #B8FF3D);
-  }
-  .icbx-switch input:checked ~ .icbx-switch-track .icbx-switch-knob {
-    left: calc(100% - 13px);
-  }
-
   @media (max-width: 800px) {
     .nav-root { height: 64px; }
     .nav { display: none; }
-    .icbx-label { display: none; }
-    .icbx-switch { margin-right: 0; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .icbx-switch-knob, .icbx-switch-bg {
-      transition: none !important;
-    }
   }
 </style>
