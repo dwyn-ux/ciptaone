@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 330" fill="none" role="img" aria-label="BE Schedule timetable grid">
+  <rect x="20" y="22" width="480" height="286" rx="3" fill="#111111"/>
+  <rect x="20" y="22" width="480" height="32" fill="#0A0A0A"/>
+  <circle cx="38" cy="38" r="3" fill="#FF5B47"/>
+  <circle cx="52" cy="38" r="3" fill="#B8FF3D" fill-opacity=".7"/>
+  <circle cx="66" cy="38" r="3" fill="#F1F1EC" fill-opacity=".5"/>
+  <g stroke="#B8FF3D" stroke-opacity=".45" stroke-width="1.2">
+    <path d="M62 84h396M62 132h396M62 180h396M62 228h396M62 276h396"/>
+    <path d="M156 64v238M250 64v238M344 64v238M438 64v238"/>
+  </g>
+  <g font-family="DM Mono, monospace" font-size="8" fill="#92928B" letter-spacing="1">
+    <text x="74" y="78">SEN</text>
+    <text x="168" y="78">SEL</text>
+    <text x="262" y="78">RAB</text>
+    <text x="356" y="78">KAM</text>
+    <text x="450" y="78">JUM</text>
+  </g>
+  <!-- scheduled blocks -->
+  <rect x="74" y="92" width="74" height="32" fill="#F1F1EC"/>
+  <rect x="262" y="140" width="74" height="32" fill="#B8FF3D"/>
+  <rect x="356" y="188" width="74" height="32" fill="#F1F1EC"/>
+  <rect x="168" y="236" width="74" height="32" fill="#B8FF3D"/>
+  <rect x="450" y="92" width="0" height="32"/>
+  <rect x="74" y="236" width="74" height="32" fill="#F1F1EC" fill-opacity=".35"/>
+  <!-- accent line -->
+  <line x1="20" y1="54" x2="500" y2="54" stroke="#B8FF3D" stroke-width="1"/>
+</svg>

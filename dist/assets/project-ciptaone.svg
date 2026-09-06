@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 330" fill="none" role="img" aria-label="Cipta One studio identity diagram">
+  <rect width="520" height="330" fill="#0A0A0A"/>
+  <g stroke="#363636" stroke-width="1">
+    <line x1="0" y1="55" x2="520" y2="55"/>
+    <line x1="0" y1="275" x2="520" y2="275"/>
+  </g>
+  <g fill="#56564f" font-family="DM Mono, monospace" font-size="9" letter-spacing="1.5">
+    <text x="20" y="36">STUDIO · CIPTA ONE</text>
+    <text x="500" y="36" text-anchor="end">SYS / 003</text>
+    <text x="20" y="310">PRODUCT · MOBILE / WEB / SECURITY</text>
+    <text x="500" y="310" text-anchor="end">© 2026</text>
+  </g>
+
+  <!-- diagram -->
+  <g stroke="#B8FF3D">
+    <rect x="80" y="80" width="360" height="170" fill="none"/>
+    <path d="M80 80 L260 200 L440 80" fill="none" stroke-width="1.2"/>
+    <path d="M80 250 L260 130 L440 250" fill="none" stroke-width="1.2"/>
+    <circle cx="260" cy="165" r="14" fill="#B8FF3D"/>
+  </g>
+
+  <!-- corner nodes -->
+  <g fill="#B8FF3D">
+    <circle cx="80" cy="80" r="3"/>
+    <circle cx="440" cy="80" r="3"/>
+    <circle cx="80" cy="250" r="3"/>
+    <circle cx="440" cy="250" r="3"/>
+  </g>
+
+  <!-- labels -->
+  <g fill="#92928B" font-family="DM Mono, monospace" font-size="9" letter-spacing="1.5">
+    <text x="80" y="76" text-anchor="middle">01</text>
+    <text x="440" y="76" text-anchor="middle">02</text>
+    <text x="80" y="266" text-anchor="middle">03</text>
+    <text x="440" y="266" text-anchor="middle">04</text>
+  </g>
+</svg>

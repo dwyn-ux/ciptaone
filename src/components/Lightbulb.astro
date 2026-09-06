@@ -135,80 +135,67 @@
 </style>
 
 <script>
-  import { gsap } from 'gsap';
-  import { Draggable } from 'gsap/Draggable';
-
-  gsap.registerPlugin(Draggable);
-
   const scene = document.querySelector<HTMLElement>('.bulb-scene');
   if (scene) {
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const CORDS = scene.querySelectorAll<SVGPathElement>('.toggle-scene__cord');
     const HIT = scene.querySelector<SVGCircleElement>('.toggle-scene__hit-spot')!;
     const DUMMY = scene.querySelector<SVGGElement>('.toggle-scene__dummy-cord')!;
     const DUMMY_CORD = scene.querySelector<SVGLineElement>('.toggle-scene__dummy-cord line')!;
 
-    const PROXY = document.createElement('div');
     const ENDX = +DUMMY_CORD.getAttribute('x2')!;
     const ENDY = +DUMMY_CORD.getAttribute('y2')!;
-    const reset = () => gsap.set(PROXY, { x: ENDX, y: ENDY });
-    reset();
+    const reset = () => DUMMY_CORD.setAttribute('y2', String(ENDY));
 
     let on = false;
+    let toggled = false;
     const applyTheme = () => {
-      document.documentElement.style.setProperty('--on', on ? '1' : '0');
       document.body.classList.toggle('theme-light', on);
     };
 
-    const swing = (cord: SVGPathElement) => {
-      const startY2 = ENDY - 80;
-      gsap.fromTo(
-        DUMMY_CORD,
-        { attr: { x2: ENDX, y2: startY2 } },
-        {
-          attr: { x2: ENDX, y2: ENDY },
-          duration: 0.18,
-          ease: 'power2.out',
-          onStart: () => {
-            on = !on;
-            applyTheme();
-          },
-          onComplete: () => reset()
-        }
-      );
-    };
-
     let startX = 0, startY = 0;
-    Draggable.create(PROXY, {
-      trigger: HIT,
-      type: 'x,y',
-      onPress: (e: PointerEvent) => {
-        startX = e.x;
-        startY = e.y;
-      },
-      onDrag: function () {
-        gsap.set(DUMMY_CORD, { attr: { x2: this.x, y2: this.y } });
-      },
-      onRelease: function (e: PointerEvent) {
-        if (reduce) {
+    const onDown = (e: PointerEvent) => {
+      startX = e.clientX;
+      startY = e.clientY;
+      HIT.setPointerCapture(e.pointerId);
+      toggled = false;
+    };
+    const onMove = (e: PointerEvent) => {
+      DUMMY_CORD.setAttribute('x2', String(e.clientX));
+      DUMMY_CORD.setAttribute('y2', String(e.clientY));
+      if (!toggled) {
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        if (Math.abs(dy) > 50 && dy > 0) {
           on = !on;
           applyTheme();
-          reset();
-          return;
+          toggled = true;
         }
-        const dx = Math.abs(e.x - startX);
-        const dy = Math.abs(e.y - startY);
-        const travelled = Math.sqrt(dx * dx + dy * dy);
-        gsap.to(DUMMY_CORD, {
-          attr: { x2: ENDX, y2: ENDY },
-          duration: 0.15,
-          onComplete: () => {
-            if (travelled > 50) swing(CORDS[0]);
-            else reset();
-          }
-        });
       }
-    });
+    };
+    const onUp = (e: PointerEvent) => {
+      HIT.releasePointerCapture(e.pointerId);
+      const dx = Math.abs(e.clientX - startX);
+      const dy = Math.abs(e.clientY - startY);
+      const travelled = Math.sqrt(dx * dx + dy * dy);
+      if (!toggled && travelled > 50) {
+        on = !on;
+        applyTheme();
+      }
+      DUMMY_CORD.setAttribute('x2', String(ENDX));
+      DUMMY_CORD.setAttribute('y2', String(ENDY));
+    };
+
+    if (reduce) {
+      HIT.addEventListener('click', () => {
+        on = !on;
+        applyTheme();
+      });
+    } else {
+      HIT.addEventListener('pointerdown', onDown);
+      HIT.addEventListener('pointermove', onMove);
+      HIT.addEventListener('pointerup', onUp);
+      HIT.addEventListener('pointercancel', onUp);
+    }
   }
 </script>
