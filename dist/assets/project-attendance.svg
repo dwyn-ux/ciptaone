@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <style>.s{fill:#fff}</style>
+  <rect class="s" x="120" y="40" width="160" height="220" rx="16"/>
+  <rect x="140" y="70" width="120" height="10" rx="2" fill="#111"/>
+  <rect x="140" y="90" width="80" height="8" rx="2" fill="#111"/>
+  <rect x="140" y="110" width="120" height="50" rx="4" fill="#111"/>
+  <line x1="155" y1="120" x2="155" y2="150" stroke="#111" stroke-width="2"/>
+  <line x1="165" y1="118" x2="165" y2="152" stroke="#111" stroke-width="3"/>
+  <line x1="175" y1="122" x2="175" y2="148" stroke="#111" stroke-width="1.5"/>
+  <line x1="185" y1="119" x2="185" y2="151" stroke="#111" stroke-width="2.5"/>
+  <line x1="195" y1="121" x2="195" y2="149" stroke="#111" stroke-width="1"/>
+  <line x1="205" y1="120" x2="205" y2="150" stroke="#111" stroke-width="3"/>
+  <line x1="215" y1="118" x2="215" y2="152" stroke="#111" stroke-width="2"/>
+  <line x1="225" y1="122" x2="225" y2="148" stroke="#111" stroke-width="1.5"/>
+  <line x1="235" y1="119" x2="235" y2="151" stroke="#111" stroke-width="2.5"/>
+  <line x1="245" y1="121" x2="245" y2="149" stroke="#111" stroke-width="1"/>
+  <rect x="140" y="175" width="120" height="8" rx="2" fill="#111"/>
+  <rect x="140" y="195" width="60" height="8" rx="2" fill="#111"/>
+  <circle cx="310" cy="80" r="30" fill="none" stroke="#fff" stroke-width="4"/>
+  <path d="M298 80 l8 8 l16-16" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M280 140 l-20 20" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+  <path d="M280 160 l-20 20" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+  <path d="M280 180 l-20 20" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="280" cy="140" r="3" fill="#fff"/>
+  <circle cx="280" cy="160" r="3" fill="#fff"/>
+  <circle cx="280" cy="180" r="3" fill="#fff"/>
+</svg>

@@ -21,7 +21,7 @@ export const projects: Project[] = [
       'Absensi siswa berbasis barcode dan RFID — scan cepat, verifikasi otomatis, data real-time untuk guru dan wali kelas.',
     stack: 'Flutter / API',
     href: '#',
-    asset: '/assets/be-present.jpg',
+    asset: '/assets/project-attendance.svg',
     alt: 'BE Present — aplikasi absensi dengan barcode dan RFID.',
     paper: '#e9e6de'
   },
@@ -34,7 +34,7 @@ export const projects: Project[] = [
       'Sistem bel sekolah dengan 4 pilihan audio lengkap — bisa difungsikan sebagai mic untuk pengumuman langsung dari aplikasi.',
     stack: 'Flutter / Audio',
     href: '#',
-    asset: '/assets/bel-school.jpg',
+    asset: '/assets/project-bell.svg',
     alt: 'Bel School — bel sekolah digital dengan 4 audio dan mode mic pengumuman.',
     paper: '#d7d3ca'
   },
@@ -47,7 +47,7 @@ export const projects: Project[] = [
       'Merangkum pendapatan harian dan bulanan khusus para ojol — grafik jelas, ringkas, tanpa ribet.',
     stack: 'React / Vite / Tailwind',
     href: '#',
-    asset: '/assets/starcuan.jpg',
+    asset: '/assets/project-chart.svg',
     alt: 'Star Cuan — dashboard pendapatan untuk ojol.',
     paper: '#e2dfd6'
   },
@@ -60,7 +60,7 @@ export const projects: Project[] = [
       'Catat pengeluaran dan pemasukan harian, bulanan, atau periodik — laporan keuangan sederhana untuk siapa saja.',
     stack: 'PHP / MySQL',
     href: '#',
-    asset: '/assets/kasly.jpg',
+    asset: '/assets/project-kasly.svg',
     alt: 'Kasly — pencatatan keuangan pemasukan dan pengeluaran.',
     paper: '#dfd9c8'
   },
@@ -73,7 +73,7 @@ export const projects: Project[] = [
       'Portal sekolah all-in-one — pendaftaran online, supervisi guru, perpustakaan digital, kartu pelajar, dan rapor elektronik.',
     stack: 'PHP / MySQL',
     href: '#',
-    asset: '/assets/school-web.png',
+    asset: '/assets/project-school.svg',
     alt: 'System School — portal sekolah dengan fitur lengkap.',
     paper: '#c8c5bd'
   },
@@ -86,7 +86,7 @@ export const projects: Project[] = [
       'Pencatatan hafalan tahfidz siswa — progress tracking otomatis dengan notifikasi WhatsApp ke orang tua.',
     stack: 'Flutter / API',
     href: '#',
-    asset: '/assets/system-tahfidz.png',
+    asset: '/assets/project-tahfidz.svg',
     alt: 'Tahfidz System — pencatatan tahfidz dengan notifikasi WhatsApp.',
     paper: '#dcd6c5'
   }
