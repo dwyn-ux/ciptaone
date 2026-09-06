@@ -153,20 +153,22 @@
       document.body.classList.toggle('theme-light', on);
     };
 
-    let startX = 0, startY = 0;
+    let startX = 0, startY = 0, pressed = false;
     const onDown = (e: PointerEvent) => {
       startX = e.clientX;
       startY = e.clientY;
-      HIT.setPointerCapture(e.pointerId);
+      pressed = true;
       toggled = false;
+      HIT.setPointerCapture(e.pointerId);
     };
     const onMove = (e: PointerEvent) => {
+      if (!pressed) return;
       DUMMY_CORD.setAttribute('x2', String(e.clientX));
       DUMMY_CORD.setAttribute('y2', String(e.clientY));
       if (!toggled) {
         const dx = e.clientX - startX;
         const dy = e.clientY - startY;
-        if (Math.abs(dy) > 50 && dy > 0) {
+        if (dy > 50) {
           on = !on;
           applyTheme();
           toggled = true;
@@ -174,6 +176,8 @@
       }
     };
     const onUp = (e: PointerEvent) => {
+      if (!pressed) return;
+      pressed = false;
       HIT.releasePointerCapture(e.pointerId);
       const dx = Math.abs(e.clientX - startX);
       const dy = Math.abs(e.clientY - startY);
