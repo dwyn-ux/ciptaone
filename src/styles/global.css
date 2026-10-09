@@ -6,8 +6,11 @@
   --ink: #0A0A0A;
   --paper: #F1F1EC;
   --muted: #92928B;
-  --line: #363636;
+  --line: #2E2E2B;
   --accent: #B8FF3D;
+  --accent-soft: rgba(184, 255, 61, .12);
+  --surface: #121210;
+  --surface-raised: #181816;
   --red: #FF5B47;
   --ease: cubic-bezier(.22, 1, .36, 1);
   --chapter: '01';
@@ -24,12 +27,40 @@ html {
 
 body {
   margin: 0;
-  background: var(--ink);
+  background:
+    radial-gradient(ellipse 65rem 45rem at 93% -8%, rgba(184, 255, 61, .09), transparent 60%),
+    radial-gradient(ellipse 48rem 38rem at -12% 42%, rgba(255,255,255,.025), transparent 65%),
+    var(--ink);
   color: var(--paper);
   font-family: 'Manrope', system-ui, sans-serif;
   overflow-x: hidden;
   cursor: auto;
 }
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: .032;
+  background-image:
+    linear-gradient(rgba(255,255,255,.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.22) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(to bottom, black, transparent 72%);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  z-index: -2;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(110deg, transparent 0 46%, rgba(255,255,255,.018) 46.05%, transparent 46.1% 100%);
+}
+
+main { position: relative; z-index: 1; }
 
 @media (pointer: fine) {
   body.has-cursor { cursor: none; }
@@ -56,7 +87,7 @@ button { font: inherit; background: none; border: none; color: inherit; padding:
 .shell {
   width: min(1480px, 100%);
   margin: auto;
-  padding: 0 34px;
+  padding: 0 40px;
 }
 
 @media (max-width: 800px) {
@@ -79,15 +110,15 @@ body.theme-light {
   --muted: #6a6a64;
   --line: #d4d0c5;
   --accent: #4a6a1f;
+  --accent-soft: rgba(74, 106, 31, .1);
+  --surface: #E5DED1;
+  --surface-raised: #F3EEE5;
   background: var(--ink);
   color: var(--paper);
 }
-body.theme-light .nav-root { background: rgba(237, 231, 220, .82); }
+body.theme-light .nav-root { background: rgba(237, 231, 220, .72); }
 body.theme-light ::selection { background: var(--paper); color: var(--accent); }
-body:not(.theme-light) .project {
-  background: #1A1A18 !important;
-  color: var(--paper) !important;
-}
+body:not(.theme-light) .project { color: var(--paper); }
 body:not(.theme-light) .project-head,
 body:not(.theme-light) .project-foot,
 body:not(.theme-light) .project-desc { color: var(--muted); }

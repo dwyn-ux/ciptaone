@@ -1,0 +1,51 @@
+---
+---
+
+<button class="language-toggle mono" type="button" data-language-toggle aria-label="Switch language">
+  <span>EN</span><i>/</i><span>ID</span>
+</button>
+
+<style>
+  .language-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--muted);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 8px 10px;
+    font-size: 9px;
+    cursor: pointer;
+    transition: color .25s var(--ease), border-color .25s var(--ease), background .25s var(--ease);
+  }
+  .language-toggle i { color: var(--line); font-style: normal; }
+  .language-toggle:hover { color: var(--paper); border-color: var(--accent); background: var(--accent-soft); }
+  :global(html[lang="id"]) .language-toggle span:last-child,
+  :global(html[lang="en"]) .language-toggle span:first-child { color: var(--accent); }
+  @media (max-width: 800px) { .language-toggle { padding: 8px 8px; font-size: 8px; } }
+</style>
+
+<script>
+  const supported = ['en', 'id'] as const;
+  type Language = typeof supported[number];
+  const saved = localStorage.getItem('ciptaone-language') as Language | null;
+  const initial: Language = saved && supported.includes(saved) ? saved : 'en';
+
+  const applyLanguage = (language: Language) => {
+    document.documentElement.lang = language;
+    document.querySelectorAll<HTMLElement>('[data-en][data-id]').forEach((element) => {
+      element.textContent = element.dataset[language] ?? '';
+    });
+    document.querySelectorAll<HTMLElement>('[data-en-aria][data-id-aria]').forEach((element) => {
+      element.setAttribute('aria-label', element.dataset[`${language}Aria`] ?? '');
+    });
+    localStorage.setItem('ciptaone-language', language);
+  };
+
+  applyLanguage(initial);
+  document.querySelectorAll<HTMLButtonElement>('[data-language-toggle]').forEach((button) => {
+    button.addEventListener('click', () => {
+      applyLanguage(document.documentElement.lang === 'id' ? 'en' : 'id');
+    });
+  });
+</script>

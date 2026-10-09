@@ -8,17 +8,19 @@ import SectionHeader from './SectionHeader.astro';
     <SectionHeader
       number="02"
       title="TEAM"
+      titleId="TIM"
       description="A small product team — design and engineering side by side."
+      descriptionId="Tim produk kecil — desain dan engineering berjalan berdampingan."
     />
 
     <div class="team-grid" data-reveal>
       {site.team.map((member) => (
         <article class="team-card">
           <header class="team-head">
-            <span class="mono team-role">{member.role}</span>
+            <span class="mono team-role" data-en={member.role} data-id={member.roleId}>{member.role}</span>
           </header>
           <h3 class="t-name">{member.name}</h3>
-          <p class="t-body team-bio">{member.bio}</p>
+          <p class="t-body team-bio" data-en={member.bio} data-id={member.bioId}>{member.bio}</p>
           <ul class="team-stack mono">
             {member.stack.map((tech) => (
               <li>{tech}</li>
@@ -36,27 +38,42 @@ import SectionHeader from './SectionHeader.astro';
     margin-top: 64px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0;
-    border-top: 1px solid var(--line);
-    border-left: 1px solid var(--line);
+    gap: 18px;
   }
   .team-card {
-    padding: 36px 32px;
-    border-right: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
+    min-height: 390px;
+    padding: 34px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: var(--surface);
     display: flex;
     flex-direction: column;
     gap: 18px;
-    transition: background .35s var(--ease);
+    position: relative;
+    overflow: hidden;
+    transition: background .35s var(--ease), transform .45s var(--ease), border-color .35s;
   }
-  .team-card:hover { background: var(--accent); }
+  .team-card::after {
+    position: absolute;
+    right: -5px;
+    bottom: -32px;
+    font-size: 170px;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: -.1em;
+    color: rgba(255,255,255,.025);
+    pointer-events: none;
+  }
+  .team-card:first-child::after { content: "01"; }
+  .team-card:last-child::after { content: "02"; }
+  .team-card:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-8px); }
   .team-card:hover .team-role,
   .team-card:hover .team-bio,
   .team-card:hover .team-stack li,
   .team-card:hover .t-name { color: var(--ink); }
 
   .team-head { display: flex; justify-content: space-between; align-items: center; }
-  .team-role { color: var(--muted); font-size: 10px; }
+  .team-role { color: var(--muted); font-size: 10px; border: 1px solid var(--line); border-radius: 999px; padding: 8px 11px; }
 
   .t-name {
     margin: 0;
@@ -64,7 +81,7 @@ import SectionHeader from './SectionHeader.astro';
     letter-spacing: -.04em;
     color: var(--paper);
   }
-  .team-bio { color: var(--muted); margin: 0; max-width: 460px; }
+  .team-bio { color: var(--muted); margin: auto 0 0; max-width: 460px; }
   .team-stack {
     list-style: none;
     padding: 0;
@@ -85,5 +102,6 @@ import SectionHeader from './SectionHeader.astro';
 
   @media (max-width: 800px) {
     .team-grid { grid-template-columns: 1fr; }
+    .team-card { min-height: 340px; }
   }
 </style>

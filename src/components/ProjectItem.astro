@@ -12,63 +12,82 @@ const slug = `project-${project.index}`;
   class="project"
   style={`--paper:${project.paper}`}
   data-project
+  data-index={project.index}
   data-cursor="OPEN"
   data-paper-color={project.paper}
   id={slug}
 >
   <div class="project-head mono">
     <span>{project.index} / {project.category.toUpperCase()}</span>
-    <span>{project.year}</span>
+    <span class="project-year">{project.year}</span>
   </div>
 
   <div class="project-visual preview-follow">
+    <span class="visual-label mono">LIVE PRODUCT PREVIEW</span>
     <img src={project.asset} alt={project.alt} loading="lazy" decoding="async" />
   </div>
 
   <div class="project-body">
-    <h3 class="t-project">
-      {project.title[0]}<br />{project.title[1]}
-    </h3>
-    <p class="t-body project-desc">{project.description}</p>
+    <div class="project-title-row">
+      <h3 class="t-project">
+        {project.title[0]}<br />{project.title[1]}
+      </h3>
+      <span class="project-index mono">0{project.index}</span>
+    </div>
+    <p class="t-body project-desc" data-en={project.descriptionId} data-id={project.description}>{project.descriptionId}</p>
   </div>
 
   <a class="project-foot mono" href={project.href} aria-label={`View ${project.title.join(' ')}`}>
     <span>{project.stack}</span>
-    <span class="project-cta">CASE STUDY <span class="arrow" aria-hidden="true">↗</span></span>
+    <span class="project-cta"><span data-en="CASE STUDY" data-id="DETAIL PROYEK">CASE STUDY</span> <span class="arrow" aria-hidden="true">↗</span></span>
   </a>
 </article>
 
 <style>
   .project {
-    background: var(--paper, #e9e6de);
-    color: #101010;
-    min-height: 480px;
-    padding: 26px;
+    --card-bg: #101614;
+    background:
+      radial-gradient(circle at 94% 0%, rgba(184,255,61,.13), transparent 29%),
+      var(--card-bg);
+    color: var(--paper);
+    min-height: 0;
+    padding: 18px;
     display: flex;
     flex-direction: column;
     position: relative;
     overflow: hidden;
     isolation: isolate;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 24px;
+    box-shadow: 0 20px 55px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.08);
+    transition: transform .5s var(--ease), box-shadow .5s var(--ease);
   }
+  .project[data-index="02"] { --card-bg: #101623; }
+  .project[data-index="03"], .project[data-index="04"] { --card-bg: #151716; }
+  .project[data-index="05"] { --card-bg: #111923; }
+  .project[data-index="06"] { --card-bg: #111914; }
   .project-head {
     display: flex;
     justify-content: space-between;
-    color: #5f5c55;
+    color: rgba(241,241,236,.56);
     position: relative;
     z-index: 1;
+    padding: 3px 4px 14px;
   }
   .project-visual {
-    position: absolute;
-    right: 26px;
-    top: 76px;
-    width: 215px;
-    height: 140px;
+    position: relative;
+    width: 100%;
+    height: clamp(230px, 18vw, 310px);
     overflow: hidden;
-    transform: rotate(5deg);
-    transition: transform .7s var(--ease);
-    box-shadow: 16px 16px 0 rgba(0, 0, 0, .12);
+    transform: none;
+    transition: transform .7s var(--ease), border-color .5s var(--ease);
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: #08100d;
     z-index: 1;
   }
+  .project-visual::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, transparent 52%, rgba(2,7,8,.42)); z-index: 1; }
+  .visual-label { position: absolute; left: 13px; bottom: 13px; z-index: 2; color: var(--paper); background: rgba(7,12,13,.78); backdrop-filter: blur(8px); padding: 7px 8px; border: 1px solid rgba(255,255,255,.13); border-radius: 999px; font-size: 8px; }
   .project-visual img {
     width: 100%;
     height: 100%;
@@ -76,38 +95,44 @@ const slug = `project-${project.index}`;
     display: block;
     transition: transform 1s var(--ease), filter .6s;
   }
-  .project:hover .project-visual { transform: rotate(0) scale(1.04); }
-  .project:hover .project-visual img { transform: scale(1.08); filter: contrast(1.06); }
+  .project:hover { transform: translateY(-8px); border-color: rgba(184,255,61,.42); box-shadow: 0 30px 70px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.13); }
+  .project:hover .project-visual { transform: scale(.985); border-color: rgba(184,255,61,.34); }
+  .project:hover .project-visual img { transform: scale(1.035); filter: contrast(1.03) saturate(1.08); }
 
   .project-body {
-    margin-top: auto;
+    margin-top: 22px;
     position: relative;
     z-index: 1;
   }
+  .project-title-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
   .t-project {
-    margin: 0 0 22px;
+    margin: 0 0 16px;
+    font-size: clamp(43px, 4.6vw, 72px);
+    line-height: .82;
+    color: var(--paper);
     transition: transform .6s var(--ease);
   }
+  .project-index { color: var(--accent); padding-top: 5px; }
   .project-desc {
-    max-width: 460px;
-    color: #4f4d48;
+    max-width: 520px;
+    color: rgba(241,241,236,.66);
     margin: 0;
   }
   .project-foot {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 1px solid rgba(0, 0, 0, .25);
-    margin-top: 50px;
-    padding-top: 14px;
-    color: #55524c;
+    border-top: 1px solid rgba(255,255,255,.13);
+    margin-top: 26px;
+    padding: 15px 3px 3px;
+    color: rgba(241,241,236,.56);
     transition: color .3s var(--ease);
     text-decoration: none;
     position: relative;
     z-index: 1;
   }
-  .project:hover .t-project { transform: translateX(12px); }
-  .project:hover .project-foot { color: #101010; }
+  .project:hover .t-project { transform: translateX(7px); }
+  .project:hover .project-foot { color: var(--paper); }
   .arrow {
     display: inline-block;
     margin-left: 6px;
@@ -116,7 +141,8 @@ const slug = `project-${project.index}`;
   .project:hover .arrow { transform: translate(6px, -6px); }
 
   @media (max-width: 800px) {
-    .project { min-height: 520px; }
-    .project-visual { width: 175px; height: 112px; top: 70px; right: 18px; }
+    .project { padding: 14px; }
+    .project-visual { height: 230px; }
+    .t-project { font-size: clamp(42px, 12vw, 58px); }
   }
 </style>

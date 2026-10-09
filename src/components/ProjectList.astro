@@ -9,13 +9,15 @@ import { projects } from '../data/projects';
     <SectionHeader
       number="03"
       title="Selected work"
+      titleId="Karya pilihan"
       description="Products built around real problems, not technology for technology's sake."
+      descriptionId="Produk yang dibangun dari masalah nyata, bukan teknologi demi teknologi."
     />
 
     <div class="work-intro" data-reveal>
       <div class="scanline" aria-hidden="true"></div>
-      <p class="t-muted">Six examples of systems shaped around actual workflows.</p>
-      <span class="mono drag-note">SCROLL / EXPLORE</span>
+      <p class="t-muted" data-en="Six examples of systems shaped around actual workflows." data-id="Enam contoh sistem yang dibentuk dari alur kerja nyata.">Six examples of systems shaped around actual workflows.</p>
+      <span class="mono drag-note" data-en="SCROLL / EXPLORE" data-id="GULIR / JELAJAHI">SCROLL / EXPLORE</span>
     </div>
 
     <div class="projects" data-reveal>
@@ -38,14 +40,12 @@ import { projects } from '../data/projects';
 
   .projects {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--line);
-    border: 1px solid var(--line);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
   }
 
   @media (max-width: 1024px) {
-    .projects { grid-template-columns: repeat(2, 1fr); }
+    .projects { gap: 16px; }
   }
   @media (max-width: 800px) {
     .section { padding: 82px 0; }

@@ -1,0 +1,86 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { projects } from '../../data/projects';
+
+export function getStaticPaths() {
+  return projects.map((project) => ({ params: { slug: project.slug }, props: { project } }));
+}
+
+const { project } = Astro.props;
+const title = `${project.title.join(' ')} — Cipta One`;
+---
+
+<Layout title={title} description={project.description}>
+  <main class="case-study">
+    <div class="shell">
+      <a class="back mono" href="/#work" data-en="← Back to selected work" data-id="← Kembali ke karya pilihan">← Back to selected work</a>
+
+      <header class="case-head">
+        <div class="case-meta mono">
+          <span>{project.index} / {project.category}</span>
+          <span>{project.year}</span>
+        </div>
+        <h1>{project.title.map((line: string) => <span>{line}</span>)}</h1>
+        <p data-en={project.descriptionId} data-id={project.description}>{project.descriptionId}</p>
+      </header>
+
+      <div class="case-visual">
+        <img src={project.asset} alt={project.alt} />
+      </div>
+
+      <section class="case-details">
+        <div class="detail-label mono" data-en="System focus" data-id="Fokus sistem">System focus</div>
+        <div>
+          <h2 data-en="A focused tool for a real workflow." data-id="Tool yang terfokus untuk alur kerja nyata.">A focused tool for a real workflow.</h2>
+          <ul>
+            {project.highlights.map((highlight: string, index: number) => (
+              <li data-en={project.highlightsEn[index]} data-id={highlight}>{project.highlightsEn[index]}</li>
+            ))}
+          </ul>
+        </div>
+        <div class="case-stack">
+          <span class="mono" data-en="Build stack" data-id="Teknologi">Build stack</span>
+          <strong>{project.stack}</strong>
+        </div>
+      </section>
+
+      <a class="next-cta" href="/#contact">
+        <span class="mono" data-en="Have a system in mind?" data-id="Punya sistem dalam pikiran?">Have a system in mind?</span>
+        <strong><span data-en="Start a conversation" data-id="Mulai percakapan">Start a conversation</span> <span>↗</span></strong>
+      </a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .case-study { padding: 112px 0 96px; min-height: 100vh; }
+  .back { color: var(--muted); display: inline-flex; margin-bottom: 74px; transition: color .25s var(--ease); }
+  .back:hover { color: var(--accent); }
+  .case-head { max-width: 1080px; }
+  .case-meta { display: flex; justify-content: space-between; color: var(--accent); margin-bottom: 28px; }
+  h1 { margin: 0; font: 800 clamp(62px, 12vw, 178px)/.77 "Manrope", sans-serif; letter-spacing: -.105em; color: var(--paper); }
+  h1 span { display: block; }
+  .case-head p { max-width: 620px; margin: 38px 0 0; color: var(--muted); font-size: 17px; line-height: 1.65; }
+  .case-visual { margin: 84px 0; border: 1px solid rgba(255,255,255,.13); border-radius: 28px; overflow: hidden; background: #101513; box-shadow: 0 30px 90px rgba(0,0,0,.28); }
+  .case-visual img { display: block; width: 100%; aspect-ratio: 16/8; object-fit: cover; }
+  .case-details { display: grid; grid-template-columns: 200px minmax(0, 1fr) 220px; gap: 40px; padding: 44px 0 84px; border-top: 1px solid var(--line); }
+  .detail-label, .case-stack span { color: var(--muted); }
+  h2 { margin: 0; max-width: 520px; font-size: clamp(30px, 4vw, 56px); line-height: .96; letter-spacing: -.065em; }
+  ul { list-style: none; margin: 38px 0 0; padding: 0; display: grid; gap: 12px; }
+  li { color: var(--paper); font-size: 15px; padding: 0 0 12px; border-bottom: 1px solid var(--line); }
+  li::before { content: "↗"; color: var(--accent); margin-right: 12px; }
+  .case-stack { display: grid; align-content: start; gap: 12px; }
+  .case-stack strong { font-size: 17px; line-height: 1.4; }
+  .next-cta { display: flex; justify-content: space-between; align-items: end; gap: 20px; padding: 28px; border: 1px solid rgba(184,255,61,.45); border-radius: 20px; background: var(--accent); color: var(--ink); }
+  .next-cta strong { font-size: clamp(24px, 3vw, 42px); letter-spacing: -.06em; }
+  .next-cta strong span { display: inline-block; transition: transform .3s var(--ease); }
+  .next-cta:hover strong span { transform: translate(5px,-5px); }
+  @media (max-width: 800px) {
+    .case-study { padding: 90px 0 64px; }
+    .back { margin-bottom: 48px; }
+    .case-visual { margin: 56px 0; border-radius: 18px; }
+    .case-visual img { aspect-ratio: 4/3; }
+    .case-details { grid-template-columns: 1fr; gap: 25px; padding-bottom: 56px; }
+    .next-cta { align-items: flex-start; flex-direction: column; }
+  }
+</style>

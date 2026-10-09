@@ -6,12 +6,12 @@ import { site } from '../data/site';
   <div class="shell footer-inner">
     <div class="footer-row">
       <span class="footer-brand">© {site.year} CIPTA ONE</span>
-      <span class="footer-tag mono">DIGITAL PRODUCTS / ENGINEERING / DESIGN</span>
+      <span class="footer-tag mono" data-en="DIGITAL PRODUCTS / ENGINEERING / DESIGN" data-id="PRODUK DIGITAL / ENGINEERING / DESAIN">DIGITAL PRODUCTS / ENGINEERING / DESIGN</span>
     </div>
     <div class="footer-row footer-status">
       <span class="status">
         <span class="dot" aria-hidden="true"></span>
-        <span class="mono">SYSTEM ONLINE</span>
+        <span class="mono" data-en="SYSTEM ONLINE" data-id="SISTEM AKTIF">SYSTEM ONLINE</span>
       </span>
       <span class="mono footer-domain">{site.domain}</span>
     </div>
@@ -21,8 +21,9 @@ import { site } from '../data/site';
 <style>
   .footer-root {
     border-top: 1px solid var(--line);
-    padding: 28px 0 36px;
+    padding: 34px 0 42px;
     color: #77736b;
+    background: var(--surface);
   }
   .footer-inner {
     display: flex;

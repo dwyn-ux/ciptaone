@@ -2,9 +2,11 @@
 interface Props {
   number: string;
   title: string;
+  titleId?: string;
   description?: string;
+  descriptionId?: string;
 }
-const { number, title, description } = Astro.props;
+const { number, title, titleId, description, descriptionId } = Astro.props;
 ---
 
 <header class="section-header" data-reveal>
@@ -12,16 +14,16 @@ const { number, title, description } = Astro.props;
     <div class="meta">
       <span class="mono chapter-num">{number}</span>
       <span class="mono chapter-rule" aria-hidden="true"></span>
-      <span class="mono chapter-label">{title}</span>
+      <span class="mono chapter-label" data-en={title} data-id={titleId ?? title}>{title}</span>
     </div>
     {description && (
-      <h2 class="t-section">{description}</h2>
+      <h2 class="t-section" data-en={description} data-id={descriptionId ?? description}>{description}</h2>
     )}
   </div>
 </header>
 
 <style>
-  .section-header { margin-bottom: 65px; }
+  .section-header { margin-bottom: 72px; }
   .grid {
     display: grid;
     grid-template-columns: 200px 1fr;
@@ -33,6 +35,10 @@ const { number, title, description } = Astro.props;
     align-items: center;
     gap: 12px;
     color: var(--muted);
+    padding: 9px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
   }
   .chapter-num { color: var(--paper); }
   .chapter-rule {
@@ -53,6 +59,7 @@ const { number, title, description } = Astro.props;
     animation: scan 3.2s linear infinite;
   }
   .chapter-label { color: var(--muted); }
+  .t-section { max-width: 900px; margin: -4px 0 0; text-wrap: balance; }
   @media (max-width: 800px) {
     .section-header { margin-bottom: 40px; }
     .grid { grid-template-columns: 1fr; gap: 18px; }

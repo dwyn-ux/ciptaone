@@ -4,104 +4,153 @@ import { site } from '../data/site';
 
 <section id="contact" class="section contact-section" data-chapter="08">
   <div class="shell contact">
-    <div class="mono contact-tag">
-      <span class="chapter-num">08</span>
-      <span class="chapter-rule" aria-hidden="true"></span>
-      <span>Start a project</span>
-    </div>
+    <div class="contact-grid">
+      <div class="contact-copy">
+        <div class="mono contact-tag">
+          <span class="chapter-num">08</span>
+          <span class="chapter-rule" aria-hidden="true"></span>
+          <span data-en="Start a project" data-id="Mulai proyek">Start a project</span>
+        </div>
 
-    <h2 class="t-contact">
-      <span class="line">HAVE SOMETHING</span>
-      <span class="line indent">WORTH BUILDING?</span>
-      <span class="line accent-line">LET'S TALK.</span>
-    </h2>
+        <h2 class="t-contact">
+          <span class="line" data-en="LET'S BUILD" data-id="MARI BANGUN">LET'S BUILD</span>
+          <span class="line" data-en="SOMETHING" data-id="SESUATU YANG">SOMETHING</span>
+          <span class="line accent-line" data-en="USEFUL." data-id="BERGUNA.">USEFUL.</span>
+        </h2>
 
-    <div class="contact-bottom">
-      <a
-        class="email"
-        href={`mailto:${site.email}`}
-        data-magnetic
-        data-cursor="OPEN"
-      >
-        <span>{site.email}</span>
-        <span class="arrow" aria-hidden="true">↗</span>
-      </a>
+        <p class="contact-intro" data-en="Have a real problem worth solving? Tell us what needs to work better, and we will shape the right digital system around it." data-id="Punya masalah nyata yang perlu diselesaikan? Ceritakan apa yang harus bekerja lebih baik, lalu kami akan membentuk sistem digital yang tepat.">Have a real problem worth solving? Tell us what needs to work better, and we will shape the right digital system around it.</p>
+      </div>
 
-      <ul class="socials">
-        {site.socials.map((s) => (
-          <li>
-            <a href={s.href} data-cursor="OPEN" rel="noopener noreferrer">
-              {s.label}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <div class="contact-card">
+        <span class="mono card-label" data-en="PROJECT INQUIRIES" data-id="PERTANYAAN PROYEK">PROJECT INQUIRIES</span>
+        <a class="email" href={`mailto:${site.email}`} data-magnetic data-cursor="OPEN">
+          <span>{site.email}</span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+        <div class="contact-status">
+          <span class="dot" aria-hidden="true"></span>
+          <span class="mono" data-en="Taking selected work for 2026" data-id="Menerima proyek terpilih untuk 2026">Taking selected work for 2026</span>
+        </div>
+        <ul class="socials">
+          {site.socials.map((s) => (
+            <li>
+              <a href={s.href} data-cursor="OPEN" rel="noopener noreferrer">
+                {s.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
-  .contact-section { padding: 120px 0 80px; min-height: 88vh; }
-  .contact {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 48px;
+  .contact-section {
+    padding: 130px 0 96px;
+    min-height: 74vh;
+    background:
+      radial-gradient(circle at 87% 18%, rgba(184,255,61,.20), transparent 22%),
+      radial-gradient(circle at 74% 82%, rgba(64,111,218,.15), transparent 34%),
+      #0d1110;
+    color: var(--paper);
+    position: relative;
+    overflow: hidden;
   }
+  .contact-section::after {
+    content: "C1";
+    position: absolute;
+    right: -2vw;
+    bottom: -12vw;
+    font-size: clamp(220px, 33vw, 540px);
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: -.13em;
+    color: rgba(255,255,255,.025);
+    pointer-events: none;
+  }
+  .contact { position: relative; z-index: 1; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.22fr) minmax(340px, .78fr);
+    gap: clamp(50px, 9vw, 150px);
+    align-items: end;
+  }
+  .contact-copy { max-width: 850px; }
   .contact-tag {
     display: flex;
     align-items: center;
     gap: 12px;
-    color: var(--muted);
+    color: rgba(241,241,236,.52);
     max-width: 320px;
+    margin-bottom: 42px;
   }
-  .chapter-num { color: var(--paper); }
-  .chapter-rule { flex: 1; height: 1px; background: var(--line); }
-
-  .t-contact { margin: 0; color: var(--paper); }
+  .chapter-num { color: var(--accent); }
+  .chapter-rule { flex: 1; height: 1px; background: rgba(241,241,236,.18); }
+  .t-contact {
+    margin: 0;
+    color: var(--paper);
+    position: relative;
+    z-index: 1;
+    font-size: clamp(64px, 9.4vw, 142px);
+    line-height: .79;
+  }
   .line { display: block; }
-  .indent { margin-left: 12vw; }
-  .accent-line { color: var(--accent); transition: transform .8s var(--ease); }
-  .contact:hover .accent-line { transform: translateX(3vw); }
-
-  .contact-bottom {
+  .accent-line { color: var(--accent); }
+  .contact-intro { max-width: 470px; margin: 30px 0 0; color: rgba(241,241,236,.60); font-size: 15px; line-height: 1.65; }
+  .contact-card {
+    padding: 28px;
+    min-height: 310px;
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 24px;
+    background: rgba(255,255,255,.045);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.09), 0 24px 60px rgba(0,0,0,.18);
+    backdrop-filter: blur(16px);
     display: flex;
-    justify-content: space-between;
-    align-items: end;
-    gap: 24px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
   }
+  .card-label { color: rgba(241,241,236,.48); }
   .email {
-    font-size: 22px;
-    border-bottom: 1px solid #777;
-    padding-bottom: 8px;
+    font-size: clamp(20px, 2.1vw, 31px);
+    border-bottom: 1px solid rgba(241,241,236,.25);
+    padding: 0 0 11px;
     display: inline-flex;
     align-items: center;
     gap: 10px;
+    margin-top: auto;
+    color: var(--paper);
     transition: border-color .3s var(--ease), color .3s var(--ease);
   }
   .email:hover { border-color: var(--accent); color: var(--accent); }
   .arrow { display: inline-block; transition: transform .4s var(--ease); }
   .email:hover .arrow { transform: translate(4px, -4px); }
+  .contact-status { display: flex; align-items: center; gap: 10px; margin-top: 20px; color: rgba(241,241,236,.52); }
+  .contact-status .dot { width: 6px; height: 6px; }
   .socials {
     list-style: none;
-    margin: 0; padding: 0;
+    margin: 30px 0 0;
+    padding: 14px 0 0;
     display: flex;
     gap: 22px;
-    color: var(--muted);
+    border-top: 1px solid rgba(255,255,255,.12);
+    width: 100%;
+    color: var(--paper);
   }
   .socials a {
     font: 500 10px/1.3 "DM Mono", monospace;
     letter-spacing: .08em;
     text-transform: uppercase;
-    transition: color .25s var(--ease);
+    transition: color .25s var(--ease), opacity .25s var(--ease);
+    opacity: .54;
   }
-  .socials a:hover { color: var(--accent); }
+  .socials a:hover { color: var(--accent); opacity: 1; }
 
   @media (max-width: 800px) {
-    .contact-section { min-height: 75vh; padding: 64px 0 56px; }
-    .indent { margin-left: 0; }
-    .contact-bottom { flex-direction: column; align-items: flex-start; }
-    .socials { margin-top: 12px; }
+    .contact-section { min-height: auto; padding: 82px 0 64px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .contact-tag { margin-bottom: 30px; }
+    .t-contact { font-size: clamp(58px, 16vw, 90px); }
+    .contact-card { min-height: 270px; padding: 22px; }
   }
 </style>

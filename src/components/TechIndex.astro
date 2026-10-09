@@ -8,7 +8,9 @@ import { stack } from '../data/stack';
     <SectionHeader
       number="04"
       title="Stack"
+      titleId="Teknologi"
       description="A small, deliberate toolbox. Learn the tools deeply. Use the right one for the problem."
+      descriptionId="Toolbox yang kecil dan terarah. Kuasai tools secara mendalam. Pakai yang tepat untuk masalahnya."
     />
 
     <ol class="stack-index" data-reveal>
@@ -17,7 +19,7 @@ import { stack } from '../data/stack';
           <span class="mono stack-num">{item.index}</span>
           <span class="mono stack-group">{item.group}</span>
           <strong class="stack-name">{item.name}</strong>
-          <span class="stack-note mono">{item.note}</span>
+          <span class="stack-note mono" data-en={item.note} data-id={item.noteId}>{item.note}</span>
           <span class="stack-arrow" aria-hidden="true">↗</span>
         </li>
       ))}
@@ -35,12 +37,15 @@ import { stack } from '../data/stack';
     border-left: 1px solid var(--line);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--surface);
   }
   .stack-item {
-    min-height: 210px;
+    min-height: 225px;
     border-right: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
-    padding: 22px;
+    padding: 26px;
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto auto;

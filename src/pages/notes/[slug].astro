@@ -1,0 +1,67 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { notes } from '../../data/stack';
+
+export function getStaticPaths() {
+  return notes.map((note) => ({ params: { slug: note.slug }, props: { note } }));
+}
+
+const { note } = Astro.props;
+---
+
+<Layout title={`${note.title} — Cipta One`} description={note.intro}>
+  <main class="note-page">
+    <article class="shell note-article">
+      <a class="back mono" href="/#notes" data-en="← Back to engineering notes" data-id="← Kembali ke catatan engineering">← Back to engineering notes</a>
+      <header>
+        <span class="note-meta mono">{note.index} / {note.group}</span>
+        <h1 data-en={note.title} data-id={note.titleId}>{note.title}</h1>
+        <p class="lead" data-en={note.introId} data-id={note.intro}>{note.introId}</p>
+      </header>
+
+      <section class="article-body">
+        <div class="body-label mono" data-en="The practical take" data-id="Inti praktiknya">The practical take</div>
+        <div>
+          <p data-en="Good technical decisions only matter when they make the product easier to use, maintain, and improve. The right answer is usually the one that removes the most friction for the people who depend on the system every day." data-id="Keputusan teknis hanya bernilai saat membuat produk lebih mudah dipakai, dirawat, dan ditingkatkan. Jawaban yang tepat biasanya mengurangi hambatan bagi orang yang mengandalkan sistem setiap hari.">Good technical decisions only matter when they make the product easier to use, maintain, and improve. The right answer is usually the one that removes the most friction for the people who depend on the system every day.</p>
+          <ol>
+            {note.points.map((point: string, index: number) => (
+              <li data-en={note.pointsEn[index]} data-id={point}>{note.pointsEn[index]}</li>
+            ))}
+          </ol>
+          <p data-en="That is the standard we use: understand the real context first, then choose the smallest reliable system that moves the work forward." data-id="Itulah standar kami: pahami konteks nyata lebih dulu, lalu pilih sistem terkecil yang andal untuk mendorong pekerjaan maju.">That is the standard we use: understand the real context first, then choose the smallest reliable system that moves the work forward.</p>
+        </div>
+      </section>
+
+      <a class="next-cta" href="/#contact">
+        <span class="mono" data-en="Have a problem to untangle?" data-id="Punya masalah yang ingin diurai?">Have a problem to untangle?</span>
+        <strong><span data-en="Let's talk" data-id="Mari bicara">Let's talk</span> <span>↗</span></strong>
+      </a>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .note-page { min-height: 100vh; padding: 112px 0 96px; }
+  .note-article { max-width: 1100px; }
+  .back { color: var(--muted); display: inline-flex; margin-bottom: 88px; transition: color .25s var(--ease); }
+  .back:hover { color: var(--accent); }
+  .note-meta { color: var(--accent); }
+  h1 { max-width: 980px; margin: 24px 0 0; font-size: clamp(46px, 7vw, 102px); line-height: .89; letter-spacing: -.085em; }
+  .lead { max-width: 710px; margin: 42px 0 0; color: var(--paper); font-size: clamp(19px, 2.1vw, 27px); line-height: 1.42; letter-spacing: -.035em; }
+  .article-body { display: grid; grid-template-columns: 200px minmax(0, 620px); gap: 52px; margin: 100px 0 80px; padding-top: 28px; border-top: 1px solid var(--line); }
+  .body-label { color: var(--muted); }
+  .article-body p { margin: 0; color: var(--muted); font-size: 17px; line-height: 1.75; }
+  ol { margin: 36px 0; padding: 0; list-style: none; counter-reset: take; }
+  li { counter-increment: take; padding: 16px 0; border-top: 1px solid var(--line); color: var(--paper); font-size: 18px; line-height: 1.45; }
+  li::before { content: "0" counter(take); font: 500 10px "DM Mono", monospace; color: var(--accent); margin-right: 18px; }
+  .next-cta { display: flex; justify-content: space-between; align-items: end; gap: 20px; padding: 28px; border-radius: 20px; background: var(--surface); border: 1px solid var(--line); }
+  .next-cta span { color: var(--muted); }
+  .next-cta strong { font-size: clamp(24px, 3vw, 42px); letter-spacing: -.06em; }
+  .next-cta strong span { color: var(--accent); }
+  @media (max-width: 800px) {
+    .note-page { padding: 90px 0 64px; }
+    .back { margin-bottom: 56px; }
+    .article-body { grid-template-columns: 1fr; gap: 26px; margin: 72px 0 56px; }
+    .next-cta { align-items: flex-start; flex-direction: column; }
+  }
+</style>
