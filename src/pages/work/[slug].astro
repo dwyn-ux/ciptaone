@@ -25,7 +25,8 @@ const title = `${project.title.join(' ')} — Cipta One`;
       </header>
 
       <div class="case-visual">
-        <img src={project.asset} alt={project.alt} />
+        <img class="case-image-dark" src={project.asset} alt={project.alt} />
+        <img class="case-image-light" src={project.assetLight} alt="" />
       </div>
 
       <section class="case-details">
@@ -63,6 +64,9 @@ const title = `${project.title.join(' ')} — Cipta One`;
   .case-head p { max-width: 620px; margin: 38px 0 0; color: var(--muted); font-size: 17px; line-height: 1.65; }
   .case-visual { margin: 84px 0; border: 1px solid rgba(255,255,255,.13); border-radius: 28px; overflow: hidden; background: #101513; box-shadow: 0 30px 90px rgba(0,0,0,.28); }
   .case-visual img { display: block; width: 100%; aspect-ratio: 16/8; object-fit: cover; }
+  .case-image-light { display: none !important; }
+  :global(body.theme-light) .case-image-dark { display: none !important; }
+  :global(body.theme-light) .case-image-light { display: block !important; }
   .case-details { display: grid; grid-template-columns: 200px minmax(0, 1fr) 220px; gap: 40px; padding: 44px 0 84px; border-top: 1px solid var(--line); }
   .detail-label, .case-stack span { color: var(--muted); }
   h2 { margin: 0; max-width: 520px; font-size: clamp(30px, 4vw, 56px); line-height: .96; letter-spacing: -.065em; }

@@ -9,6 +9,7 @@ export type Project = {
   stack: string;
   href: string;
   asset: string;
+  assetLight: string;
   alt: string;
   paper: string;
   highlights: string[];
@@ -29,6 +30,7 @@ export const projects: Project[] = [
     stack: 'Flutter / API',
     href: '/work/be-present/',
     asset: '/assets/project-attendance-pro.png',
+    assetLight: '/assets/project-attendance-light.png',
     alt: 'BE Present — aplikasi absensi dengan barcode dan RFID.',
     paper: '#e9e6de',
     highlights: ['Barcode & RFID check-in', 'Verifikasi otomatis', 'Status hadir real-time'],
@@ -47,6 +49,7 @@ export const projects: Project[] = [
     stack: 'Flutter / Audio',
     href: '/work/bel-school/',
     asset: '/assets/project-bell-pro.png',
+    assetLight: '/assets/project-bell-light.png',
     alt: 'Bel School — bel sekolah digital dengan 4 audio dan mode mic pengumuman.',
     paper: '#d7d3ca',
     highlights: ['Jadwal bel terpusat', 'Empat pilihan audio', 'Mode pengumuman langsung'],
@@ -65,6 +68,7 @@ export const projects: Project[] = [
     stack: 'React / Vite / Tailwind',
     href: '/work/star-cuan/',
     asset: '/assets/project-finance-pro.png',
+    assetLight: '/assets/project-finance-light.png',
     alt: 'Star Cuan — dashboard pendapatan untuk ojol.',
     paper: '#e2dfd6',
     highlights: ['Ringkasan harian & bulanan', 'Grafik pendapatan jelas', 'Dashboard untuk pekerja ojol'],
@@ -83,6 +87,7 @@ export const projects: Project[] = [
     stack: 'PHP / MySQL',
     href: '/work/kasly/',
     asset: '/assets/project-finance-pro.png',
+    assetLight: '/assets/project-finance-light.png',
     alt: 'Kasly — pencatatan keuangan pemasukan dan pengeluaran.',
     paper: '#dfd9c8',
     highlights: ['Pencatatan pemasukan', 'Pengeluaran terstruktur', 'Laporan periodik sederhana'],
@@ -101,6 +106,7 @@ export const projects: Project[] = [
     stack: 'PHP / MySQL',
     href: '/work/system-school/',
     asset: '/assets/project-school-pro.png',
+    assetLight: '/assets/project-school-light.png',
     alt: 'System School — portal sekolah dengan fitur lengkap.',
     paper: '#c8c5bd',
     highlights: ['Pendaftaran digital', 'Operasional sekolah terpadu', 'Laporan & perpustakaan digital'],
@@ -119,6 +125,7 @@ export const projects: Project[] = [
     stack: 'Flutter / API',
     href: '/work/tahfidz-system/',
     asset: '/assets/project-tahfidz-pro.png',
+    assetLight: '/assets/project-tahfidz-light.png',
     alt: 'Tahfidz System — pencatatan tahfidz dengan notifikasi WhatsApp.',
     paper: '#dcd6c5',
     highlights: ['Progress hafalan personal', 'Rekap perkembangan', 'Notifikasi untuk orang tua'],

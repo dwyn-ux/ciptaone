@@ -24,7 +24,8 @@ const slug = `project-${project.index}`;
 
   <div class="project-visual preview-follow">
     <span class="visual-label mono">LIVE PRODUCT PREVIEW</span>
-    <img src={project.asset} alt={project.alt} loading="lazy" decoding="async" />
+    <img class="project-image-dark" src={project.asset} alt={project.alt} loading="lazy" decoding="async" />
+    <img class="project-image-light" src={project.assetLight} alt="" loading="lazy" decoding="async" />
   </div>
 
   <div class="project-body">
@@ -95,6 +96,7 @@ const slug = `project-${project.index}`;
     display: block;
     transition: transform 1s var(--ease), filter .6s;
   }
+  .project-visual .project-image-light { display: none; }
   .project:hover { transform: translateY(-8px); border-color: rgba(184,255,61,.42); box-shadow: 0 30px 70px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.13); }
   .project:hover .project-visual { transform: scale(.985); border-color: rgba(184,255,61,.34); }
   .project:hover .project-visual img { transform: scale(1.035); filter: contrast(1.03) saturate(1.08); }
@@ -157,6 +159,13 @@ const slug = `project-${project.index}`;
   :global(body.theme-light) .project[data-index="06"] { --card-bg: #f2f4e9 !important; }
   :global(body.theme-light) .project-head { color: #62685d; }
   :global(body.theme-light) .project-visual { border-color: rgba(26,29,22,.24); }
+  :global(body.theme-light) .project-visual .project-image-dark { display: none; }
+  :global(body.theme-light) .project-visual .project-image-light { display: block; }
+  :global(body.theme-light) .visual-label {
+    color: #1a1d16;
+    background: rgba(255,255,255,.88);
+    border-color: rgba(26,29,22,.15);
+  }
   :global(body.theme-light) .project-desc { color: #41483b; }
   :global(body.theme-light) .project-foot {
     border-top-color: rgba(26,29,22,.18);
