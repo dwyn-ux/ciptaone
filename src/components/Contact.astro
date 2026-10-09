@@ -47,13 +47,21 @@ import { site } from '../data/site';
 
 <style>
   .contact-section {
+    --contact-bg: #0d1110;
+    --contact-ink: var(--paper);
+    --contact-muted: rgba(241,241,236,.60);
+    --contact-subtle: rgba(241,241,236,.52);
+    --contact-line: rgba(241,241,236,.18);
+    --contact-card-line: rgba(255,255,255,.15);
+    --contact-card-bg: rgba(255,255,255,.045);
+    --contact-card-shadow: inset 0 1px 0 rgba(255,255,255,.09), 0 24px 60px rgba(0,0,0,.18);
     padding: 130px 0 96px;
     min-height: 74vh;
     background:
       radial-gradient(circle at 87% 18%, rgba(184,255,61,.20), transparent 22%),
       radial-gradient(circle at 74% 82%, rgba(64,111,218,.15), transparent 34%),
-      #0d1110;
-    color: var(--paper);
+      var(--contact-bg);
+    color: var(--contact-ink);
     position: relative;
     overflow: hidden;
   }
@@ -81,15 +89,15 @@ import { site } from '../data/site';
     display: flex;
     align-items: center;
     gap: 12px;
-    color: rgba(241,241,236,.52);
+    color: var(--contact-subtle);
     max-width: 320px;
     margin-bottom: 42px;
   }
   .chapter-num { color: var(--accent); }
-  .chapter-rule { flex: 1; height: 1px; background: rgba(241,241,236,.18); }
+  .chapter-rule { flex: 1; height: 1px; background: var(--contact-line); }
   .t-contact {
     margin: 0;
-    color: var(--paper);
+    color: var(--contact-ink);
     position: relative;
     z-index: 1;
     font-size: clamp(64px, 9.4vw, 142px);
@@ -97,35 +105,35 @@ import { site } from '../data/site';
   }
   .line { display: block; }
   .accent-line { color: var(--accent); }
-  .contact-intro { max-width: 470px; margin: 30px 0 0; color: rgba(241,241,236,.60); font-size: 15px; line-height: 1.65; }
+  .contact-intro { max-width: 470px; margin: 30px 0 0; color: var(--contact-muted); font-size: 15px; line-height: 1.65; }
   .contact-card {
     padding: 28px;
     min-height: 310px;
-    border: 1px solid rgba(255,255,255,.15);
+    border: 1px solid var(--contact-card-line);
     border-radius: 24px;
-    background: rgba(255,255,255,.045);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.09), 0 24px 60px rgba(0,0,0,.18);
+    background: var(--contact-card-bg);
+    box-shadow: var(--contact-card-shadow);
     backdrop-filter: blur(16px);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
-  .card-label { color: rgba(241,241,236,.48); }
+  .card-label { color: var(--contact-subtle); }
   .email {
     font-size: clamp(20px, 2.1vw, 31px);
-    border-bottom: 1px solid rgba(241,241,236,.25);
+    border-bottom: 1px solid var(--contact-line);
     padding: 0 0 11px;
     display: inline-flex;
     align-items: center;
     gap: 10px;
     margin-top: auto;
-    color: var(--paper);
+    color: var(--contact-ink);
     transition: border-color .3s var(--ease), color .3s var(--ease);
   }
   .email:hover { border-color: var(--accent); color: var(--accent); }
   .arrow { display: inline-block; transition: transform .4s var(--ease); }
   .email:hover .arrow { transform: translate(4px, -4px); }
-  .contact-status { display: flex; align-items: center; gap: 10px; margin-top: 20px; color: rgba(241,241,236,.52); }
+  .contact-status { display: flex; align-items: center; gap: 10px; margin-top: 20px; color: var(--contact-subtle); }
   .contact-status .dot { width: 6px; height: 6px; }
   .socials {
     list-style: none;
@@ -133,9 +141,9 @@ import { site } from '../data/site';
     padding: 14px 0 0;
     display: flex;
     gap: 22px;
-    border-top: 1px solid rgba(255,255,255,.12);
+    border-top: 1px solid var(--contact-card-line);
     width: 100%;
-    color: var(--paper);
+    color: var(--contact-ink);
   }
   .socials a {
     font: 500 10px/1.3 "DM Mono", monospace;
@@ -145,6 +153,22 @@ import { site } from '../data/site';
     opacity: .54;
   }
   .socials a:hover { color: var(--accent); opacity: 1; }
+
+  :global(body.theme-light) .contact-section {
+    --contact-bg: #edf0e4;
+    --contact-ink: #1a1d16;
+    --contact-muted: #4e5745;
+    --contact-subtle: #606958;
+    --contact-line: rgba(26,29,22,.22);
+    --contact-card-line: rgba(26,29,22,.20);
+    --contact-card-bg: rgba(255,255,255,.56);
+    --contact-card-shadow: inset 0 1px 0 rgba(255,255,255,.82), 0 24px 60px rgba(57,68,43,.12);
+    background:
+      radial-gradient(circle at 86% 15%, rgba(111,158,45,.25), transparent 24%),
+      radial-gradient(circle at 73% 86%, rgba(110,137,76,.16), transparent 36%),
+      var(--contact-bg);
+  }
+  :global(body.theme-light) .contact-section::after { color: rgba(26,29,22,.055); }
 
   @media (max-width: 800px) {
     .contact-section { min-height: auto; padding: 82px 0 64px; }
