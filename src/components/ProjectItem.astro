@@ -140,6 +140,34 @@ const slug = `project-${project.index}`;
   }
   .project:hover .arrow { transform: translate(6px, -6px); }
 
+  /* The artwork stays cinematic, while the card itself follows the page theme. */
+  :global(body.theme-light) .project {
+    --card-bg: #f7f3e9 !important;
+    --paper: #1a1d16 !important;
+    background:
+      radial-gradient(circle at 94% 0%, rgba(101,143,47,.16), transparent 31%),
+      var(--card-bg);
+    border-color: rgba(26,29,22,.18);
+    box-shadow: 0 20px 48px rgba(56,65,42,.12), inset 0 1px 0 rgba(255,255,255,.9);
+  }
+  :global(body.theme-light) .project[data-index="02"] { --card-bg: #f0f3eb !important; }
+  :global(body.theme-light) .project[data-index="03"],
+  :global(body.theme-light) .project[data-index="04"] { --card-bg: #f5f1e7 !important; }
+  :global(body.theme-light) .project[data-index="05"] { --card-bg: #eef2e9 !important; }
+  :global(body.theme-light) .project[data-index="06"] { --card-bg: #f2f4e9 !important; }
+  :global(body.theme-light) .project-head { color: #62685d; }
+  :global(body.theme-light) .project-visual { border-color: rgba(26,29,22,.24); }
+  :global(body.theme-light) .project-desc { color: #41483b; }
+  :global(body.theme-light) .project-foot {
+    border-top-color: rgba(26,29,22,.18);
+    color: #62685d;
+  }
+  :global(body.theme-light) .project:hover {
+    border-color: rgba(74,106,31,.55);
+    box-shadow: 0 28px 58px rgba(56,65,42,.18), inset 0 1px 0 rgba(255,255,255,.9);
+  }
+  :global(body.theme-light) .project:hover .project-foot { color: #1a1d16; }
+
   @media (max-width: 800px) {
     .project { padding: 14px; }
     .project-visual { height: 230px; }
