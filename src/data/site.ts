@@ -15,6 +15,7 @@ export const site = {
   ],
   nav: [
     { label: 'Work', labelId: 'Karya', href: '#work' },
+    { label: 'Rilis App', labelId: 'Rilis App', href: '/rilis-aplikasi' },
     { label: 'Team', labelId: 'Tim', href: '#team' },
     { label: 'Stack', labelId: 'Teknologi', href: '#stack' },
     { label: 'Method', labelId: 'Metode', href: '#method' },

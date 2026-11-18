@@ -1,0 +1,186 @@
+---
+import { packages, formatIDR } from '../data/playstore';
+---
+
+<section id="layanan" class="section service-teaser" data-chapter="NEW">
+  <div class="shell teaser-grid">
+    <div class="teaser-copy" data-reveal>
+      <div class="mono teaser-tag">
+        <span class="chapter-num">NEW</span>
+        <span class="chapter-rule" aria-hidden="true"></span>
+        <span data-en="PLAY STORE RELEASE" data-id="RILIS PLAY STORE">PLAY STORE RELEASE</span>
+      </div>
+
+      <h2 class="t-section teaser-title">
+        <span data-en="Your app, live on" data-id="Aplikasi kamu, tayang di">Your app, live on</span><br />
+        <span class="accent-word" data-en="Google Play." data-id="Google Play.">Google Play.</span>
+      </h2>
+
+      <p class="teaser-body" data-en="We handle the Play Console setup, policy checks, listing copy, and submission — you keep the account and the credit." data-id="Kami urus setup Play Console, pemeriksaan kebijakan, copy listing, dan submit — akun dan pujian tetap milik kamu.">We handle the Play Console setup, policy checks, listing copy, and submission — you keep the account and the credit.</p>
+
+      <div class="teaser-actions">
+        <a class="cta" href="/rilis-aplikasi" data-cursor="OPEN">
+          <span data-en="See the service" data-id="Lihat layanan">See the service</span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="cta cta-ghost" href="/rilis-aplikasi#checkout" data-cursor="OPEN">
+          <span data-en="Checkout" data-id="Checkout">Checkout</span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <div class="teaser-meta mono">
+        <span>{formatIDR(packages[0].price)} — {formatIDR(packages[2].price)}</span>
+        <span class="meta-dot" aria-hidden="true">·</span>
+        <span data-en="PAYMENT VIA DUITKU" data-id="PEMBAYARAN VIA DUITKU">PAYMENT VIA DUITKU</span>
+      </div>
+    </div>
+
+    <div class="release-card" data-reveal>
+      <div class="release-head mono">
+        <span data-en="RELEASE / CHECKLIST" data-id="RILIS / CHECKLIST">RELEASE / CHECKLIST</span>
+        <span class="release-id">C1 / PLAY</span>
+      </div>
+      <ul class="release-list">
+        <li><span class="tick" aria-hidden="true">✓</span><span data-en="Build & permission audit" data-id="Audit build & izin">Build & permission audit</span><span class="mono row-id">01</span></li>
+        <li><span class="tick" aria-hidden="true">✓</span><span data-en="Privacy policy & Data Safety" data-id="Kebijakan privasi & Data Safety">Privacy policy & Data Safety</span><span class="mono row-id">02</span></li>
+        <li><span class="tick" aria-hidden="true">✓</span><span data-en="Store listing & screenshots" data-id="Listing toko & screenshot">Store listing & screenshots</span><span class="mono row-id">03</span></li>
+        <li><span class="tick" aria-hidden="true">✓</span><span data-en="Submit & review monitoring" data-id="Submit & monitoring review">Submit & review monitoring</span><span class="mono row-id">04</span></li>
+      </ul>
+      <div class="release-foot mono">
+        <span class="pulse" aria-hidden="true"></span>
+        <span data-en="SLOTS OPEN" data-id="SLOT TERBUKA">SLOTS OPEN</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .service-teaser {
+    padding: 120px 0;
+    border-bottom: 1px solid var(--line);
+    background:
+      radial-gradient(circle at 88% 22%, rgba(184, 255, 61, .11), transparent 32%),
+      var(--surface);
+  }
+  .teaser-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr);
+    gap: clamp(40px, 7vw, 110px);
+    align-items: center;
+  }
+  .teaser-tag {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 320px;
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+  .chapter-num { color: var(--accent); }
+  .chapter-rule { flex: 1; height: 1px; background: var(--line); }
+  .teaser-title { margin: 0; }
+  .accent-word { color: var(--accent); }
+  .teaser-body {
+    max-width: 520px;
+    margin: 28px 0 32px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .teaser-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 22px;
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: #0a0a0a;
+    font-size: 12px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    transition: background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
+  }
+  .cta:hover { background: var(--paper); border-color: var(--paper); color: var(--ink); }
+  .cta-ghost { color: var(--muted); background: transparent; border-color: var(--line); }
+  .cta-ghost:hover { color: var(--paper); background: var(--surface-raised); border-color: var(--muted); }
+  .arrow { display: inline-block; transition: transform .35s var(--ease); }
+  .cta:hover .arrow { transform: translate(3px, -3px); }
+  .teaser-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 34px;
+    color: var(--muted);
+  }
+  .meta-dot { color: var(--accent); }
+
+  .release-card {
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 20px;
+    background:
+      linear-gradient(150deg, rgba(255,255,255,.05), transparent 45%),
+      var(--surface-raised);
+    box-shadow: 0 30px 80px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.04);
+  }
+  .release-head { display: flex; justify-content: space-between; color: var(--muted); padding: 4px 6px 18px; }
+  .release-id { color: var(--accent); }
+  .release-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .release-list li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 17px 6px;
+    border-bottom: 1px solid var(--line);
+    font-size: 13px;
+    color: var(--paper);
+  }
+  .tick {
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    color: var(--accent);
+    font-size: 11px;
+  }
+  .row-id { margin-left: auto; color: var(--muted); }
+  .release-foot { display: flex; align-items: center; gap: 10px; padding: 18px 6px 2px; color: var(--paper); }
+  .pulse {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 rgba(184,255,61,.5);
+    animation: teaser-pulse 2.4s ease-out infinite;
+  }
+  @keyframes teaser-pulse {
+    70% { box-shadow: 0 0 0 10px rgba(184,255,61,0); }
+    100% { box-shadow: 0 0 0 0 rgba(184,255,61,0); }
+  }
+  :global(body.theme-light) .service-teaser {
+    background:
+      radial-gradient(circle at 88% 22%, rgba(74, 106, 31, .12), transparent 32%),
+      var(--ink);
+  }
+  :global(body.theme-light) .teaser-body { color: #4e5745; }
+  :global(body.theme-light) .cta-ghost { color: #4e5745; }
+  :global(body.theme-light) .cta-ghost:hover { color: var(--paper); }
+
+  @media (max-width: 1024px) {
+    .teaser-grid { grid-template-columns: 1fr; }
+    .release-card { max-width: 560px; justify-self: center; width: 100%; }
+  }
+  @media (max-width: 800px) {
+    .service-teaser { padding: 82px 0; }
+    .teaser-title { font-size: clamp(32px, 8.5vw, 52px); }
+    .teaser-body { font-size: 13px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pulse { animation: none; }
+  }
+</style>

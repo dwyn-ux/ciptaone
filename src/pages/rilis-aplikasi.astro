@@ -1,0 +1,602 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import Contact from '../components/Contact.astro';
+import { site } from '../data/site';
+import { playstore, packages, formatIDR } from '../data/playstore';
+---
+
+<Layout
+  title="Jasa Rilis Aplikasi Play Store — Cipta One"
+  description="Layanan rilis aplikasi Android ke Google Play: audit kebijakan, listing, Data Safety, submit, dan pendampingan review. Pembayaran aman via Duitku."
+  canonical={`${site.url}/rilis-aplikasi`}
+>
+  <section id="top" class="service-hero">
+    <div class="shell hero-grid">
+      <div class="hero-copy">
+        <div class="mono hero-eyebrow" data-en={playstore.eyebrow.en} data-id={playstore.eyebrow.id}>{playstore.eyebrow.en}</div>
+
+        <h1 class="t-display hero-title">
+          {playstore.titleLines.map((line) => (
+            <span class="hero-line"><i data-en={line.en} data-id={line.id}>{line.en}</i></span>
+          ))}
+        </h1>
+
+        <p class="t-body hero-sub" data-en={playstore.intro.en} data-id={playstore.intro.id}>{playstore.intro.en}</p>
+
+        <div class="hero-cta">
+          <a class="btn btn-solid" href="#checkout" data-magnetic data-cursor="OPEN">
+            <span data-en="Start checkout" data-id="Mulai checkout">Start checkout</span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="btn btn-ghost" href="#paket" data-cursor="VIEW">
+            <span data-en="Compare packages" data-id="Bandingkan paket">Compare packages</span>
+            <span class="arrow" aria-hidden="true">↓</span>
+          </a>
+        </div>
+
+        <div class="hero-facts">
+          {playstore.facts.map((fact) => (
+            <div class="fact">
+              <strong>{fact.value}</strong>
+              <span class="mono" data-en={fact.label.en} data-id={fact.label.id}>{fact.label.en}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <aside class="hero-panel" data-reveal aria-label="Release overview">
+        <div class="panel-bar mono">
+          <span data-en="RELEASE / CONSOLE" data-id="RILIS / KONSOL">RELEASE / CONSOLE</span>
+          <span class="panel-id">C1 · PLAY</span>
+        </div>
+        <div class="panel-visual" aria-hidden="true">
+          <div class="phone">
+            <div class="phone-notch"></div>
+            <div class="phone-app"><span></span><span></span><span></span></div>
+            <div class="phone-lines"><i></i><i></i><i></i></div>
+            <div class="phone-cta"></div>
+          </div>
+          <div class="orbit-ring ring-a"></div>
+          <div class="orbit-ring ring-b"></div>
+          <div class="signal mono">APK → AAB → LIVE</div>
+        </div>
+        <div class="panel-rows">
+          <div class="panel-row">
+            <span class="mono" data-en="STATUS" data-id="STATUS">STATUS</span>
+            <strong data-en="READY TO SHIP" data-id="SIAP DIRILIS">READY TO SHIP</strong>
+          </div>
+          <div class="panel-row">
+            <span class="mono" data-en="PAYMENT" data-id="PEMBAYARAN">PAYMENT</span>
+            <strong>DUITKU · QRIS / VA</strong>
+          </div>
+          <div class="panel-row">
+            <span class="mono" data-en="HANDOVER" data-id="SERAH TERIMA">HANDOVER</span>
+            <strong data-en="EMAIL + WHATSAPP" data-id="EMAIL + WHATSAPP">EMAIL + WHATSAPP</strong>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <span class="chapter-tag" aria-hidden="true">01</span>
+  </section>
+
+  <section id="masalah" class="section problem-section" data-chapter="02">
+    <div class="shell">
+      <SectionHeader
+        number="02"
+        title="Release"
+        titleId="Rilis"
+        description={playstore.problemTitle.en}
+        descriptionId={playstore.problemTitle.id}
+      />
+      <div class="problem-grid" data-reveal>
+        <p class="problem-body" data-en={playstore.problemBody.en} data-id={playstore.problemBody.id}>{playstore.problemBody.en}</p>
+        <ul class="problem-list">
+          {playstore.problems.map((item, i) => (
+            <li>
+              <span class="mono problem-index">0{i + 1}</span>
+              <span data-en={item.en} data-id={item.id}>{item.en}</span>
+              <span class="problem-x" aria-hidden="true">×</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="paket" class="section packages-section" data-chapter="03">
+    <div class="shell">
+      <SectionHeader
+        number="03"
+        title="Packages"
+        titleId="Paket"
+        description={playstore.packagesTitle.en}
+        descriptionId={playstore.packagesTitle.id}
+      />
+      <p class="packages-note" data-en={playstore.packagesBody.en} data-id={playstore.packagesBody.id}>{playstore.packagesBody.en}</p>
+
+      <div class="package-grid">
+        {packages.map((pkg) => (
+          <article class:list={['package', { featured: pkg.featured }]} data-reveal>
+            <div class="package-top">
+              <span class="mono package-index">{pkg.index} / {pkg.name.toUpperCase()}</span>
+              {pkg.featured && <span class="mono package-badge" data-en="MOST PICKED" data-id="PALING DIPILIH">MOST PICKED</span>}
+            </div>
+            <h3 class="package-name">{pkg.name}</h3>
+            <p class="package-summary" data-en={pkg.summary.en} data-id={pkg.summary.id}>{pkg.summary.en}</p>
+            <div class="package-price">
+              <strong>{formatIDR(pkg.price)}</strong>
+              <span class="mono" data-en={pkg.turnaround.en} data-id={pkg.turnaround.id}>{pkg.turnaround.en}</span>
+            </div>
+            <ul class="package-features">
+              {pkg.features.map((feature) => (
+                <li><span aria-hidden="true">↳</span><span data-en={feature.en} data-id={feature.id}>{feature.en}</span></li>
+              ))}
+            </ul>
+            <a class="package-cta" href={`#checkout`} data-select-package={pkg.id} data-cursor="OPEN">
+              <span data-en={pkg.cta.en} data-id={pkg.cta.id}>{pkg.cta.en}</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="proses" class="section process-section" data-chapter="04">
+    <div class="shell">
+      <SectionHeader
+        number="04"
+        title="Process"
+        titleId="Proses"
+        description={playstore.processTitle.en}
+        descriptionId={playstore.processTitle.id}
+      />
+      <ol class="release-steps" data-reveal>
+        {playstore.steps.map((step) => (
+          <li class="release-step">
+            <span class="mono step-index">{step.index}</span>
+            <h3 data-en={step.name.en} data-id={step.name.id}>{step.name.en}</h3>
+            <p data-en={step.desc.en} data-id={step.desc.id}>{step.desc.en}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section id="persiapan" class="section prepare-section" data-chapter="05">
+    <div class="shell prepare-grid">
+      <div data-reveal>
+        <SectionHeader
+          number="05"
+          title="Handover"
+          titleId="Persiapan"
+          description={playstore.prepareTitle.en}
+          descriptionId={playstore.prepareTitle.id}
+        />
+      </div>
+      <ul class="prepare-list" data-reveal>
+        {playstore.prepare.map((item, i) => (
+          <li>
+            <span class="mono">0{i + 1}</span>
+            <span data-en={item.en} data-id={item.id}>{item.en}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section id="faq" class="section faq-section" data-chapter="06">
+    <div class="shell faq-grid">
+      <div data-reveal>
+        <SectionHeader
+          number="06"
+          title="FAQ"
+          titleId="Pertanyaan"
+          description={playstore.faqTitle.en}
+          descriptionId={playstore.faqTitle.id}
+        />
+      </div>
+      <div class="faq-list" data-reveal>
+        {playstore.faqs.map((faq) => (
+          <details>
+            <summary>
+              <span data-en={faq.q.en} data-id={faq.q.id}>{faq.q.en}</span>
+              <span class="faq-plus" aria-hidden="true">+</span>
+            </summary>
+            <p data-en={faq.a.en} data-id={faq.a.id}>{faq.a.en}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="checkout" class="section checkout-section" data-chapter="07">
+    <div class="shell">
+      <SectionHeader
+        number="07"
+        title="Checkout"
+        titleId="Checkout"
+        description={playstore.checkoutTitle.en}
+        descriptionId={playstore.checkoutTitle.id}
+      />
+
+      <div class="checkout-grid" data-reveal>
+        <form id="release-form" class="checkout-form" novalidate>
+          <p class="checkout-intro" data-en={playstore.checkoutBody.en} data-id={playstore.checkoutBody.id}>{playstore.checkoutBody.en}</p>
+
+          <fieldset class="field-group">
+            <legend class="mono" data-en="01 / PILIH PAKET" data-id="01 / PILIH PAKET">01 / PILIH PAKET</legend>
+            <div class="package-picks">
+              {packages.map((pkg) => (
+                <label class:list={['pick', { featured: pkg.featured }]}>
+                  <input type="radio" name="package" value={pkg.id} checked={pkg.featured ? true : undefined} required />
+                  <span class="pick-body">
+                    <span class="pick-name">{pkg.name}</span>
+                    <span class="pick-price">{formatIDR(pkg.price)}</span>
+                  </span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <fieldset class="field-group">
+            <legend class="mono" data-en="02 / METODE PEMBAYARAN" data-id="02 / METODE PEMBAYARAN">02 / METODE PEMBAYARAN</legend>
+            <div id="payment-methods" class="payment-methods" aria-live="polite">
+              <p class="methods-loading mono" data-en="MENGAMBIL METODE PEMBAYARAN…" data-id="MENGAMBIL METODE PEMBAYARAN…">MENGAMBIL METODE PEMBAYARAN…</p>
+            </div>
+            <input type="hidden" name="paymentMethod" id="payment-method" value="" />
+          </fieldset>
+
+          <fieldset class="field-group">
+            <legend class="mono" data-en="03 / DETAIL KAMU" data-id="03 / DETAIL KAMU">03 / DETAIL KAMU</legend>
+            <div class="field-grid">
+              <label class="field">
+                <span class="mono" data-en="NAMA LENGKAP" data-id="NAMA LENGKAP">NAMA LENGKAP</span>
+                <input type="text" name="name" autocomplete="name" maxlength="80" required placeholder="Nama kamu" />
+              </label>
+              <label class="field">
+                <span class="mono" data-en="EMAIL" data-id="EMAIL">EMAIL</span>
+                <input type="email" name="email" autocomplete="email" maxlength="120" required placeholder="nama@email.com" />
+              </label>
+              <label class="field">
+                <span class="mono" data-en="WHATSAPP" data-id="WHATSAPP">WHATSAPP</span>
+                <input type="tel" name="whatsapp" autocomplete="tel" inputmode="numeric" maxlength="20" required placeholder="08xxxxxxxxxx" />
+              </label>
+              <label class="field">
+                <span class="mono" data-en="NAMA APLIKASI" data-id="NAMA APLIKASI">NAMA APLIKASI</span>
+                <input type="text" name="appName" maxlength="100" required placeholder="Nama di Play Store" />
+              </label>
+              <label class="field field-wide">
+                <span class="mono" data-en="KATEGORI APLIKASI" data-id="KATEGORI APLIKASI">KATEGORI APLIKASI</span>
+                <select name="category" required>
+                  <option value="" data-en="Pilih kategori" data-id="Pilih kategori">Pilih kategori</option>
+                  <option value="education" data-en="Pendidikan" data-id="Pendidikan">Pendidikan</option>
+                  <option value="business" data-en="Bisnis & Keuangan" data-id="Bisnis & Keuangan">Bisnis & Keuangan</option>
+                  <option value="utility" data-en="Utilitas & Produktivitas" data-id="Utilitas & Produktivitas">Utilitas & Produktivitas</option>
+                  <option value="health" data-en="Kesehatan & Kebugaran" data-id="Kesehatan & Kebugaran">Kesehatan & Kebugaran</option>
+                  <option value="entertainment" data-en="Hiburan & Gaya Hidup" data-id="Hiburan & Gaya Hidup">Hiburan & Gaya Hidup</option>
+                  <option value="other" data-en="Lainnya" data-id="Lainnya">Lainnya</option>
+                </select>
+              </label>
+              <label class="field field-wide">
+                <span class="mono" data-en="CATATAN (OPSIONAL)" data-id="CATATAN (OPSIONAL)">CATATAN (OPSIONAL)</span>
+                <textarea name="notes" rows="3" maxlength="1000" placeholder="Riwayat penolakan, target tanggal rilis, link build…"></textarea>
+              </label>
+            </div>
+          </fieldset>
+
+          <label class="agree">
+            <input type="checkbox" name="agree" required />
+            <span data-en="Saya setuju untuk dihubungi soal pesanan ini dan telah membaca proses di atas." data-id="Saya setuju untuk dihubungi soal pesanan ini dan telah membaca proses di atas.">Saya setuju untuk dihubungi soal pesanan ini dan telah membaca proses di atas.</span>
+          </label>
+
+          <p id="form-error" class="form-error" role="alert" hidden></p>
+
+          <button class="btn btn-solid submit-btn" type="submit" id="submit-btn">
+            <span data-en="CONTINUE TO DUITKU" data-id="LANJUT KE DUITKU">CONTINUE TO DUITKU</span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </button>
+
+          <p class="secure-note mono">
+            <span aria-hidden="true">🔒</span>
+            <span data-en="REDIRECT TO DUITKU · NO CARD DATA STORED HERE" data-id="DIARAHKAN KE DUITKU · TIDAK ADA DATA KARTU DISIMPAN DI SINI">REDIRECT TO DUITKU · NO CARD DATA STORED HERE</span>
+          </p>
+        </form>
+
+        <aside class="order-summary" data-reveal>
+          <div class="summary-head mono">
+            <span data-en="ORDER SUMMARY" data-id="RINGKASAN PESANAN">ORDER SUMMARY</span>
+            <span>C1 / PLAY</span>
+          </div>
+          <div class="summary-body">
+            <span class="mono summary-label" data-en="SELECTED PACKAGE" data-id="PAKET PILIHAN">SELECTED PACKAGE</span>
+            <strong id="summary-name" class="summary-name">Pro</strong>
+            <p id="summary-desc" class="summary-desc" data-en={packages[1].summary.en} data-id={packages[1].summary.id}>{packages[1].summary.en}</p>
+            <div class="summary-total">
+              <span class="mono" data-en="TOTAL" data-id="TOTAL">TOTAL</span>
+              <strong id="summary-price">{formatIDR(packages[1].price)}</strong>
+            </div>
+            <ul class="summary-list">
+              <li data-en="Payment processed by Duitku" data-id="Pembayaran diproses Duitku">Payment processed by Duitku</li>
+              <li data-en="Google Play fee billed by Google" data-id="Biaya Google Play ditagih Google">Google Play fee billed by Google</li>
+              <li data-en="Work starts after payment is confirmed" data-id="Pekerjaan dimulai setelah pembayaran terkonfirmasi">Work starts after payment is confirmed</li>
+            </ul>
+            <a class="summary-help" href={playstore.whatsapp} target="_blank" rel="noopener noreferrer" data-cursor="OPEN">
+              <span data-en="Ask a question first" data-id="Tanya dulu sebelum bayar">Ask a question first</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <Contact />
+</Layout>
+
+<script>
+  import '../scripts/reveal.ts';
+  import '../scripts/cursor.ts';
+  import '../scripts/scroll-progress.ts';
+  import '../scripts/magnetic.ts';
+  import '../scripts/impossible-checkbox.ts';
+  import '../scripts/playstore-checkout.ts';
+</script>
+
+<style>
+  .chapter-tag {
+    position: absolute;
+    right: 40px;
+    bottom: 28px;
+    font: 500 11px "DM Mono", monospace;
+    color: var(--muted);
+    opacity: .5;
+  }
+
+  /* HERO */
+  .service-hero {
+    position: relative;
+    padding: clamp(56px, 7vh, 96px) 0 64px;
+    border-bottom: 1px solid var(--line);
+    overflow: clip;
+  }
+  .service-hero::before {
+    content: "";
+    position: absolute;
+    width: min(60vw, 900px);
+    aspect-ratio: 1;
+    right: -24vw;
+    top: -42%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,255,61,.14), transparent 64%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(330px, .72fr);
+    gap: clamp(40px, 6vw, 96px);
+    align-items: center;
+  }
+  .hero-eyebrow { color: var(--accent); margin-bottom: 28px; font-size: 10px; }
+  .hero-eyebrow::before { content: ""; display: inline-block; width: 34px; height: 1px; margin-right: 12px; vertical-align: middle; background: var(--accent); }
+  .hero-title { font-size: clamp(58px, 9vw, 138px); }
+  .hero-line { display: block; }
+  .hero-line i { font-style: normal; }
+  .hero-line:last-child i { color: var(--accent); }
+  .hero-sub { max-width: 540px; margin: 32px 0 30px; }
+  .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 14px 22px;
+    border: 1px solid var(--accent);
+    font-size: 11px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    transition: background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease);
+  }
+  .btn-solid { background: var(--accent); color: #0a0a0a; }
+  .btn-solid:hover { background: var(--paper); border-color: var(--paper); }
+  .btn-ghost { color: var(--muted); border-color: var(--line); background: transparent; }
+  .btn-ghost:hover { color: var(--paper); border-color: var(--muted); background: var(--surface-raised); }
+  .arrow { display: inline-block; transition: transform .35s var(--ease); }
+  .btn:hover .arrow { transform: translate(3px, -3px); }
+  .hero-facts { display: grid; grid-template-columns: repeat(3, 1fr); max-width: 620px; margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--line); }
+  .fact { display: flex; flex-direction: column; gap: 6px; padding-right: 18px; }
+  .fact + .fact { padding-left: 18px; border-left: 1px solid var(--line); }
+  .fact strong { font-size: 22px; letter-spacing: -.06em; }
+  .fact span { color: var(--muted); font-size: 8px; }
+
+  .hero-panel { border: 1px solid var(--line); border-radius: 26px; padding: 16px; background: linear-gradient(150deg, rgba(255,255,255,.06), transparent 45%), var(--surface); box-shadow: 0 34px 90px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.05); }
+  .panel-bar { display: flex; justify-content: space-between; color: var(--muted); padding: 4px 6px 14px; }
+  .panel-id { color: var(--accent); }
+  .panel-visual { position: relative; aspect-ratio: 1 / .78; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 16px; background: radial-gradient(circle at 50% 45%, rgba(184,255,61,.12), transparent 58%), #0d0d0b; overflow: hidden; }
+  .phone { position: relative; width: 110px; height: 190px; border: 1px solid #4a4a44; border-radius: 18px; background: #151513; z-index: 2; box-shadow: 0 20px 45px rgba(0,0,0,.5); padding: 18px 12px 12px; }
+  .phone-notch { position: absolute; top: 7px; left: 50%; transform: translateX(-50%); width: 38px; height: 5px; border-radius: 999px; background: #3a3a35; }
+  .phone-app { display: grid; gap: 7px; }
+  .phone-app span:first-child { width: 38px; height: 38px; border-radius: 10px; background: var(--accent); }
+  .phone-app span:nth-child(2) { width: 70%; height: 6px; border-radius: 4px; background: #e9e9e2; }
+  .phone-app span:nth-child(3) { width: 45%; height: 5px; border-radius: 4px; background: #55554f; }
+  .phone-lines { display: grid; gap: 5px; margin-top: 16px; }
+  .phone-lines i { height: 4px; border-radius: 3px; background: #33332f; }
+  .phone-lines i:nth-child(2) { width: 80%; }
+  .phone-lines i:nth-child(3) { width: 60%; }
+  .phone-cta { position: absolute; bottom: 16px; left: 12px; right: 12px; height: 20px; border-radius: 5px; background: var(--accent); }
+  .orbit-ring { position: absolute; border: 1px solid rgba(184,255,61,.2); border-radius: 50%; }
+  .ring-a { width: 260px; height: 260px; animation: spin 18s linear infinite; border-style: dashed; }
+  .ring-b { width: 200px; height: 200px; animation: spin 24s linear infinite reverse; }
+  .signal { position: absolute; bottom: 12px; right: 12px; color: var(--accent); font-size: 8px; z-index: 3; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .panel-rows { margin-top: 12px; border-top: 1px solid var(--line); }
+  .panel-row { display: flex; justify-content: space-between; gap: 12px; align-items: center; padding: 12px 6px; border-bottom: 1px solid var(--line); }
+  .panel-row span { color: var(--muted); font-size: 8px; }
+  .panel-row strong { font-size: 10px; letter-spacing: .04em; }
+
+  /* SHARED SECTIONS */
+  .section { padding: 120px 0; border-bottom: 1px solid var(--line); }
+  .packages-note { max-width: 720px; margin: -44px 0 56px; color: var(--muted); font-size: 13px; line-height: 1.7; }
+
+  /* PROBLEM */
+  .problem-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, .9fr); gap: clamp(40px, 7vw, 110px); align-items: start; }
+  .problem-body { margin: 0; max-width: 640px; font-size: 17px; line-height: 1.7; color: var(--paper); }
+  .problem-list { list-style: none; margin: 0; padding: 0; }
+  .problem-list li { display: flex; align-items: center; gap: 16px; padding: 16px 4px; border-bottom: 1px solid var(--line); font-size: 13px; }
+  .problem-index { color: var(--accent); }
+  .problem-x { margin-left: auto; color: var(--muted); font-size: 18px; }
+
+  /* PACKAGES */
+  .package-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  .package { display: flex; flex-direction: column; padding: 24px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); transition: transform .4s var(--ease), border-color .4s var(--ease), background .4s var(--ease); }
+  .package:hover { transform: translateY(-6px); border-color: var(--muted); }
+  .package.featured { border-color: var(--accent); background: linear-gradient(160deg, rgba(184,255,61,.09), transparent 42%), var(--surface-raised); }
+  .package-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; min-height: 20px; }
+  .package-index { color: var(--muted); }
+  .package-badge { color: #0a0a0a; background: var(--accent); padding: 5px 8px; border-radius: 999px; font-size: 8px; }
+  .package-name { font-size: 34px; letter-spacing: -.06em; margin: 28px 0 8px; }
+  .package-summary { min-height: 60px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+  .package-price { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; padding: 22px 0; border-bottom: 1px solid var(--line); }
+  .package-price strong { font-size: 26px; letter-spacing: -.05em; }
+  .package-price span { color: var(--muted); font-size: 8px; }
+  .package-features { list-style: none; margin: 0; padding: 20px 0 26px; display: grid; gap: 11px; flex: 1; }
+  .package-features li { display: flex; gap: 10px; font-size: 12px; line-height: 1.45; color: var(--paper); }
+  .package-features li span:first-child { color: var(--accent); }
+  .package-cta { display: flex; align-items: center; justify-content: space-between; padding: 13px 15px; border: 1px solid var(--line); border-radius: 10px; font-size: 11px; text-transform: uppercase; letter-spacing: .05em; transition: background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease); }
+  .package-cta:hover { background: var(--accent); border-color: var(--accent); color: #0a0a0a; }
+
+  /* PROCESS */
+  .release-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; counter-reset: step; }
+  .release-step { padding: 24px; min-height: 240px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); position: relative; overflow: hidden; transition: background .4s var(--ease), color .4s var(--ease), transform .4s var(--ease); }
+  .release-step:hover { background: var(--paper); color: var(--ink); transform: translateY(-6px); }
+  .step-index { color: var(--muted); }
+  .release-step h3 { font-size: 24px; letter-spacing: -.05em; margin: 64px 0 12px; transition: transform .45s var(--ease); }
+  .release-step:hover h3 { transform: translateX(8px); }
+  .release-step p { margin: 0; font-size: 12px; line-height: 1.6; color: var(--muted); }
+  .release-step:hover p { color: #4a4a45; }
+
+  /* PREPARE + FAQ */
+  .prepare-grid, .faq-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(40px, 7vw, 110px); align-items: start; }
+  .prepare-grid :global(.section-header), .faq-grid :global(.section-header) { margin-bottom: 0; }
+  .prepare-list { list-style: none; margin: 0; padding: 0; }
+  .prepare-list li { display: flex; gap: 18px; align-items: baseline; padding: 16px 4px; border-bottom: 1px solid var(--line); font-size: 14px; }
+  .prepare-list .mono { color: var(--accent); }
+  .faq-list { border-top: 1px solid var(--line); }
+  .faq-list details { border-bottom: 1px solid var(--line); }
+  .faq-list summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 20px; align-items: center; padding: 20px 4px; font-size: 14px; font-weight: 600; }
+  .faq-list summary::-webkit-details-marker { display: none; }
+  .faq-plus { color: var(--accent); font-size: 18px; transition: transform .3s var(--ease); }
+  .faq-list details[open] .faq-plus { transform: rotate(45deg); }
+  .faq-list p { margin: 0; padding: 0 40px 22px 4px; color: var(--muted); font-size: 13px; line-height: 1.7; }
+
+  /* CHECKOUT */
+  .checkout-section { background: var(--surface); }
+  .checkout-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(300px, .8fr); gap: 20px; align-items: start; }
+  .checkout-form { padding: 28px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface-raised); }
+  .checkout-intro { margin: 0 0 30px; max-width: 640px; color: var(--muted); font-size: 13px; line-height: 1.7; }
+  .field-group { border: 0; padding: 0; margin: 0 0 28px; min-width: 0; }
+  .field-group legend { padding: 0 0 14px; color: var(--accent); }
+  .package-picks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .pick { display: block; cursor: pointer; position: relative; border: 1px solid var(--line); border-radius: 12px; padding: 14px; transition: border-color .25s var(--ease), background .25s var(--ease); }
+  .pick:hover { border-color: var(--muted); }
+  .pick input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .pick:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+  .pick:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .pick-body { display: flex; flex-direction: column; gap: 6px; }
+  .pick-name { font-size: 13px; font-weight: 700; }
+  .pick-price { font: 500 10px "DM Mono", monospace; color: var(--muted); }
+  .pick.featured .pick-name::after { content: " ★"; color: var(--accent); }
+
+  .payment-methods { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; min-height: 52px; }
+  .methods-loading { grid-column: 1 / -1; color: var(--muted); align-self: center; }
+  .method { display: flex; align-items: center; gap: 10px; padding: 11px 12px; border: 1px solid var(--line); border-radius: 10px; cursor: pointer; transition: border-color .25s var(--ease), background .25s var(--ease); }
+  .method:hover { border-color: var(--muted); }
+  .method input { accent-color: var(--accent); }
+  .method:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+  .method-name { font-size: 11px; line-height: 1.3; }
+  .method-fee { margin-left: auto; color: var(--muted); font: 500 9px "DM Mono", monospace; white-space: nowrap; }
+  .methods-error { grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+
+  .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .field-wide { grid-column: 1 / -1; }
+  .field > span { color: var(--muted); font-size: 8px; }
+  .field input, .field select, .field textarea {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    background: rgba(0,0,0,.16);
+    color: var(--paper);
+    font: 400 13px/1.5 'Manrope', system-ui, sans-serif;
+    transition: border-color .25s var(--ease);
+  }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--accent); outline: none; }
+  .field textarea { resize: vertical; }
+  .field input::placeholder, .field textarea::placeholder { color: #63635d; }
+  .agree { display: flex; gap: 10px; align-items: flex-start; font-size: 11px; line-height: 1.6; color: var(--muted); cursor: pointer; margin-bottom: 20px; }
+  .agree input { accent-color: var(--accent); margin-top: 2px; }
+  .form-error { padding: 12px 14px; border: 1px solid var(--red); border-radius: 9px; color: var(--red); font-size: 12px; line-height: 1.5; margin: 0 0 18px; }
+  .submit-btn { width: 100%; cursor: pointer; }
+  .submit-btn:disabled { opacity: .55; cursor: wait; }
+  .secure-note { display: flex; align-items: center; gap: 8px; justify-content: center; color: var(--muted); font-size: 8px; margin: 16px 0 0; }
+
+  .order-summary { position: sticky; top: 108px; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; background: linear-gradient(155deg, rgba(184,255,61,.07), transparent 48%), var(--surface-raised); }
+  .summary-head { display: flex; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--line); color: var(--muted); }
+  .summary-head span:last-child { color: var(--accent); }
+  .summary-body { padding: 24px 20px 20px; display: flex; flex-direction: column; }
+  .summary-label { color: var(--muted); font-size: 8px; }
+  .summary-name { font-size: 40px; letter-spacing: -.06em; margin: 8px 0 6px; }
+  .summary-desc { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.6; min-height: 58px; }
+  .summary-total { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 20px 0; margin-top: 16px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .summary-total span { color: var(--muted); }
+  .summary-total strong { font-size: 22px; letter-spacing: -.05em; }
+  .summary-list { list-style: none; margin: 18px 0 22px; padding: 0; display: grid; gap: 10px; }
+  .summary-list li { position: relative; padding-left: 16px; font-size: 11px; line-height: 1.5; color: var(--muted); }
+  .summary-list li::before { content: "↳"; position: absolute; left: 0; color: var(--accent); }
+  .summary-help { display: flex; justify-content: space-between; align-items: center; padding: 13px 0 0; border-top: 1px solid var(--line); font-size: 11px; }
+  .summary-help:hover { color: var(--accent); }
+
+  :global(body.theme-light) .checkout-section { background: var(--ink); }
+  :global(body.theme-light) .checkout-form,
+  :global(body.theme-light) .order-summary { background: rgba(255,255,255,.5); }
+  :global(body.theme-light) .field input,
+  :global(body.theme-light) .field select,
+  :global(body.theme-light) .field textarea { background: rgba(255,255,255,.6); color: var(--paper); }
+  :global(body.theme-light) .field input::placeholder,
+  :global(body.theme-light) .field textarea::placeholder { color: #8c8c84; }
+  :global(body.theme-light) .package:hover,
+  :global(body.theme-light) .release-step:hover { color: var(--paper); }
+  :global(body.theme-light) .release-step:hover p { color: var(--muted); }
+  :global(body.theme-light) .method-fee,
+  :global(body.theme-light) .pick-price { color: #4e5745; }
+
+  @media (max-width: 1100px) {
+    .package-grid, .release-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-panel { max-width: 560px; justify-self: center; width: 100%; }
+  }
+  @media (max-width: 800px) {
+    .section { padding: 82px 0; }
+    .service-hero { padding: 54px 0 40px; }
+    .hero-title { font-size: clamp(56px, 17vw, 96px); }
+    .hero-sub { font-size: 14px; }
+    .chapter-tag { display: none; }
+    .problem-grid, .prepare-grid, .faq-grid, .checkout-grid { grid-template-columns: 1fr; }
+    .packages-note { margin: -32px 0 40px; }
+    .order-summary { position: static; }
+    .checkout-form { padding: 20px; }
+  }
+  @media (max-width: 620px) {
+    .package-grid, .release-steps, .package-picks, .payment-methods, .field-grid { grid-template-columns: 1fr; }
+    .release-step { min-height: auto; }
+    .release-step h3 { margin-top: 36px; }
+    .hero-facts { grid-template-columns: 1fr; gap: 14px; }
+    .fact + .fact { border-left: 0; border-top: 1px solid var(--line); padding: 14px 0 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ring-a, .ring-b { animation: none; }
+    .package:hover, .release-step:hover { transform: none; }
+  }
+</style>

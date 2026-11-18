@@ -6,3 +6,10 @@ node_modules
 screenshots
 smoke-test.mjs
 tmp/
+
+# Duitku — kredensial & data order khusus server (jangan pernah di-commit)
+config.local.php
+duitku-orders/
+**/api/duitku/storage/*
+!**/api/duitku/storage/.htaccess
+activity.log

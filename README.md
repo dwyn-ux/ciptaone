@@ -19,6 +19,14 @@ npm run build    # ./dist (static output)
 npm run preview
 ```
 
+## Layanan Rilis Play Store
+
+- Landing page: `src/pages/rilis-aplikasi.astro` (`/rilis-aplikasi`)
+- Halaman status pembayaran: `src/pages/rilis-aplikasi/status.astro`
+- Ringkasan di homepage: `src/components/ServiceTeaser.astro`
+- Endpoint pembayaran Duitku (PHP, dijalankan cPanel): `public/api/duitku/`
+- Panduan setup kredensial, callback, dan go live: [`docs/DUITKU.md`](docs/DUITKU.md)
+
 ## Deploy (shared hosting — DomaiNesia cPanel)
 
 **Strategi: `dist/` ikut di-push ke repo. Server tidak perlu Node.js.**
