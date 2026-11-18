@@ -1,5 +1,8 @@
 ---
 import { packages, formatIDR } from '../data/playstore';
+
+const prices = packages.map((pkg) => pkg.price);
+const priceRange = `${formatIDR(Math.min(...prices))} — ${formatIDR(Math.max(...prices))}`;
 ---
 
 <section id="layanan" class="section service-teaser" data-chapter="NEW">
@@ -30,7 +33,7 @@ import { packages, formatIDR } from '../data/playstore';
       </div>
 
       <div class="teaser-meta mono">
-        <span>{formatIDR(packages[0].price)} — {formatIDR(packages[2].price)}</span>
+        <span>{priceRange}</span>
         <span class="meta-dot" aria-hidden="true">·</span>
         <span data-en="PAYMENT VIA DUITKU" data-id="PEMBAYARAN VIA DUITKU">PAYMENT VIA DUITKU</span>
       </div>

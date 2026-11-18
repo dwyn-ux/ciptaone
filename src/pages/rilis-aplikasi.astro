@@ -448,7 +448,7 @@ import { playstore, packages, formatIDR } from '../data/playstore';
   .problem-x { margin-left: auto; color: var(--muted); font-size: 18px; }
 
   /* PACKAGES */
-  .package-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  .package-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
   .package { display: flex; flex-direction: column; padding: 24px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); transition: transform .4s var(--ease), border-color .4s var(--ease), background .4s var(--ease); }
   .package:hover { transform: translateY(-6px); border-color: var(--muted); }
   .package.featured { border-color: var(--accent); background: linear-gradient(160deg, rgba(184,255,61,.09), transparent 42%), var(--surface-raised); }
@@ -497,7 +497,7 @@ import { playstore, packages, formatIDR } from '../data/playstore';
   .checkout-intro { margin: 0 0 30px; max-width: 640px; color: var(--muted); font-size: 13px; line-height: 1.7; }
   .field-group { border: 0; padding: 0; margin: 0 0 28px; min-width: 0; }
   .field-group legend { padding: 0 0 14px; color: var(--accent); }
-  .package-picks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .package-picks { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
   .pick { display: block; cursor: pointer; position: relative; border: 1px solid var(--line); border-radius: 12px; padding: 14px; transition: border-color .25s var(--ease), background .25s var(--ease); }
   .pick:hover { border-color: var(--muted); }
   .pick input { position: absolute; opacity: 0; width: 1px; height: 1px; }
@@ -573,7 +573,7 @@ import { playstore, packages, formatIDR } from '../data/playstore';
   :global(body.theme-light) .pick-price { color: #4e5745; }
 
   @media (max-width: 1100px) {
-    .package-grid, .release-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .package-grid, .release-steps, .package-picks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .hero-grid { grid-template-columns: 1fr; }
     .hero-panel { max-width: 560px; justify-self: center; width: 100%; }
   }

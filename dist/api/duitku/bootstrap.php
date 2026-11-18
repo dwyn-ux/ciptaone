@@ -105,6 +105,7 @@ function duitku_sign_status(string $orderId): string
 function duitku_packages(): array
 {
     return [
+        'akun-ciptaone' => ['name' => 'Akun Cipta One', 'price' => 100000],
         'starter' => ['name' => 'Starter', 'price' => 850000],
         'pro' => ['name' => 'Pro', 'price' => 1750000],
         'skala' => ['name' => 'Skala', 'price' => 3500000],

@@ -47,8 +47,8 @@ export const playstore = {
     id: 'Pilih jalur yang pas untuk rilis kamu.'
   },
   packagesBody: {
-    en: 'Transparent pricing. No hidden fees. Google Play developer registration (USD 25) is paid directly to Google.',
-    id: 'Harga transparan, tanpa biaya tersembunyi. Pendaftaran Google Play Developer (USD 25) dibayarkan langsung ke Google.'
+    en: 'Transparent pricing. No hidden fees. For packages using your own account, the USD 25 Google registration is paid directly to Google — the Akun Cipta One package already uses ours.',
+    id: 'Harga transparan, tanpa biaya tersembunyi. Untuk paket dengan akun kamu sendiri, biaya pendaftaran Google USD 25 dibayar langsung ke Google — paket Akun Cipta One sudah memakai akun kami.'
   },
   processTitle: {
     en: 'Four steps from APK to live URL.',
@@ -97,7 +97,7 @@ export const playstore = {
     { en: 'App icon 512×512 PNG', id: 'Ikon aplikasi PNG 512×512' },
     { en: '2–8 screenshots (phone / tablet)', id: '2–8 screenshot (ponsel / tablet)' },
     { en: 'Short description + full description', id: 'Deskripsi singkat + deskripsi lengkap' },
-    { en: 'Access to your Google Play Console', id: 'Akses ke Google Play Console kamu' },
+    { en: 'Access to your Play Console (not needed for Akun Cipta One)', id: 'Akses ke Play Console (tidak perlu untuk Akun Cipta One)' },
     { en: 'A support email & website (can be a landing page)', id: 'Email dukungan & website (boleh landing page)' }
   ],
   faqTitle: { en: 'Before you pay.', id: 'Sebelum kamu bayar.' },
@@ -105,8 +105,15 @@ export const playstore = {
     {
       q: { en: 'Is the Google Play account mine?', id: 'Apakah akun Google Play tetap milik saya?' },
       a: {
-        en: 'Always. We work inside your Play Console with the access you grant. We never register or own the developer account on your behalf.',
-        id: 'Selalu. Kami bekerja di dalam Play Console kamu dengan akses yang kamu berikan. Kami tidak pernah mendaftarkan atau memiliki akun developer atas nama kamu.'
+        en: 'For Starter, Pro, and Skala — yes. We work inside your Play Console with the access you grant. The Akun Cipta One package is the exception: the app is published under our developer account.',
+        id: 'Untuk Starter, Pro, dan Skala — ya. Kami bekerja di dalam Play Console kamu dengan akses yang kamu berikan. Paket Akun Cipta One adalah pengecualian: aplikasi diterbitkan memakai akun developer kami.'
+      }
+    },
+    {
+      q: { en: 'What is the Akun Cipta One package?', id: 'Apa itu paket Akun Cipta One?' },
+      a: {
+        en: 'It is the fastest route to launch: we publish 1 app under Cipta One’s Google Play developer account for Rp 100.000. You skip the USD 25 registration and account verification. The developer account remains ours; app transfer options can be discussed separately.',
+        id: 'Jalur tercepat untuk rilis: kami mempublikasikan 1 aplikasi dengan akun developer Google Play Cipta One seharga Rp 100.000. Kamu tidak perlu bayar USD 25 atau lewat verifikasi akun. Akun developer tetap milik kami; opsi transfer aplikasi bisa didiskusikan terpisah.'
       }
     },
     {
@@ -119,15 +126,15 @@ export const playstore = {
     {
       q: { en: 'What if Google rejects the app?', id: 'Bagaimana kalau aplikasi ditolak Google?' },
       a: {
-        en: 'We read the rejection reason, fix the listing or build issue with you, and resubmit. Starter includes 1 resubmission, Pro includes 2, Skala is unlimited during the engagement.',
-        id: 'Kami baca alasan penolakan, perbaiki listing atau masalah build bersama kamu, lalu submit ulang. Starter dapat 1x submit ulang, Pro 2x, Skala tanpa batas selama masa kerja.'
+        en: 'We read the rejection reason, fix the listing or build issue with you, and resubmit. Akun Cipta One and Starter include 1 resubmission, Pro includes 2, Skala is unlimited during the engagement.',
+        id: 'Kami baca alasan penolakan, perbaiki listing atau masalah build bersama kamu, lalu submit ulang. Akun Cipta One dan Starter dapat 1x submit ulang, Pro 2x, Skala tanpa batas selama masa kerja.'
       }
     },
     {
       q: { en: 'Is the USD 25 developer fee included?', id: 'Apakah biaya developer USD 25 termasuk?' },
       a: {
-        en: 'No. Google charges that directly when the developer account is created. Our fee covers the release work only.',
-        id: 'Tidak. Google menagihnya langsung saat akun developer dibuat. Biaya kami hanya untuk pekerjaan rilis.'
+        en: 'No. Google charges that directly when the developer account is created. Our fee covers the release work only. The Akun Cipta One package already uses our account, so there is no USD 25 charge for you.',
+        id: 'Tidak. Google menagihnya langsung saat akun developer dibuat. Biaya kami hanya untuk pekerjaan rilis. Paket Akun Cipta One sudah memakai akun kami, jadi kamu tidak perlu membayar USD 25.'
       }
     },
     {
@@ -169,8 +176,27 @@ export type Package = {
 
 export const packages: Package[] = [
   {
-    id: 'starter',
+    id: 'akun-ciptaone',
     index: '01',
+    name: 'Akun Cipta One',
+    price: 100000,
+    turnaround: { en: '3–5 working days', id: '3–5 hari kerja' },
+    summary: {
+      en: 'Publish one app under Cipta One’s Google Play developer account — no registration needed on your side.',
+      id: 'Rilis 1 aplikasi memakai akun developer Google Play milik Cipta One — tanpa perlu daftar akun sendiri.'
+    },
+    features: [
+      { en: '1 app / 1 release track', id: '1 aplikasi / 1 jalur rilis' },
+      { en: 'Published under Cipta One developer account', id: 'Diterbitkan dengan akun developer Cipta One' },
+      { en: 'Policy audit + listing & screenshot help', id: 'Audit kebijakan + bantuan listing & screenshot' },
+      { en: '1 submission + 1 resubmission', id: '1x submit + 1x submit ulang' },
+      { en: 'Developer account stays with Cipta One', id: 'Akun developer tetap milik Cipta One' }
+    ],
+    cta: { en: 'Choose Akun Cipta One', id: 'Pilih Akun Cipta One' }
+  },
+  {
+    id: 'starter',
+    index: '02',
     name: 'Starter',
     price: 850000,
     turnaround: { en: '3–5 working days', id: '3–5 hari kerja' },
@@ -189,7 +215,7 @@ export const packages: Package[] = [
   },
   {
     id: 'pro',
-    index: '02',
+    index: '03',
     name: 'Pro',
     price: 1750000,
     featured: true,
@@ -209,7 +235,7 @@ export const packages: Package[] = [
   },
   {
     id: 'skala',
-    index: '03',
+    index: '04',
     name: 'Skala',
     price: 3500000,
     turnaround: { en: '7–14 working days', id: '7–14 hari kerja' },
